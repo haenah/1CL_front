@@ -10,24 +10,24 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => (
         {
-        onSignUp: (name,id,pw,email) => {
-            dispatch(actions.signUpRequest(name,id,pw,email))
-        },
-        onIdValidation: (status) => {
-            dispatch(actions.idValidation(status))
-        },
-        onEmailValidation: (status) => {
-            dispatch(actions.emailValidation(status))
-        },
-        onConfirmId: (id) => {
-            dispatch(actions.confirmIdRequest(id))
-        },
-        onSendEmail: (email) => {
-            dispatch(actions.sendEmailRequest(email))
-        },
-        onConfirmCode: (code) => {
-            dispatch(actions.confirmCodeRequest(code))
-        }
+            onSignUp: (name,id,pw,email) => {
+                dispatch(actions.signUpRequest(name,id,pw,email))
+            },
+            onIdValidation: (status) => {
+                dispatch(actions.idValidation(status))
+            },
+            onEmailValidation: (status) => {
+                dispatch(actions.emailValidation(status))
+            },
+            onConfirmId: (id) => {
+                dispatch(actions.confirmIdRequest(id))
+            },
+            onSendEmail: (email) => {
+                dispatch(actions.sendEmailRequest(email))
+            },
+            onConfirmCode: (code) => {
+                dispatch(actions.confirmCodeRequest(code))
+            },
         }
 )
 

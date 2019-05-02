@@ -73,6 +73,7 @@ class SignUp extends Component{
   handleClick_email = () => {
     console.log(this.props.emailSended);
     this.props.onSendEmail(this.state.email+'@snu.ac.kr');
+    this.props.onEmailValidation(0);
     this.setState({
       buttonPressed_email: true
     });
