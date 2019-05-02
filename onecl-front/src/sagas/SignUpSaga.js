@@ -15,10 +15,10 @@ function* signUp(name,id,pw,email) {
 function* sendEmail(email) {
     try {
         yield call(api.post, url_email, {email:email})
-        yield put(actions.emailNotSended(false))
+        yield put(actions.emailSended(1))
 
     } catch(e){
-        yield put(actions.emailNotSended(true))
+        yield put(actions.emailSended(2))
     }
 
 }
@@ -26,18 +26,18 @@ function* sendEmail(email) {
 function* confirmCode(code) {
     try {
         yield call(api.post, url_code, {code:code})
-        yield put(actions.emailValidation(true))
+        yield put(actions.emailValidation(1))
     } catch(e){
-        yield put(actions.emailValidation(false))
+        yield put(actions.emailValidation(2))
     }
 }
 
 function* confirmId(id) {
     try {
         yield call(api.post, url_id, {username:id})
-        yield put(actions.idValidation(true))
+        yield put(actions.idValidation(1))
     } catch(e){
-        yield put(actions.idValidation(false))
+        yield put(actions.idValidation(2))
     }
 }
 

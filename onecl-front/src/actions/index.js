@@ -31,23 +31,25 @@ export const confirmCodeRequest = (code) => {
     }
 }
 
-export const idValidation = (bool) => {
+// 0: nothing done 1: success 2: fail
+
+export const idValidation = (status) => {
     return {
         type: types.ID_VALIDATION,
-        bool
+        status
     }
 }
 
-export const emailValidation = (bool) => {
+export const emailValidation = (status) => {
     return {
         type: types.EMAIL_VALIDATION,
-        bool
+        status
     }
 }
 
-export const emailNotSended = (bool) => {
+export const emailSended = (status) => {
     return {
-        type: types.EMAIL_NOT_SENDED,
-        bool
+        type: types.EMAIL_SENDED,
+        status
     }
 }

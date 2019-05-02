@@ -1,46 +1,28 @@
 import * as types from '../actions/ActionTypes'
 
 const initialState = {
-    idIsValid: false,
-    emailIsValid: false,
-    emailNotSended: false
+    idIsValid: 0,
+    emailIsValid: 0,
+    emailSended: 0
 }
 
 const SignUpValidation = (state=initialState, action) => {
     switch (action.type) {
         case types.ID_VALIDATION:
-            if(action.bool)
-                return {
-                    ...state,
-                    idIsValid: true
-                };
-            else
-                return {
-                    ...state,
-                    idIsValid: false
-                }
+            return {
+                ...state,
+                idIsValid: action.status
+            };
         case types.EMAIL_VALIDATION:
-            if(action.bool)
-                return {
-                    ...state,
-                    emailIsValid: true
-                };
-            else
-                return {
-                    ...state,
-                    emailIsValid: false
-                };
-        case types.EMAIL_NOT_SENDED:
-            if(action.bool)
-                return {
-                    ...state,
-                    emailNotSended: true
-                };
-            else
-                return {
-                    ...state,
-                    emailNotSended: false
-                };
+            return {
+                ...state,
+                emailIsValid: action.status
+            };
+        case types.EMAIL_SENDED:
+            return {
+                ...state,
+                emailSended: action.status
+            };
         default:
             return state;
     }

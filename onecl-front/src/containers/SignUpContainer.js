@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 const mapStateToProps = (state) => ({
     idIsValid: state.SignUpValidationData.idIsValid,
     emailIsValid: state.SignUpValidationData.emailIsValid,
-    emailNotSended: state.SignUpValidationData.emailNotSended
+    emailSended: state.SignUpValidationData.emailSended
 });
 
 const mapDispatchToProps = (dispatch) => (
@@ -13,11 +13,11 @@ const mapDispatchToProps = (dispatch) => (
         onSignUp: (name,id,pw,email) => {
             dispatch(actions.signUpRequest(name,id,pw,email))
         },
-        onIdValidation: (bool) => {
-            dispatch(actions.idValidation(bool))
+        onIdValidation: (status) => {
+            dispatch(actions.idValidation(status))
         },
-        onEmailValidation: (bool) => {
-            dispatch(actions.emailValidation(bool))
+        onEmailValidation: (status) => {
+            dispatch(actions.emailValidation(status))
         },
         onConfirmId: (id) => {
             dispatch(actions.confirmIdRequest(id))
