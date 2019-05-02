@@ -135,7 +135,7 @@ class SignUp extends Component{
         <div name='email'>
           이메일 <input name='email' type='text' onChange={this.handleChange} /> @snu.ac.kr
           <br />
-          {!buttonPressed_email && <button onClick={this.handleClick_email}>인증코드 전송</button>}
+          <button onClick={this.handleClick_email}>인증코드 전송</button>
           {emailNotSended && <span style={{color:'red'}}>유효하지 않거나 중복된 이메일입니다.</span> }
           { (buttonPressed_email && !emailNotSended) &&
             <div>

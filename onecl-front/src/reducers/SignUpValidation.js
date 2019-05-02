@@ -3,7 +3,7 @@ import * as types from '../actions/ActionTypes'
 const initialState = {
     idIsValid: false,
     emailIsValid: false,
-    emailNotSended: true
+    emailNotSended: false
 }
 
 const SignUpValidation = (state=initialState, action) => {
