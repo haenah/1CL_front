@@ -1,4 +1,4 @@
-import * as types from '../actions/ActionTypes'
+import * as types from '../actions/Signup/ActionTypes'
 
 const initialState = {
     idIsValid: 0,

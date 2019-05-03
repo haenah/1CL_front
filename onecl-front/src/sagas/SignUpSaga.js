@@ -1,7 +1,7 @@
 import {take,put,call,fork} from 'redux-saga/effects';
 import api from '../api'
-import * as actions from '../actions'
-import * as types from '../actions/ActionTypes'
+import * as actions from '../actions/Signup/index'
+import * as types from '../actions/Signup/ActionTypes'
 
 const url_user = 'http://127.0.0.1:8000/auth/register/'
 const url_email = 'http://127.0.0.1:8000/auth/email/'
