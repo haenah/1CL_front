@@ -1,5 +1,5 @@
-import SignUp from '../components/SignUp';
-import * as actions from '../actions';
+import SignUp from '../../components/Signup/SignUp';
+import * as actions from '../../actions/Signup/index';
 import {connect} from "react-redux";
 
 const mapStateToProps = (state) => ({
