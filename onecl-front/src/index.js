@@ -1,23 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import {applyMiddleware, createStore} from 'redux';
+import {applyMiddleware, compose, createStore} from 'redux';
 import reducers from './reducers';
 import { Provider } from 'react-redux';
-import {BrowserRouter} from 'react-router-dom'
+import {BrowserRouter} from 'react-router-dom';
 
 import createSagaMiddleware from 'redux-saga';
 import SignUpSaga from './sagas/SignUpSaga';
 
 const sagaMiddleware = createSagaMiddleware();
+const devtools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+const composeEnhancers = devtools || compose;
 
-const store = createStore(
-    reducers,
-    applyMiddleware(sagaMiddleware),
-);
+const configure = (preloadedState) => createStore(reducers, preloadedState, composeEnhancers(
+    applyMiddleware(sagaMiddleware)
+));
+
+const store = configure();
 
 sagaMiddleware.run(SignUpSaga);
 
