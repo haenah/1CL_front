@@ -1,11 +1,11 @@
-import SignUp from '../../components/Signup/SignUp';
+import  SignUp from '../../components/Signup/SignUp';
 import * as actions from '../../actions/Signup/index';
 import {connect} from "react-redux";
 
 const mapStateToProps = (state) => ({
     idIsValid: state.SignUpValidationData.idIsValid,
     emailIsValid: state.SignUpValidationData.emailIsValid,
-    emailSended: state.SignUpValidationData.emailSended
+    emailSent: state.SignUpValidationData.emailSent
 });
 
 const mapDispatchToProps = (dispatch) => (
