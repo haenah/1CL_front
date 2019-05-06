@@ -3,7 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-jest": "^24.8.0",
     "config": "^3.1.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.12.1",
+    "jest": "^24.8.0",
     "lodash": "^4.17.11",
     "query-string": "^6.5.0",
     "react": "^16.8.6",

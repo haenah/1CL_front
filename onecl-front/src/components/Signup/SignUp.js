@@ -22,7 +22,7 @@ class SignUp extends Component{
   pwRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,20}$)");
 
   handleChange = (e) => {
-    if(e.target.name==='pw'){
+    if(e.target.id==='pw'){
       if(this.pwRegex.test(e.target.value)){
         this.setState({
           pw: e.target.value,
@@ -37,7 +37,7 @@ class SignUp extends Component{
       }
     }
 
-    else if(e.target.name==='pw_again'){
+    else if(e.target.id==='pw_again'){
       if(e.target.value===this.state.pw){
         this.setState({
           pw_again: e.target.value,
@@ -59,12 +59,19 @@ class SignUp extends Component{
       });
     }
 
+    else if(e.target.name==='name'){
+      this.setState({
+        name: e.target.value
+      });
+      console.log(this.state.name)
+    }
+
     else{
       this.setState({
-        [e.target.name]: e.target.value
+        email: e.target.value
       });
     }
-  }
+  };
 
   handleClick_id = () => {
     this.props.onConfirmId(this.state.id);
@@ -132,29 +139,29 @@ class SignUp extends Component{
     const {idUI, emailUI} = this;
     return (
       <div>
-        <div name='nameId'>
-          이름 <input name='name' type='text' maxLength='20' onChange={this.handleChange} />
+        <div id='NameId'>
+          이름 <input value={this.state.name} id='NameInput' name='name' type='text' maxLength='20' onChange={this.handleChange} />
           <br />
-          ID <input name='id' type='text' maxLength='20' onChange={this.handleChange} />
-          <button onClick={this.handleClick_id}>중복체크</button>
+          ID <input id='IdInput' name='id' type='text' maxLength='20' onChange={this.handleChange} />
+          <button id='DuplicateIdTest' onClick={this.handleClick_id}>중복체크</button>
           {idUI()}
         </div>
 
-        <div name='pw'>
-          비밀번호 <input name='pw' type='password' maxLength='20' onChange={this.handleChange} />
+        <div id='pwChunk'>
+          비밀번호 <input id='pw' type='password' maxLength='20' onChange={this.handleChange} />
           {(pw!=='') && ( !pwIsValid && <span style={{color: 'red'}}>유효하지 않은 비밀번호입니다.</span> )}
           <br />
-          비밀번호 확인 <input name='pw_again' type='password' maxLength='20' onChange={this.handleChange} />
+          비밀번호 확인 <input id='pw_again' type='password' maxLength='20' onChange={this.handleChange} />
           {(pw_again!=='') && ( !pwCompare && <span style={{color: 'red'}}>입력하신 비밀번호화 일치하지 않습니다.</span> )}
         </div>
 
-        <div name='email'>
-          이메일 <input name='email' type='text' onChange={this.handleChange} /> @snu.ac.kr
-          <button onClick={this.handleClick_email}>인증코드 전송</button>
+        <div id='email'>
+          이메일 <input id='EmailInput' type='text' onChange={this.handleChange} /> @snu.ac.kr
+          <button id='SendAuthCode' onClick={this.handleClick_email}>인증코드 전송</button>
           {emailUI()}
         </div>
         <br /><br />
-        <button onClick={this.handleClick_signUp}>회원가입</button>
+        <button id='register' onClick={this.handleClick_signUp}>회원가입</button>
       </div>
     )
   }
