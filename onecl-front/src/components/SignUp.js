@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './SignUp.css'
 
 class SignUp extends Component{
   constructor(props){
@@ -96,9 +97,9 @@ class SignUp extends Component{
 
   idUI = () => {
     const {idIsValid} = this.props;
-    if(idIsValid===0) return <span style={{color:'blue'}}>중복체크를 완료해주세요.</span>
-    else if(idIsValid===1) return <span style={{color:'green'}}>유효한 아이디입니다.</span>
-    else return <span style={{color:'red'}}>유효하지 않거나 이미 가입된 아이디입니다.</span>
+    if(idIsValid===0) return <span className='check' style={{color:'blue'}}>중복체크를 완료해주세요.</span>
+    else if(idIsValid===1) return <span className='check' style={{color:'green'}}>유효한 아이디입니다.</span>
+    else return <span className='check' style={{color:'red'}}>유효하지 않거나 이미 가입된 아이디입니다.</span>
   }
 
   emailUI = () => {
@@ -108,7 +109,7 @@ class SignUp extends Component{
     if(!buttonPressed_email) return;
     else{
       if(emailSended===0) return;
-      else if(emailSended===2) return <span style={{color:'red'}}>유효하지 않거나 중복된 이메일입니다.</span>
+      else if(emailSended===2) return <span className='check' style={{color:'red'}}>유효하지 않거나 중복된 이메일입니다.</span>
       else return (
           <div>
             <input name='code' type='text' onChange={this.handleChange} />
@@ -121,40 +122,102 @@ class SignUp extends Component{
 
   codeUI = () => {
     const {emailIsValid} = this.props;
-    if(emailIsValid===0) return <span style={{color:'blue'}}>코드 인증을 완료해주세요.</span>
-    else if(emailIsValid===1) return <span style={{color:'green'}}>인증이 완료되었습니다.</span>
-    else return <span style={{color:'red'}}>인증에 실패하였습니다.</span>
+    if(emailIsValid===0) return <span className='check' style={{color:'blue'}}>코드 인증을 완료해주세요.</span>
+    else if(emailIsValid===1) return <span className='check' style={{color:'green'}}>인증이 완료되었습니다.</span>
+    else return <span className='check' style={{color:'red'}}>인증에 실패하였습니다.</span>
   }
 
   render(){
     const {pw, pw_again, pwIsValid, pwCompare} = this.state;
     const {idUI, emailUI} = this;
     return (
-      <div>
-        <div name='nameId'>
-          이름 <input name='name' type='text' maxLength='20' onChange={this.handleChange} />
-          <br />
-          ID <input name='id' type='text' maxLength='20' onChange={this.handleChange} />
-          <button onClick={this.handleClick_id}>중복체크</button>
-          {idUI()}
+        <body>
+
+        <div className='heading-space'>
+          <div className='heading'>
+            <div className='options'>
+              <div className='login-section'>
+                <a className='login'>Login</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="limiter">
+          <div className="container-login100">
+            <div className="wrap-login100">
+
+
+
+              <form className='sign-up-form'>
+                <span className="sign-up-form-title">
+                  <h2>Sign Up</h2>
+                </span>
+
+                <div className='name'>
+                  <span>
+                  <input className='name-input' type='text' maxLength='20' placeholder='이름' onChange={this.handleChange} />
+                  <span className="focus-input100"></span>
+                    <span className="symbol-input100">
+                      <i className="fa fa-user" aria-hidden="true"></i>
+                    </span>
+                  </span>
+                </div>
+
+
+                <div className='id'>
+                  <span className='id-in'>
+                    <input className='id-input' type='text' maxLength='20' placeholder='ID' onChange={this.handleChange} />
+                  </span>
+                  <button className='confirmation' onClick={this.handleClick_id}>중복체크</button>
+                  {idUI()}
+                  <span className="focus-input100"></span>
+                  <span className="symbol-input100">
+                      <i className="fa fa-id-card-o" aria-hidden="true"></i>
+                    </span>
+                </div>
+
+
+                <div className='pw'>
+                  <span>
+                  <input name='pw-input' type='password' maxLength='20' placeholder='비밀번호' onChange={this.handleChange} />
+                  {(pw!=='') && ( !pwIsValid && <span className='check' style={{color: 'red'}}>유효하지 않은 비밀번호입니다.</span> )}
+                    <span className="focus-input100"></span>
+                    <span className="symbol-input100">
+                      <i className="fa fa-lock" aria-hidden="true"></i>
+                    </span>
+                  </span>
+                </div>
+
+                <div className='pw-again'>
+                  <span>
+                  <input name='pw_again' type='password' maxLength='20' placeholder='비밀번호 확인' onChange={this.handleChange} />
+                  {(pw_again!=='') && ( !pwCompare && <span className='check' style={{color: 'red'}}>입력하신 비밀번호와 일치하지 않습니다.</span> )}
+                    <span className="focus-input100"></span>
+                    <span className="symbol-input100">
+                      <i className="fa fa-lock" aria-hidden="true"></i>
+                    </span>
+                  </span>
+                </div>
+
+                <div className='email'>
+                  <span className='snu-email'><input className='email-add' type='text' placeholder='이메일' onChange={this.handleChange} />
+                    <span className="focus-input100"></span>
+                    <span className="symbol-input100">
+                      <i className="fa fa-envelope" aria-hidden="true"></i>
+                    </span>
+                  </span>
+                  <h4>@snu.ac.kr</h4>
+                  <button className='verify' onClick={this.handleClick_email}>인증코드 전송</button>
+                  {emailUI()}
+                </div>
+                <br /><br />
+                <button className='sign-up-button' onClick={this.handleClick_signUp}>회원가입</button>
+              </form>
+            </div>
+          </div>
         </div>
 
-        <div name='pw'>
-          비밀번호 <input name='pw' type='password' maxLength='20' onChange={this.handleChange} />
-          {(pw!=='') && ( !pwIsValid && <span style={{color: 'red'}}>유효하지 않은 비밀번호입니다.</span> )}
-          <br />
-          비밀번호 확인 <input name='pw_again' type='password' maxLength='20' onChange={this.handleChange} />
-          {(pw_again!=='') && ( !pwCompare && <span style={{color: 'red'}}>입력하신 비밀번호화 일치하지 않습니다.</span> )}
-        </div>
-
-        <div name='email'>
-          이메일 <input name='email' type='text' onChange={this.handleChange} /> @snu.ac.kr
-          <button onClick={this.handleClick_email}>인증코드 전송</button>
-          {emailUI()}
-        </div>
-        <br /><br />
-        <button onClick={this.handleClick_signUp}>회원가입</button>
-      </div>
+        </body>
     )
   }
 }
