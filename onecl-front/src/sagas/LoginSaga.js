@@ -19,13 +19,6 @@ export function* loginRequest(user) {
     console.log('Login Request Error: ', e.message)
   }
 }
-//
-// export function* watchLoginRequest() {
-//   while (true) {
-//     const action = yield take(types.LOGIN_REQUEST);
-//     yield call(loginRequest, action)
-//   }
-// }
 
 export default function* LoginSaga() {
   yield takeLatest(types.LOGIN_REQUEST, loginRequest);
