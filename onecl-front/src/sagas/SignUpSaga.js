@@ -1,7 +1,7 @@
-import {take,put,call,fork} from 'redux-saga/effects';
+import {call, put, take, takeLatest} from 'redux-saga/effects';
 import api from '../api'
-import * as actions from '../actions'
-import * as types from '../actions/ActionTypes'
+import * as actions from '../actions/Signup/index'
+import * as types from '../actions/Signup/ActionTypes'
 
 const url_user = 'http://127.0.0.1:8000/auth/register/'
 const url_email = 'http://127.0.0.1:8000/auth/email/'
@@ -15,10 +15,10 @@ function* signUp(name,id,pw,email) {
 function* sendEmail(email) {
     try {
         yield call(api.post, url_email, {email:email})
-        yield put(actions.emailSended(1))
+        yield put(actions.emailSent(1))
 
     } catch(e){
-        yield put(actions.emailSended(2))
+        yield put(actions.emailSent(2))
     }
 
 }
@@ -41,38 +41,9 @@ function* confirmId(id) {
     }
 }
 
-function* watchSignUpRequest(){
-    while(true){
-        const {name,id,pw,email} = yield take(types.SIGN_UP_REQUEST)
-        yield call(signUp,name,id,pw,email)
-    }
-}
-
-function* watchSendEmailRequest(){
-    while(true){
-        const {email} = yield take(types.SEND_EMAIL_REQUEST)
-        yield call(sendEmail,email)
-    }
-}
-
-function* watchConfirmCodeRequest(){
-    while(true){
-        const {code} = yield take(types.CONFIRM_CODE_REQUEST)
-        yield call(confirmCode,code)
-    }
-}
-
-function* watchConfirmIdRequest(){
-    while(true){
-        const {id} = yield take(types.CONFIRM_ID_REQUEST)
-        yield call(confirmId,id)
-    }
-}
-
-export default function* SignUpSaga() {
-    yield fork(watchSignUpRequest)
-    yield fork(watchConfirmIdRequest)
-    yield fork(watchSendEmailRequest)
-    yield fork(watchConfirmCodeRequest)
-
+export default function* SignUpSaga () {
+    yield takeLatest(types.SIGN_UP_REQUEST, signUp);
+    yield takeLatest(types.CONFIRM_ID_REQUEST, confirmId);
+    yield takeLatest(types.SEND_EMAIL_REQUEST, sendEmail);
+    yield takeLatest(types.CONFIRM_CODE_REQUEST, confirmCode);
 }

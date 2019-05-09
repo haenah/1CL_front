@@ -1,9 +1,9 @@
-import * as types from '../actions/ActionTypes'
+import * as types from '../actions/Signup/ActionTypes'
 
 const initialState = {
     idIsValid: 0,
     emailIsValid: 0,
-    emailSended: 0
+    emailSent: 0
 }
 
 const SignUpValidation = (state=initialState, action) => {
@@ -18,10 +18,10 @@ const SignUpValidation = (state=initialState, action) => {
                 ...state,
                 emailIsValid: action.status
             };
-        case types.EMAIL_SENDED:
+        case types.EMAIL_SENT:
             return {
                 ...state,
-                emailSended: action.status
+                emailSent: action.status
             };
         default:
             return state;
