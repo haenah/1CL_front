@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import 'bootstrap/dist/css/bootstrap.css';
+
 
 import {applyMiddleware, compose, createStore} from 'redux';
 import reducers from './reducers';
@@ -9,7 +11,7 @@ import { Provider } from 'react-redux';
 import {BrowserRouter} from 'react-router-dom';
 
 import createSagaMiddleware from 'redux-saga';
-import SignUpSaga from './sagas/SignUpSaga';
+import rootSaga from './sagas/index';
 
 const sagaMiddleware = createSagaMiddleware();
 const devtools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
@@ -21,7 +23,7 @@ const configure = (preloadedState) => createStore(reducers, preloadedState, comp
 
 const store = configure();
 
-sagaMiddleware.run(SignUpSaga);
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
     <Provider store={store}>

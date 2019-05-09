@@ -47,9 +47,9 @@ export const emailValidation = (status) => {
     }
 }
 
-export const emailSended = (status) => {
+export const emailSent = (status) => {
     return {
-        type: types.EMAIL_SENDED,
+        type: types.EMAIL_SENT,
         status
     }
 }

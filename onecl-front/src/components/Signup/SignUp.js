@@ -78,7 +78,7 @@ class SignUp extends Component{
   }
 
   handleClick_email = () => {
-    console.log(this.props.emailSended);
+    console.log(this.props.emailSent);
     this.props.onSendEmail(this.state.email+'@snu.ac.kr');
     this.props.onEmailValidation(0);
     this.setState({
@@ -110,13 +110,13 @@ class SignUp extends Component{
   }
 
   emailUI = () => {
-    const {emailSended} = this.props;
+    const {emailSent} = this.props;
     const {buttonPressed_email} = this.state;
     const {codeUI} = this;
     if(!buttonPressed_email) return;
     else{
-      if(emailSended===0) return;
-      else if(emailSended===2) return <span style={{color:'red'}}>유효하지 않거나 중복된 이메일입니다.</span>
+      if(emailSent===0) return;
+      else if(emailSent===2) return <span style={{color:'red'}}>유효하지 않거나 중복된 이메일입니다.</span>
       else return (
           <div>
             <input name='code' type='text' onChange={this.handleChange} />
