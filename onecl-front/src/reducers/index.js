@@ -5,8 +5,8 @@ import Login from "./Login";
 
 const reducers = combineReducers({
     SignUpValidationData: SignUpValidation,
-    Login: Login,
-    ClubSearch: ClubSearch,
+    ClubSearch,
+    Login,
 });
 
 export default reducers;

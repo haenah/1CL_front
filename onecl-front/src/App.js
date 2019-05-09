@@ -1,6 +1,6 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
-import {SignupPage, ClubsearchPage, MainPage, LoginPage} from './page';
+import {SignupPage, ClubsearchPage, LoginPage, MainPage} from './page';
 
 
 const App = () => {
