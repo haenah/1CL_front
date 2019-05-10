@@ -142,6 +142,7 @@ class SignUp extends Component{
                 </div>
               </div>
               <div className='login-section'>
+                <div className='line'></div>
                 <a className='login' href='/login'>Login</a>
                 <a className='signup' href='/register'>Sign Up Here</a>
               </div>
@@ -149,15 +150,6 @@ class SignUp extends Component{
           </div>
         </div>
 
-        <div className='heading-space'>
-          <div className='heading'>
-            <div className='options'>
-              <div className='login-section'>
-                <a className='login'>Login</a>
-              </div>
-            </div>
-          </div>
-        </div>
         <div className="limiter">
           <div className="container-login100">
             <div className="wrap-login100">
@@ -182,7 +174,7 @@ class SignUp extends Component{
 
                 <div className='id'>
                   <span className='id-in'>
-                    <input className='id-input' type='text' maxLength='20' placeholder='ID' onChange={this.handleChange} />
+                    <input className='id-input' type='text' maxLength='20' placeholder='Username' onChange={this.handleChange} />
                   </span>
                   <button className='confirmation' onClick={this.handleClick_id}>중복체크</button>
                   {idUI()}

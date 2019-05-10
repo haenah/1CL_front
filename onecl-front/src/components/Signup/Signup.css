@@ -105,15 +105,11 @@ body {
     height: 34px !important;
 }
 
-.symbol-search {
-
-}
-
 .search-type {
     background-color: transparent;
     border: none;
     margin: 0;
-    padding: 0;
+    padding-left: 20px;
     color: rgba(0,0,0,.87);
     word-wrap: break-word;
     outline: none;
@@ -140,6 +136,14 @@ body {
     line-height: 1.15;
 }
 
+.line {
+    width: 1px;
+    margin-right: 12px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background-color: #5A6175;}
+
+
 .login {
     text-transform: uppercase;
     line-height: 4.5;
@@ -150,7 +154,7 @@ body {
     font-weight: 700;
     letter-spacing: 2.5px;
     font-size: 14px;
-    margin-right: 12px;
+    margin-right: 15px;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     flex-direction: column;
@@ -191,6 +195,22 @@ body {
 }
 
 /*//////////////////////////////////////////////////////////////////
+[ Utility ]*/
+.txt1 {
+    font-family: Poppins-Regular;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #999999;
+}
+
+.txt2 {
+    font-family: Poppins-Regular;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #666666;
+}
+
+/*//////////////////////////////////////////////////////////////////
 [ Sign Up ]*/
 
 .limiter {
@@ -221,6 +241,23 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 70px 130px 33px 95px;
+}
+
+.wrap-login {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 100px 100px 50px 100px;
+    width: 500px;
+    height: 600px;
 }
 
 /*------------------------------------------------------------------*/
@@ -290,6 +327,18 @@ body {
     padding-bottom: 30px;
 }
 
+.login-form-title {
+    font-family: Poppins-Bold;
+    font-size: 24px;
+    color: #333333;
+    line-height: 1.2;
+    text-align: center;
+
+    width: 100%;
+    display: block;
+    padding-bottom: 50px;
+}
+
 /*---------------------------------------------*/
 
 .wrap-input100 {
@@ -317,7 +366,6 @@ input {
     outline: none;
     border: none;
     box-sizing: border-box;
-
 }
 
 /*---------------------------------------------*/
@@ -413,7 +461,7 @@ h4 {
 [ Button ]*/
 
 button {
-    background-color: #69cece;
+    background-color: #6bb8d0;
     border-radius: 20px;
     color: white;
     padding: 14px;
@@ -438,12 +486,17 @@ button {
     font-size: large;
 }
 
+.login-button {
+    width: 100%;
+    font-size: medium;
+    margin-top: 50px;
+}
+
 button:hover {
     opacity:1;
 }
 
-.check {
-    font-family: Poppins-Medium;
-    font-size: 12px;
-}
+/*---------------------------------------------*/
+.text-center {text-align: center;}
 
+.p-t-70 {padding-top: 70px;}
