@@ -4,8 +4,8 @@ import api from '../api'
 import * as actions from '../actions/Clubsearch/index'
 import * as types from '../actions/Clubsearch/ActionTypes'
 
-const url_getCategory = 'http://127.0.0.1:8000/'; /* todo */
-const url_getDepartment = 'http://127.0.0.1:8000/'; /* todo */
+const url_getCategory = 'http://127.0.0.1:8000/club/category/'; /* todo */
+const url_getDepartment = 'http://127.0.0.1:8000/club/dept/'; /* todo */
 const url_getClub = 'http://127.0.0.1:8000/'; /* todo */
 
 function* getCategoryList(){
@@ -40,7 +40,8 @@ function* getClubList(url){
 function* watchGetClubListRequest(){
     while(true){
         const{ department, category } = yield take(types.GET_CLUB_LIST_REQUEST);
-        const url = `http://127.0.0.1:8000/?${queryString.stringify({department, category})}`;
+        // console.log(department);
+        const url = `http://127.0.0.1:8000/club/?department=${department.label}&category=${category.label}`;
         yield call(getClubList, url);
     }
 }

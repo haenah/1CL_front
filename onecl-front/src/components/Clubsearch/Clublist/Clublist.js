@@ -24,53 +24,78 @@ const ClubItem = ({name, id, department, category}) => {
 };
 
 const Clublist = ({clubs}) => {
-    const temp_clubs = [
-        {
-            id: 1,
-            name: 'HIS',
-            department: 'central',
-            category: 'dance',
-        },
-        {
-            id: 2,
-            name: 'waffle studio',
-            department: 'CSE',
-            category: 'sw development',
-        },
-        {
-            id: 3,
-            name: 'soccer301',
-            department: 'CSE',
-            category: 'sports',
-        },
-        {
-            id: 4,
-            name: 'sajahoo',
-            department: 'central',
-            category: 'dance',
-        },
-    ];
+    // const temp_clubs = [
+    //     {
+    //         id: 1,
+    //         name: 'HIS',
+    //         department: 'central',
+    //         category: 'dance',
+    //     },
+    //     {
+    //         id: 2,
+    //         name: 'waffle studio',
+    //         department: 'CSE',
+    //         category: 'sw development',
+    //     },
+    //     {
+    //         id: 3,
+    //         name: 'soccer301',
+    //         department: 'CSE',
+    //         category: 'sports',
+    //     },
+    //     {
+    //         id: 4,
+    //         name: 'sajahoo',
+    //         department: 'central',
+    //         category: 'dance',
+    //     },
+    // ];
+    if(clubs === null){
+        return(
+            <div> 동아리를 검색하세요! </div>
+        )
+    }
 
-    const clubList = temp_clubs.map(
+    const style1 = {
+        backgroundColor: '#1E90FF',
+        display: 'inline-block',
+        width: '200px',
+        textAlign: 'center',
+        border: '2px solid white',
+        color: 'white',
+    }
+
+    const style2 = {
+        backgroundColor: '#1E90FF',
+        display: 'inline-block',
+        width: '500px',
+        textAlign: 'center',
+        border: '2px solid white',
+        color: 'white',
+    }
+
+    const clubList = clubs.results.map(
         (club) => {
             return(
-                <div>
                     <ClubItem
                         key = {club.id}
                         name = {club.name}
                         id = {club.id}
-                        department = {club.department}
+                        department = {club.dept}
                         category = {club.category}
                     />
-                </div>
-
             )
         }
     );
 
     return(
         <div>
-            {clubList}
+            <p style={style1}>department</p>
+            <p style={style1}>category</p>
+            <p style={style2}>club name</p>
+            <div>
+                {clubList}
+            </div>
         </div>
     )
 };

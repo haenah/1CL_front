@@ -10,20 +10,32 @@ const options = [
 ];
 
 const deptOptions = (deptList) => {
-    return deptList.map(
+    if(deptList === null) return(
+        [
+            { label : "waiting for dept..."},
+        ]
+    );
+
+    return deptList.results.map(
         (dept) => {
             return {
-                label: dept
+                label: dept.name
             }
         }
     )
 };
 
 const categoryOptions = (categoryList) => {
-    return categoryList.map(
+    if(categoryList === null) return(
+        [
+            { label : "waiting for category..."},
+        ]
+    );
+
+    return categoryList.results.map(
         (category) => {
             return {
-                label: category
+                label: category.name
             }
         }
     )
@@ -96,7 +108,8 @@ class Category extends Component {
                     <Select
                         value={selectedDept}
                         onChange={handleChangeDept}
-                        options={options}
+                        options={deptOptions(deptList)}
+                        // options={options}
                         styles={customStyles}
                     />
                 </div>
@@ -104,7 +117,8 @@ class Category extends Component {
                     <Select
                         value={selectedCategory}
                         onChange={handleChangeCategory}
-                        options={options}
+                        options={categoryOptions(categoryList)}
+                        // options={options}
                         styles={customStyles}
                     />
                 </div>
