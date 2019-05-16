@@ -23,7 +23,7 @@ class SignUp extends Component{
   pwRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,20}$)");
 
   handleChange = (e) => {
-    if(e.target.name==='pw'){
+    if(e.target.id==='pw'){
       if(this.pwRegex.test(e.target.value)){
         this.setState({
           pw: e.target.value,
@@ -38,7 +38,7 @@ class SignUp extends Component{
       }
     }
 
-    else if(e.target.name==='pw_again'){
+    else if(e.target.id==='pw_again'){
       if(e.target.value===this.state.pw){
         this.setState({
           pw_again: e.target.value,
@@ -60,12 +60,19 @@ class SignUp extends Component{
       });
     }
 
+    else if(e.target.name==='name'){
+      this.setState({
+        name: e.target.value
+      });
+      console.log(this.state.name)
+    }
+
     else{
       this.setState({
-        [e.target.name]: e.target.value
+        email: e.target.value
       });
     }
-  }
+  };
 
   handleClick_id = () => {
     this.props.onConfirmId(this.state.id);
