@@ -1,12 +1,10 @@
 import {take,put,call,fork} from 'redux-saga/effects';
-import queryString from 'query-string';
 import api from '../api'
-import * as actions from '../actions/Clubsearch/index'
-import * as types from '../actions/Clubsearch/ActionTypes'
+import * as actions from '../actions/Common/index'
+import * as types from '../actions/Common/ActionTypes'
 
-const url_getCategory = 'http://127.0.0.1:8000/club/category/'; /* todo */
-const url_getDepartment = 'http://127.0.0.1:8000/club/dept/'; /* todo */
-const url_getClub = 'http://127.0.0.1:8000/'; /* todo */
+const url_getCategory = 'http://127.0.0.1:8000/club/category/';
+const url_getDepartment = 'http://127.0.0.1:8000/club/dept/';
 
 function* getCategoryList(){
     const data = yield call(api.get, url_getCategory);

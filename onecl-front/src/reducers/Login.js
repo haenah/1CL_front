@@ -4,6 +4,7 @@ const initialState = {
   user: {
   },
   token: '',
+  logged : false,
 };
 
 
@@ -14,11 +15,13 @@ const Login = (state = initialState, action) => {
         ...state,
         user: action.user,
         token: action.token,
+        logged: true,
       };
     case types.LOGIN_REQUEST:
       return {
         ...state,
         user: action.user,
+        logged: false,
       };
     default:
       return state

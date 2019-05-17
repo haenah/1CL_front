@@ -16,7 +16,7 @@ export function* loginRequest(user) {
       yield put(loginRequestSuccess(response))
     }
   } catch (e) {
-    console.log('Login Request Error: ', e.message)
+    alert('로그인 실패 : ' + e.message)
   }
 }
 

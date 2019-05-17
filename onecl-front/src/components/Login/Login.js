@@ -11,16 +11,14 @@ class Login extends Component {
     }
   }
 
-  onLogin = (info) => {
-    const {loginRequest, history} = this.props;
-    try{
-      loginRequest(info);
+  onLogin = async (info) => {
+    const {loginRequest, history, logged} = this.props;
+    await loginRequest(info);
+    if(logged){
       alert("로그인에 성공하였습니다.");
-        history.push("/");
-    } catch(e) {
-      alert("로그인 실패 : " + e.message);
+      history.push("/");
     }
-  }
+  };
 
   render() {
     return (
