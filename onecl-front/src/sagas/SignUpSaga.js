@@ -8,13 +8,13 @@ const url_email = 'http://127.0.0.1:8000/auth/email/'
 const url_id = 'http://127.0.0.1:8000/auth/id/'
 const url_code = 'http://127.0.0.1:8000/auth/code/'
 
-function* signUp(name,id,pw,email) {
-    yield call(api.post, url_user, {name: name, username:id, password:pw, email:email})
+function* signUp(data) {
+        yield call(api.post, url_user, {name:data.name, username:data.id, password:data.pw, email:data.email})
 }
 
-function* sendEmail(email) {
+function* sendEmail(data) {
     try {
-        yield call(api.post, url_email, {email:email})
+        yield call(api.post, url_email, {email:data.email})
         yield put(actions.emailSent(1))
 
     } catch(e){
@@ -23,18 +23,18 @@ function* sendEmail(email) {
 
 }
 
-function* confirmCode(code) {
+function* confirmCode(data) {
     try {
-        yield call(api.post, url_code, {code:code})
+        yield call(api.post, url_code, {code:data.code})
         yield put(actions.emailValidation(1))
     } catch(e){
         yield put(actions.emailValidation(2))
     }
 }
 
-function* confirmId(id) {
+function* confirmId(data) {
     try {
-        yield call(api.post, url_id, {username:id})
+        yield call(api.post, url_id, {username:data.id})
         yield put(actions.idValidation(1))
     } catch(e){
         yield put(actions.idValidation(2))

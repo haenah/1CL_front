@@ -11,6 +11,17 @@ class Login extends Component {
     }
   }
 
+  onLogin = (info) => {
+    const {loginRequest, history} = this.props;
+    try{
+      loginRequest(info);
+      alert("로그인에 성공하였습니다.");
+        history.push("/");
+    } catch(e) {
+      alert("로그인 실패 : " + e.message);
+    }
+  }
+
   render() {
     return (
 
@@ -85,8 +96,8 @@ class Login extends Component {
                 <Button
                     className='login-button'
                     color={'primary'}
-                    type={'submit'}
-                    onClick={() => this.props.loginRequest(this.state)}
+                    type='button'
+                    onClick={() => this.onLogin(this.state)}
                 >
                   Log In
                 </Button>

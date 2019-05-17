@@ -2,8 +2,9 @@ import {loginRequest} from "../actions/Login";
 import Login from "../components/Login/Login";
 import {connect} from "react-redux";
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, props) => ({
   user: state.Login.user,
+    history: props.history,
 });
 
 const mapDispatchToProps = (dispatch) => {

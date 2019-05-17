@@ -1,9 +1,11 @@
 import React from 'react';
 import SignUpContainer from '../containers/Signup/SignUpContainer';
 
-const SignupPage = () => {
+const SignupPage = ({history}) => {
     return(
-        <SignUpContainer/>
+        <SignUpContainer
+            history={history}
+        />
     );
 };
 
