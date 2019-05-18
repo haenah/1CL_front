@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Select from 'react-select';
 
 const deptOptions = (deptList) => {
-    if(deptList === null) return(
+    if(deptList === null || deptList === undefined) return(
         [
             { label : "waiting for dept..."},
         ]
@@ -18,7 +18,7 @@ const deptOptions = (deptList) => {
 };
 
 const categoryOptions = (categoryList) => {
-    if(categoryList === null) return(
+    if(categoryList === null || categoryList === undefined) return(
         [
             { label : "waiting for category..."},
         ]
@@ -93,17 +93,17 @@ class ClubRegister extends Component {
     };
 
     render() {
-        const { selectedDept, selectedCategory, clubName } = this.state;
+        const { selectedDept, selectedCategory } = this.state;
         const { deptList, categoryList } = this.props;
         const { handleChangeDept, handleChangeCategory, handleChangeInput, handleClubRegister } = this;
         return (
             <div>
                 <div>
-                    <p>동아리 이름</p>
-                    <input type='text' onChange={handleChangeInput}/>
+                    <p className='clubNameLabel'>동아리 이름</p>
+                    <input className='clubNameInput' type='text' onChange={handleChangeInput}/>
                 </div>
                 <div>
-                    <p>학과</p>
+                    <p className='deptLabel'>학과</p>
                     <Select
                         value={selectedDept}
                         onChange={handleChangeDept}
@@ -113,7 +113,7 @@ class ClubRegister extends Component {
                     />
                 </div>
                 <div>
-                    <p>분류</p>
+                    <p className='categoryLabel'>분류</p>
                     <Select
                         value={selectedCategory}
                         onChange={handleChangeCategory}
@@ -122,7 +122,7 @@ class ClubRegister extends Component {
                         styles={customStyles}
                     />
                 </div>
-                <button type='button' onClick={handleClubRegister}>등록</button>
+                <button className='registerButton' type='button' onClick={handleClubRegister}>등록</button>
             </div>
         );
     }
