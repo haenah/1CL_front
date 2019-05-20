@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Select from 'react-select';
+import './Category.css'
 
 const options = [
     { label: 'dept1' },
@@ -53,10 +54,6 @@ const customStyles = {
     }),
 };
 
-const style = {
-    display:'inline-block',
-    height: '30px'
-};
 
 class Category extends Component {
     state = {
@@ -103,29 +100,28 @@ class Category extends Component {
         const { deptList, categoryList } = this.props;
         const { handleChangeDept, handleChangeCategory, handleGetClubList } = this;
         return (
-            <div>
-                <div style = {style}>
-                    <Select
+
+            <form id="app-cover">
+            <div className="Category-box">
+                <div className="Select-box">
+                    <Select className="Dept-select"
                         value={selectedDept}
                         onChange={handleChangeDept}
                         options={deptOptions(deptList)}
                         // options={options}
                         styles={customStyles}
                     />
-                </div>
-                <div style = {style}>
-                    <Select
-                        value={selectedCategory}
-                        onChange={handleChangeCategory}
-                        options={categoryOptions(categoryList)}
+                    <Select className="Cat-select"
+                            value={selectedCategory}
+                            onChange={handleChangeCategory}
+                            options={categoryOptions(categoryList)}
                         // options={options}
-                        styles={customStyles}
+                            styles={customStyles}
                     />
-                </div>
-                <div style = {style}>
-                    <button onClick={() => handleGetClubList(selectedDept, selectedCategory)}> Search! </button>
+                    <button className="search-button" onClick={() => handleGetClubList(selectedDept, selectedCategory)}> Search! </button>
                 </div>
             </div>
+            </form>
         );
     }
 }
