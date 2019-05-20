@@ -8,7 +8,7 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      search: '',
+      search: null,
     }
   }
 
@@ -17,7 +17,7 @@ class Main extends Component {
   }
 
   render() {
-    console.log(this.props);
+    console.log(this.state.search);
     return(
       <div className={'app'}>
 
@@ -48,7 +48,7 @@ class Main extends Component {
                 <div style={{backgroundColor: 'lightblue', padding: '16px'}}>
                  동아리 리스트
                 </div>
-                <Input type={'text'} name={'search'} value={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder={'검색'} />
+                <Input className={'search'} type={'text'} value={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder={'검색'} />
                 <div style={{margin: '8px', height: '1px', backgroundColor: 'black'}} />
                 <div>
                   {this.props.clubs && this.props.clubs.results.map(c =>
@@ -70,6 +70,7 @@ class Main extends Component {
               }
             }
           >
+            <div />
           </Sidebar>
         </div>
       </div>
