@@ -140,7 +140,7 @@ class SignUp extends Component{
     else return <span className='check' style={{color:'red'}}>인증에 실패하였습니다.</span>
   }
 
-  render(){gi
+  render(){
     const {pw, pw_again, pwIsValid, pwCompare} = this.state;
     const {idUI, emailUI} = this;
     return (

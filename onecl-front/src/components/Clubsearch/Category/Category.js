@@ -103,7 +103,7 @@ class Category extends Component {
 
             <form id="app-cover">
             <div className="Category-box">
-                <div className="Select-box">
+                <div className="Dept-box">
                     <Select className="Dept-select"
                         value={selectedDept}
                         onChange={handleChangeDept}
@@ -111,13 +111,17 @@ class Category extends Component {
                         // options={options}
                         styles={customStyles}
                     />
+                </div>
+                <div className="Cat-box">
                     <Select className="Cat-select"
-                            value={selectedCategory}
-                            onChange={handleChangeCategory}
-                            options={categoryOptions(categoryList)}
+                        value={selectedCategory}
+                        onChange={handleChangeCategory}
+                        options={categoryOptions(categoryList)}
                         // options={options}
-                            styles={customStyles}
+                        styles={customStyles}
                     />
+                </div>
+                <div>
                     <button className="search-button" onClick={() => handleGetClubList(selectedDept, selectedCategory)}> Search! </button>
                 </div>
             </div>

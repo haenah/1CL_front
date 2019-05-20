@@ -34,6 +34,12 @@
     width: 100%;
 }
 
+
+.Dept-box, .Cat-box, .search-button {
+    display: inline-block;
+    position: relative;
+}
+
 #app-cover
 {
     position: center;
