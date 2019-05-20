@@ -6,7 +6,7 @@ import * as types from '../actions/Clubsearch/ActionTypes'
 
 const url_getCategory = 'http://127.0.0.1:8000/club/category/'; /* todo */
 const url_getDepartment = 'http://127.0.0.1:8000/club/dept/'; /* todo */
-const url_getClub = 'http://127.0.0.1:8000/'; /* todo */
+const url_getClub = 'http://127.0.0.1:8000/club/'; /* todo */
 
 function* getCategoryList(){
     const data = yield call(api.get, url_getCategory);

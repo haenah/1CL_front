@@ -1,4 +1,4 @@
-import { call, fork, put, take, takeLatest, takeEvery } from 'redux-saga/effects'
+import {call, put, takeLatest} from 'redux-saga/effects'
 import api from '../api'
 import * as types from '../actions/Login/ActionTypes'
 import {loginRequestSuccess} from "../actions/Login";
