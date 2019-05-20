@@ -83,7 +83,7 @@ const Clublist = ({clubs}) => {
         <div className="limiter">
             <div className="container-table100">
                 <div className="wrap-table100">
-                    <di className="table100">
+                    <div className="table100">
                         <table>
                             <thead>
                             <tr className="table100-head">
@@ -96,7 +96,7 @@ const Clublist = ({clubs}) => {
                             {clubList}
                             </tbody>
                         </table>
-                    </di>
+                    </div>
                 </div>
             </div>
         </div>
