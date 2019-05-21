@@ -9,6 +9,7 @@ class Main extends Component {
     super(props);
     this.state = {
       search: null,
+      clubs: null,
     }
   }
 
@@ -16,8 +17,23 @@ class Main extends Component {
     this.props.fetchClubs("전체", "전체");
   }
 
+  componentWillReceiveProps(nextProps) {
+    console.log('next', nextProps);
+    this.setState({clubs: nextProps.clubs.results});
+  }
+
+  handleSearch(search) {
+    const {clubs} = this.props;
+    console.log('search', clubs.results.filter(c => c.name === search), "농구".includes(search));
+    if (!search) {
+      this.setState({clubs: this.props.clubs.results});
+    }
+    search && this.setState({clubs: clubs.results.filter(c => c.name.includes(search))});
+  }
+
   render() {
-    console.log(this.state.search);
+    console.log(this.state);
+    console.log('componentWillMount', this.props.clubs);
     return(
       <div className={'app'}>
 
@@ -48,10 +64,10 @@ class Main extends Component {
                 <div style={{backgroundColor: 'lightblue', padding: '16px'}}>
                  동아리 리스트
                 </div>
-                <Input className={'search'} type={'text'} value={this.state.search} onChange={e => this.setState({search: e.target.value})} placeholder={'검색'} />
+                <Input className={'search'} type={'text'} value={this.state.search} onChange={e => this.handleSearch(e.target.value)} placeholder={'검색'} />
                 <div style={{margin: '8px', height: '1px', backgroundColor: 'black'}} />
                 <div>
-                  {this.props.clubs && this.props.clubs.results.map(c =>
+                  {this.state.clubs && this.state.clubs.map(c =>
                     <div key={c.id} style={{display: 'block', textAlign: 'center', justifyContent: 'center', borderBottom: '1px solid lightgrey', padding: '16px', color: 'grey'}}>
                       <a style={{textDecoration: 'none'}} href={c.id}>{c.name}</a>
                     </div>
