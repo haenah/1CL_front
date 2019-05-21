@@ -4,7 +4,8 @@ import {connect} from "react-redux";
 
 const mapStateToProps = (state, props) => ({
   user: state.Login.user,
-    history: props.history,
+  history: props.history,
+  token: state.Login.token,
 });
 
 const mapDispatchToProps = (dispatch) => {

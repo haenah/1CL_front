@@ -15,46 +15,47 @@ const ClubItem = ({name, id, department, category}) => {
 };
 
 const Clublist = ({clubs}) => {
-     const temp_clubs = [
-         {
-             id: 1,
-             name: 'HIS',
-             department: 'Central',
-             category: 'Dance',
-         },
-         {
-             id: 2,
-             name: 'Waffle Studio',
-             department: 'CSE',
-             category: 'SW Development',
-         },
-         {
-             id: 3,
-             name: 'Soccer301',
-             department: 'CSE',
-             category: 'Sports',
-         },
-         {
-             id: 4,
-             name: 'Sajahoo',
-             department: 'Central',
-             category: 'Dance',
-         },
-     ];
-    if(temp_clubs === null){
+     // const temp_clubs = [
+     //     {
+     //         id: 1,
+     //         name: 'HIS',
+     //         department: 'Central',
+     //         category: 'Dance',
+     //     },
+     //     {
+     //         id: 2,
+     //         name: 'Waffle Studio',
+     //         department: 'CSE',
+     //         category: 'SW Development',
+     //     },
+     //     {
+     //         id: 3,
+     //         name: 'Soccer301',
+     //         department: 'CSE',
+     //         category: 'Sports',
+     //     },
+     //     {
+     //         id: 4,
+     //         name: 'Sajahoo',
+     //         department: 'Central',
+     //         category: 'Dance',
+     //     },
+     // ];
+    if(clubs === null){
         return(
             <div> 동아리를 검색하세요! </div>
         )
     }
 
-    const clubList = temp_clubs.map(
+
+    const clubList = clubs && clubs.results.map(
         (club) => {
             return(
                     <ClubItem
                         key = {club.id}
                         name = {club.name}
                         id = {club.id}
-                        department = {club.department}
+                        department = {club.dept}
                         category = {club.category}
                     />
             )

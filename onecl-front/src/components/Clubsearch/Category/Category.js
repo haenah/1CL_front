@@ -58,8 +58,8 @@ import {Input} from 'reactstrap';
 
 class Category extends Component {
     state = {
-        selectedDept: '',
-        selectedCategory: '',
+        selectedDept: '전체',
+        selectedCategory: '전체',
     };
 
     // handleChangeDept = (selectedOption) => {
@@ -113,7 +113,7 @@ class Category extends Component {
                         {/*styles={customStyles}*/}
                     {/*/>*/}
                     <Input type={'select'} className={'Dept-select'} value={selectedDept} onChange={e => this.setState({selectedDept: e.target.value})}>
-                        <option value={''}>All</option>
+                        <option value={'전체'}>All</option>
                         {deptList && deptList.results.map(department => <option key={department.name} value={department.name}>{department.name}</option>)}
                     </Input>
                 </div>
@@ -125,13 +125,13 @@ class Category extends Component {
                         {/*// options={options}*/}
                         {/*styles={customStyles}*/}
                     {/*/>*/}
-                    <Input type={'select'} className={'Cat-select'} value={selectedCategory} onChange={e => this.setState({selectCategory: e.target.value})}>
-                        <option value={''}>All</option>
+                    <Input type={'select'} className={'Cat-select'} value={selectedCategory} onChange={e => this.setState({selectedCategory: e.target.value})}>
+                        <option value={'전체'}>All</option>
                         {categoryList && categoryList.results.map(category => <option key={category.name} value={category.name}>{category.name}</option>)}
                     </Input>
                 </div>
                 <div>
-                    <button className="search-button" onClick={() => handleGetClubList(selectedDept, selectedCategory)}> Search! </button>
+                    <button type={'button'} className="search-button" onClick={() => handleGetClubList(selectedDept, selectedCategory)}> Search! </button>
                 </div>
             </div>
             </form>
