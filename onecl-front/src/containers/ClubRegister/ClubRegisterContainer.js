@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import ClubRegister from '../../components/ClubRegister';
 import {getCategoryListRequest, getDeptListRequest} from "../../actions/Common";
-import {clubRegisterRequest} from '../../actions/ClubRegister';
+import {clubRegisterRequest, setRegisterFlag} from '../../actions/ClubRegister';
 
 const mapStateToProps = (state, props) => {
     return {
@@ -22,6 +22,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         onClubRegister : (clubName, department, category) => {
             dispatch(clubRegisterRequest(clubName, department, category))
+        },
+        setFlag : (bool) => {
+            dispatch(setRegisterFlag(bool))
         },
     }
 };

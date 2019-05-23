@@ -78,6 +78,7 @@ class ClubRegister extends Component {
         const { GetCategory, GetDepartment } = this;
         GetCategory();
         GetDepartment();
+        this.props.setFlag(false);
     };
 
     componentWillReceiveProps(nextProps) {

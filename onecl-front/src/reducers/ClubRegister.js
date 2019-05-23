@@ -11,6 +11,11 @@ const ClubRegister = (state=initialState, action) => {
                 ...state,
                 registerSuccess: true,
             };
+        case types.SET_REGISTER_FLAG:
+            return {
+                ...state,
+                registerSuccess: action.bool,
+            };
         default:
             return state;
     }

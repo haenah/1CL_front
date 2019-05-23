@@ -13,4 +13,11 @@ export const registerSuccess = () => {
     return {
         type : types.CLUB_REGISTER_SUCCESS,
     }
-}
+};
+
+export const setRegisterFlag = (bool) => {
+    return {
+        type : types.SET_REGISTER_FLAG,
+        bool,
+    }
+};

@@ -21,7 +21,7 @@ function* clubRegister(clubName, department, category){
 
     try{
         yield call(api.post, url_postClub, data, settings);
-        yield put(actions.registerSuccess());
+        yield put(actions.setRegisterFlag(true));
     } catch(e) {
         alert("동아리 등록 실패 : " + e.message);
     }
