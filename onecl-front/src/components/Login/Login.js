@@ -31,24 +31,24 @@ class Login extends Component {
   render() {
     return (
 
-        <body>
-        {this.onAlreadyLoggedIn()}
-        <div className='heading-space'>
-          <div className='heading'>
-            <div className='options'>
-              <div className='search-bar'>
-                <div className='search'>
-                  <input className='search-type' maxLength='2048' type='text' placeholder='Search'></input>
-                </div>
-              </div>
-              <div className='login-section'>
-                <div className='line'></div>
-                <a className='login' href='/login'>Login</a>
-                <a className='signup' href='/register'>Sign Up Here</a>
-              </div>
-            </div>
-          </div>
-        </div>
+        <div>
+          {this.onAlreadyLoggedIn()}
+        {/*<div className='heading-space'>*/}
+          {/*<div className='heading'>*/}
+            {/*<div className='options'>*/}
+              {/*<div className='search-bar'>*/}
+                {/*<div className='search'>*/}
+                  {/*<input className='search-type' maxLength='2048' type='text' placeholder='Search'></input>*/}
+                {/*</div>*/}
+              {/*</div>*/}
+              {/*<div className='login-section'>*/}
+                {/*<div className='line'></div>*/}
+                {/*<a className='login' href='/login'>Login</a>*/}
+                {/*<a className='signup' href='/register'>Sign Up Here</a>*/}
+              {/*</div>*/}
+            {/*</div>*/}
+          {/*</div>*/}
+        {/*</div>*/}
 
       <div className="limiter">
         <div className="container-login100">
@@ -70,7 +70,7 @@ class Login extends Component {
                 </span>
                 <span className="focus-input100"></span>
                 <span className="symbol-input100">
-                  <i className="fa fa-id-card-o" aria-hidden="true"></i>
+                  {/*<i className="fa fa-id-card-o" aria-hidden="true"></i>*/}
                 </span>
               </div>
 
@@ -85,7 +85,7 @@ class Login extends Component {
                 </span>
                 <span className="focus-input100"></span>
                 <span className="symbol-input100">
-                  <i className="fa fa-lock" aria-hidden="true"></i>
+                  {/*<i className="fa fa-lock" aria-hidden="true"></i>*/}
                 </span>
               </div>
 
@@ -120,7 +120,7 @@ class Login extends Component {
           </div>
         </div>
       </div>
-        </body>
+        </div>
     )
   }
 }

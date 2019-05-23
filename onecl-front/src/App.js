@@ -1,18 +1,25 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
+import Start from "./components/StartPage";
+import {Col, Container} from 'reactstrap';
 import {SignupPage, ClubsearchPage, LoginPage, MainPage, ClubRegisterPage} from './page';
 
 
 const App = () => {
     return(
         <div>
-            <Switch>
-                <Route exact path="/" component={MainPage}/>
-                <Route exact path="/register" component={SignupPage}/>
-                <Route exact path="/club_search" component={ClubsearchPage}/>
-                <Route exact path="/club_register" component={ClubRegisterPage}/>
-                <Route exact path="/login" component={LoginPage} />
-            </Switch>
+          <Container fluid>
+            {/*<MainPage />*/}
+            {/*<Col md={{size: '12', offset: '1'}}>*/}
+              <Switch>
+                  <Route exact path={"/"} component={MainPage} />
+                  <Route exact path="/register" component={SignupPage}/>
+                  <Route exact path="/club_search" component={ClubsearchPage}/>
+                  <Route exact path="/club_register" component={ClubRegisterPage}/>
+                  <Route exact path="/login" component={LoginPage} />
+              </Switch>
+            {/*</Col>*/}
+          </Container>
         </div>
     );
 };

@@ -1,9 +1,11 @@
 import React from 'react';
+import MainContainer from "../containers/Main/MainContainer";
 
 const MainPage = () => {
     return(
         <div>
-            this will be main page
+          <MainContainer
+          />
         </div>
     );
 };

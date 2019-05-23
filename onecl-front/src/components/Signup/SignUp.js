@@ -145,22 +145,6 @@ class SignUp extends Component{
     const {idUI, emailUI} = this;
     return (
         <div>
-          <div className='heading-space'>
-            <div className='heading'>
-              <div className='options'>
-                <div className='search-bar'>
-                  <div className='search'>
-                    <input className='search-type' maxLength='2048' type='text' placeholder='Search'></input>
-                  </div>
-                </div>
-                <div className='login-section'>
-                  <div className='line'></div>
-                  <a className='login' href='/login'>Login</a>
-                  <a className='signup' href='/register'>Sign Up Here</a>
-                </div>
-              </div>
-            </div>
-          </div>
 
           <div className="limiter">
             <div className="container-login100">
