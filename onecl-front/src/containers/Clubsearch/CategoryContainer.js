@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import Category from '../../components/Clubsearch/Category';
-import {getCategoryListRequest, getClubListRequest, getDeptListRequest} from "../../actions/Clubsearch";
+import {getCategoryListRequest, getClubListRequest, getDeptListRequest} from "../../actions/Common";
 
 const mapStateToProps = (state) => {
     return {

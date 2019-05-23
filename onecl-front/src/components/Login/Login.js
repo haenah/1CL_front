@@ -26,7 +26,7 @@ class Login extends Component {
     if (sessionStorage.getItem('token')) {
       this.props.history.push('/');
     }
-  }
+  };
 
   render() {
     return (

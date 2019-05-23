@@ -67,14 +67,14 @@ class SignUp extends Component{
           default:
               this.setState({
                   [e.target.name]: e.target.value
-              })
+              });
               break;
       }
-  }
+  };
 
   handleClick_id = () => {
     this.props.onConfirmId(this.state.id);
-  }
+  };
 
   handleClick_email = () => {
     this.props.onSendEmail(this.state.email+'@snu.ac.kr');
