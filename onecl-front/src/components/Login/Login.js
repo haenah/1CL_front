@@ -64,7 +64,7 @@ class Login extends Component {
                 </span>
                 <span className="focus-input100"></span>
                 <span className="symbol-input100">
-                  <i className="fa fa-id-card-o" aria-hidden="true"></i>
+                  {/*<i className="fa fa-id-card-o" aria-hidden="true"></i>*/}
                 </span>
               </div>
 
@@ -79,7 +79,7 @@ class Login extends Component {
                 </span>
                 <span className="focus-input100"></span>
                 <span className="symbol-input100">
-                  <i className="fa fa-lock" aria-hidden="true"></i>
+                  {/*<i className="fa fa-lock" aria-hidden="true"></i>*/}
                 </span>
               </div>
 

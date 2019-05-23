@@ -1,15 +1,29 @@
 import React, {Component} from 'react';
 import Sidebar from 'react-sidebar';
 import PropTypes from 'prop-types';
-import {Input, Container, Header} from 'reactstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+
+import {
+  Input,
+  Container,
+  Header,
+  Navbar,
+  NavbarBrand,
+  NavbarToggler,
+  Collapse,
+  Nav,
+  NavItem,
+  NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Row, Col
+} from 'reactstrap';
 
 class Main extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      search: null,
+      search: '',
       clubs: null,
+      isOpen: false,
     }
   }
 
@@ -22,8 +36,15 @@ class Main extends Component {
     this.setState({clubs: nextProps.clubs.results});
   }
 
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
+
   handleSearch(search) {
     const {clubs} = this.props;
+    this.setState({search});
     console.log('search', clubs.results.filter(c => c.name === search), "농구".includes(search));
     if (!search) {
       this.setState({clubs: this.props.clubs.results});
@@ -32,12 +53,11 @@ class Main extends Component {
   }
 
   render() {
-    console.log(this.state);
-    console.log('componentWillMount', this.props.clubs);
     return(
-      <div className={'app'}>
+      <Container>
 
-        <div>
+        <Row>
+          <Col md={{size: 10, offset: 1}}>
           <div className='heading-space'>
             <div className='heading'>
               <div className='options'>
@@ -55,16 +75,54 @@ class Main extends Component {
               </div>
             </div>
           </div>
-        </div>
+          </Col>
+        </Row>
 
-        <div>
+        {/*<Row>*/}
+          {/*<Col sm={{size: 10, offset: 2}}>*/}
+          {/*<Navbar color="light" light expand="md">*/}
+            {/*<NavbarBrand href="/">logo</NavbarBrand>*/}
+            {/*<NavbarToggler onClick={this.toggle} />*/}
+            {/*<Collapse isOpen={this.state.isOpen} navbar>*/}
+              {/*<Nav className="ml-auto" navbar>*/}
+                {/*<NavItem>*/}
+                  {/*<NavLink href="/club_search/">동아리 검색</NavLink>*/}
+                {/*</NavItem>*/}
+                {/*<NavItem>*/}
+                  {/*<NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>*/}
+                {/*</NavItem>*/}
+                {/*<UncontrolledDropdown nav inNavbar>*/}
+                  {/*<DropdownToggle nav caret>*/}
+                    {/*Options*/}
+                  {/*</DropdownToggle>*/}
+                  {/*<DropdownMenu right>*/}
+                    {/*<DropdownItem>*/}
+                      {/*Option 1*/}
+                    {/*</DropdownItem>*/}
+                    {/*<DropdownItem>*/}
+                      {/*Option 2*/}
+                    {/*</DropdownItem>*/}
+                    {/*<DropdownItem divider />*/}
+                    {/*<DropdownItem>*/}
+                      {/*Reset*/}
+                    {/*</DropdownItem>*/}
+                  {/*</DropdownMenu>*/}
+                {/*</UncontrolledDropdown>*/}
+              {/*</Nav>*/}
+            {/*</Collapse>*/}
+          {/*</Navbar>*/}
+          {/*</Col>*/}
+        {/*</Row>*/}
+
+        <Row>
+          <div style={{height: '50%'}}>
           <Sidebar
             sidebar={
               <div>
                 <div style={{backgroundColor: 'lightblue', padding: '16px'}}>
                  동아리 리스트
                 </div>
-                <Input className={'search'} type={'text'} value={this.state.search} onChange={e => this.handleSearch(e.target.value)} placeholder={'검색'} />
+                <Input name={'search'} type={'text'} value={this.state.search} onChange={e => this.handleSearch(e.target.value)} placeholder={'검색'} />
                 <div style={{margin: '8px', height: '1px', backgroundColor: 'black'}} />
                 <div>
                   {this.state.clubs && this.state.clubs.map(c =>
@@ -88,8 +146,9 @@ class Main extends Component {
           >
             <div />
           </Sidebar>
-        </div>
-      </div>
+          </div>
+        </Row>
+      </Container>
     );
   }
 }
