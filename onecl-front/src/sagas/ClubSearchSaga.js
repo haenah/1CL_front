@@ -38,8 +38,7 @@ function* getClubList(url){
 function* watchGetClubListRequest(){
     while(true){
         const{ department, category } = yield take(types.GET_CLUB_LIST_REQUEST);
-        // console.log(department);
-        const url = `http://127.0.0.1:8000/club/?department=${department.label}&category=${category.label}`;
+        const url = `http://127.0.0.1:8000/club/?department=${department}&category=${category}`;
         yield call(getClubList, url);
     }
 }

@@ -1,4 +1,4 @@
-import { call, fork, put, take, takeLatest, takeEvery } from 'redux-saga/effects'
+import {call, put, takeLatest} from 'redux-saga/effects'
 import api from '../api'
 import * as types from '../actions/Login/ActionTypes'
 import {loginRequestSuccess} from "../actions/Login";
@@ -13,10 +13,12 @@ export function* loginRequest(user) {
   try {
     const response = yield call(api.post, url, data);
     if (response) {
-      yield put(loginRequestSuccess(response))
+      yield put(loginRequestSuccess(response));
+      sessionStorage.setItem('token', response.token);
     }
   } catch (e) {
-    alert('로그인 실패 : ' + e.message)
+    alert('로그인에 실패했습니다. 정보를 확인해주세요.');
+    console.log('Login Request Error: ', e.message)
   }
 }
 
