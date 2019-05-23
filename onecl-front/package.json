@@ -6,8 +6,6 @@
     "babel-core": "^6.26.3",
     "babel-jest": "^24.8.0",
     "bootstrap": "^4.3.1",
-    "babel-core": "^6.26.3",
-    "babel-jest": "^24.8.0",
     "config": "^3.1.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
@@ -22,9 +20,10 @@
     "react-scripts": "3.0.0",
     "react-select": "^2.4.3",
     "reactstrap": "^8.0.0",
-    "react-select": "^2.4.3",
     "redux": "^4.0.1",
-    "redux-saga": "^1.0.2"
+    "redux-saga": "^1.0.2",
+    "redux-wait-for-action": "^0.0.8",
+    "reduxsauce": "^1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

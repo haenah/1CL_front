@@ -3,7 +3,7 @@ import * as types from '../actions/Login/ActionTypes'
 const initialState = {
   user: {
   },
-  token: '',
+  token: null,
 };
 
 
@@ -21,7 +21,7 @@ const Login = (state = initialState, action) => {
         user: action.user,
       };
     default:
-      return state
+      return state;
   }
 };
 
