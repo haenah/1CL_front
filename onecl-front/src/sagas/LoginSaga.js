@@ -13,9 +13,11 @@ export function* loginRequest(user) {
   try {
     const response = yield call(api.post, url, data);
     if (response) {
-      yield put(loginRequestSuccess(response))
+      yield put(loginRequestSuccess(response));
+      sessionStorage.setItem('token', response.token);
     }
   } catch (e) {
+    alert('로그인에 실패했습니다. 정보를 확인해주세요.');
     console.log('Login Request Error: ', e.message)
   }
 }

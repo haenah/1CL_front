@@ -11,22 +11,28 @@ class Login extends Component {
     }
   }
 
-  onLogin = (info) => {
-    const {loginRequest, history} = this.props;
-    try{
-      loginRequest(info);
-      alert("로그인에 성공하였습니다.");
-        history.push("/");
-    } catch(e) {
-      alert("로그인 실패 : " + e.message);
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.token) {
+      alert('로그인에 성공하였습니다.');
+      this.props.history.push('/');
     }
   }
+
+  onLogin = (info) => {
+    this.props.loginRequest(info);
+  };
+
+  onAlreadyLoggedIn() {
+    if (sessionStorage.getItem('token')) {
+      this.props.history.push('/');
+    }
+  };
 
   render() {
     return (
 
         <div>
-
+          {this.onAlreadyLoggedIn()}
         {/*<div className='heading-space'>*/}
           {/*<div className='heading'>*/}
             {/*<div className='options'>*/}
@@ -121,6 +127,8 @@ class Login extends Component {
 
 Login.propTypes = {
   loginRequest: PropTypes.func,
+  isFetching: PropTypes.bool,
+  authenticated: PropTypes.bool,
 };
 
 export default Login

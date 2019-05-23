@@ -1,4 +1,4 @@
-import * as types from '../actions/Clubsearch/ActionTypes'
+import * as types from '../actions/Common/ActionTypes'
 
 const initialState = {
     categoryList : null,

@@ -1,7 +1,7 @@
 import {call, put, takeLatest} from 'redux-saga/effects';
 import api from '../api';
-import * as actions from '../actions/Clubsearch/index';
-import * as types from '../actions/Clubsearch/ActionTypes';
+import * as actions from '../actions/Common/index';
+import * as types from '../actions/Common/ActionTypes';
 
 const url = 'http://127.0.0.1:8000/club/';
 

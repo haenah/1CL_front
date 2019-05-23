@@ -1,6 +1,6 @@
 import Main from '../../components/Main/Main';
 import {connect} from 'react-redux';
-import {getClubListRequest} from "../../actions/Clubsearch";
+import {getClubListRequest} from "../../actions/Common";
 
 const mapStateToProps = (state) => {
   return {

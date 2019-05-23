@@ -1,8 +1,8 @@
 import {take,put,call,fork} from 'redux-saga/effects';
 import queryString from 'query-string';
 import api from '../api'
-import * as actions from '../actions/Clubsearch/index'
-import * as types from '../actions/Clubsearch/ActionTypes'
+import * as actions from '../actions/Common/index'
+import * as types from '../actions/Common/ActionTypes'
 
 const url_getCategory = 'http://127.0.0.1:8000/club/category/'; /* todo */
 const url_getDepartment = 'http://127.0.0.1:8000/club/dept/'; /* todo */
@@ -40,8 +40,7 @@ function* getClubList(url){
 function* watchGetClubListRequest(){
     while(true){
         const{ department, category } = yield take(types.GET_CLUB_LIST_REQUEST);
-        // console.log(department);
-        const url = `http://127.0.0.1:8000/club/?department=${department.label}&category=${category.label}`;
+        const url = `http://127.0.0.1:8000/club/?department=${department}&category=${category}`;
         yield call(getClubList, url);
     }
 }

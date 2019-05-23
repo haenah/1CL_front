@@ -9,7 +9,7 @@ export const loginRequest = (user) => {
 };
 
 export const loginRequestSuccess = (payload) => {
-  sessionStorage.setItem('token', payload.token);
+  // sessionStorage.setItem('token', payload.token);
   return {
     type: types.LOGIN_REQUEST_SUCCESS,
     user: payload.user,
