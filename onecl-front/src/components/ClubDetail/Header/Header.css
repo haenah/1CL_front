@@ -1,0 +1,12 @@
+.options {
+    display: inline-block;
+    width: 250px;
+    text-align: center;
+    background-color: grey;
+    color : white;
+}
+
+.wrapper {
+    height : 50px;
+    border: 1px solid black;
+}
