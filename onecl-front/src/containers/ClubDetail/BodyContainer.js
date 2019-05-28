@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import ClubInfo from '../../components/ClubDetail/Body/ClubInfo';
+import Body from '../../components/ClubDetail/Body';
 import * as actions from '../../actions/ClubDetail/index';
 
 const mapDispatchToProps = (dispatch) => {
@@ -22,6 +22,9 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
     return {
         infoPost : state.ClubDetail.infoPost,
+        memberList : state.ClubDetail.memberList,
+        documentList : state.ClubDetail.documentList,
+        componentStatus : state.ClubDetail.componentStatus,
     }
 };
-export default connect(mapStateToProps, mapDispatchToProps)(ClubInfo)
+export default connect(mapStateToProps, mapDispatchToProps)(Body)

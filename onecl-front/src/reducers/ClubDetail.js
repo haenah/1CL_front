@@ -3,7 +3,9 @@ import * as types from '../actions/ClubDetail/ActionTypes'
 const initialState = {
     documentList : [],
     memberList : [],
-    infoPost : null
+    infoPost : null,
+    componentStatus : 0,
+    authLevel: 0,
 };
 
 const ClubDetail = (state=initialState, action) => {
@@ -24,6 +26,12 @@ const ClubDetail = (state=initialState, action) => {
             return {
                 ...state,
                 memberList: action.memberList,
+            };
+
+        case types.CHANGE_STATUS :
+            return {
+                ...state,
+                componentStatus : action.flag,
             };
         default :
             return state;

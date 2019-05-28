@@ -28,6 +28,13 @@ export const getAuthLevelRequest = (id) => {
     }
 };
 
+export const changeStatus = (flag) => {
+    return {
+        type : types.CHANGE_STATUS,
+        flag
+    }
+};
+
 export const updateDocumentList = (documentList) => {
     return {
         type: types.UPDATE_DOCUMENT_LIST,
