@@ -39,15 +39,15 @@
 
 .container-table100 {
     width: 100%;
-    min-height: 100vh;
+    /*min-height: 100vh;*/
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(-135deg, #c0dcf3, white);
 }
 
 .wrap-table100 {
-    width: 1170px;
+    width: 100%;
+    margin-right: 20px;
 }
 
 table {
@@ -58,7 +58,9 @@ table {
     width: 100%;
     margin: 0 auto;
     position: relative;
+    empty-cells: show;
 }
+
 table * {
     position: relative;
 }
@@ -70,7 +72,7 @@ table thead tr {
     background: #20455a;
 }
 table tbody tr {
-    height: 50px;
+    height: 300px;
 }
 table tbody tr:last-child {
     border: 0;
@@ -126,5 +128,9 @@ tbody tr:hover {
 
 .column3 {
     width: 245px;
+}
+
+.null_club {
+    text-align: center;
 }
 

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Select from 'react-select';
-import './Category.css'
 import {Input} from 'reactstrap';
 
 // const options = [
@@ -102,39 +101,45 @@ class Category extends Component {
         const { handleGetClubList } = this;
         return (
 
-            <form id="app-cover">
-            <div className="Category-box">
-                <div className="Dept-box">
-                    {/*<Select className="Dept-select"*/}
-                        {/*value={selectedDept}*/}
-                        {/*onChange={handleChangeDept}*/}
-                        {/*options={deptOptions(deptList)}*/}
-                        {/*// options={options}*/}
-                        {/*styles={customStyles}*/}
-                    {/*/>*/}
-                    <Input type={'select'} className={'Dept-select'} value={selectedDept} onChange={e => this.setState({selectedDept: e.target.value})}>
-                        <option value={'전체'}>All</option>
-                        {deptList && deptList.results.map(department => <option key={department.name} value={department.name}>{department.name}</option>)}
-                    </Input>
-                </div>
-                <div className="Cat-box">
-                    {/*<Select className="Cat-select"*/}
-                        {/*value={selectedCategory}*/}
-                        {/*onChange={handleChangeCategory}*/}
-                        {/*options={categoryOptions(categoryList)}*/}
-                        {/*// options={options}*/}
-                        {/*styles={customStyles}*/}
-                    {/*/>*/}
-                    <Input type={'select'} className={'Cat-select'} value={selectedCategory} onChange={e => this.setState({selectedCategory: e.target.value})}>
-                        <option value={'전체'}>All</option>
-                        {categoryList && categoryList.results.map(category => <option key={category.name} value={category.name}>{category.name}</option>)}
-                    </Input>
-                </div>
-                <div>
-                    <button type={'button'} className="search-button" onClick={() => handleGetClubList(selectedDept, selectedCategory)}> Search! </button>
-                </div>
+            <div className="limiter">
+                {/*<div className="container-clubregister">*/}
+                    <div className="wrap-clubregister">
+                        <form id="app-cover">
+                            <div className="Category-box">
+                                <div className="Dept-box">
+                                    {/*<Select className="Dept-select"*/}
+                                        {/*value={selectedDept}*/}
+                                        {/*onChange={handleChangeDept}*/}
+                                        {/*options={deptOptions(deptList)}*/}
+                                        {/*// options={options}*/}
+                                        {/*styles={customStyles}*/}
+                                    {/*/>*/}
+                                    <Input type={'select'} className={'deptSelect'} value={selectedDept} onChange={e => this.setState({selectedDept: e.target.value})}>
+                                        <option value={'전체'}>All</option>
+                                        {deptList && deptList.results.map(department => <option key={department.name} value={department.name}>{department.name}</option>)}
+                                    </Input>
+                                </div>
+                                <div className="Cat-box">
+                                    {/*<Select className="Cat-select"*/}
+                                        {/*value={selectedCategory}*/}
+                                        {/*onChange={handleChangeCategory}*/}
+                                        {/*options={categoryOptions(categoryList)}*/}
+                                        {/*// options={options}*/}
+                                        {/*styles={customStyles}*/}
+                                    {/*/>*/}
+                                    <Input type={'select'} className={'catSelect'} value={selectedCategory} onChange={e => this.setState({selectedCategory: e.target.value})}>
+                                        <option value={'전체'}>All</option>
+                                        {categoryList && categoryList.results.map(category => <option key={category.name} value={category.name}>{category.name}</option>)}
+                                    </Input>
+                                </div>
+                                <div>
+                                    <button type={'button'} className="search-button" onClick={() => handleGetClubList(selectedDept, selectedCategory)}> Search! </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                {/*</div>*/}
             </div>
-            </form>
         );
     }
 }

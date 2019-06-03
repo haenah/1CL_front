@@ -41,23 +41,55 @@ const Clublist = ({clubs}) => {
      //         category: 'Dance',
      //     },
      // ];
-    if(clubs === null){
-        return(
-            <div> 동아리를 검색하세요! </div>
+
+    if(clubs === null || clubs && clubs.count === 0){
+        return (
+            <div className="limiter">
+                <div className="container-table100">
+                    <div className="wrap-table100">
+                        <div className="table100">
+                            <table>
+                                <thead>
+                                <tr className="table100-head">
+                                    <th className="column1">Department</th>
+                                    <th className="column2">Category</th>
+                                    <th className="column3">Club Name</th>
+                                </tr>
+                                </thead>
+                                <tr></tr>
+                            </table>
+
+                            {clubs === null &&
+                            <div style={{
+                                'background':'white',
+                                'text-align':'center',
+                                'font-size':'40px',
+                            }}>동아리를 검색하세요!</div>}
+
+                            {(clubs && clubs.count === 0) &&
+                            <div style={{
+                                'background':'white',
+                                'text-align':'center',
+                                'font-size':'40px',
+                            }}>조건에 맞는 동아리가 없습니다.</div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
         )
     }
-
 
     const clubList = clubs && clubs.results.map(
         (club) => {
             return(
-                    <ClubItem
-                        key = {club.id}
-                        name = {club.name}
-                        id = {club.id}
-                        department = {club.dept}
-                        category = {club.category}
-                    />
+                <ClubItem
+                    key = {club.id}
+                    name = {club.name}
+                    id = {club.id}
+                    department = {club.dept}
+                    category = {club.category}
+                />
             )
         }
     );
@@ -93,9 +125,7 @@ const Clublist = ({clubs}) => {
                                 <th className="column3">Club Name</th>
                             </tr>
                             </thead>
-                            <tbody>
-                            {clubList}
-                            </tbody>
+                            <tbody>{clubList}</tbody>
                         </table>
                     </div>
                 </div>

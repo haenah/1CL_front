@@ -14,7 +14,7 @@ const App = () => {
               <Switch>
                   <Route exact path={"/"} component={MainPage} />
                   <Route exact path="/register" component={SignupPage}/>
-                  <Route exact path="/club_search" component={ClubsearchPage}/>
+                  <Route style={{'background-color':'grey'}} exact path="/club_search" component={ClubsearchPage}/>
                   <Route exact path="/club_register" component={ClubRegisterPage}/>
                   <Route exact path="/login" component={LoginPage} />
               </Switch>

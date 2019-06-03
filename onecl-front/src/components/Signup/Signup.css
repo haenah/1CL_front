@@ -371,6 +371,10 @@ input {
 
 /*---------------------------------------------*/
 
+h2 {
+    font-family: Poppins-Bold;
+}
+
 h3 {
     margin: 0px;
     font-family: Poppins-Medium;
@@ -381,6 +385,10 @@ h3 {
     width: 100%;
     z-index: 1;
     margin-bottom: 10px;
+}
+
+.pw {
+    margin-top: 20px;
 }
 
 .id {
@@ -405,7 +413,7 @@ h3 {
 }
 
 h4 {
-    font-family: Poppins-Medium;
+    font-family: Poppins-Regular;
     display: table-cell;
     width: 1px;
     white-space: normal;
@@ -463,7 +471,6 @@ h4 {
 
 button {
     background-color: #6bb8d0;
-    border-radius: 20px;
     color: white;
     padding: 14px;
     margin: 8px 0;
@@ -475,21 +482,25 @@ button {
 .confirmation {
     width: 50%;
     margin: 8px;
+    border-radius: 20px;
 }
 
 .verify {
     width: 90%;
+    border-radius: 20px;
 }
 
 .sign-up-button {
     width: 100%;
     margin-bottom: 10px;
+    border-radius: 20px;
     font-size: large;
 }
 
 .login-button {
     width: 100%;
     font-size: medium;
+    border-radius: 20px;
     margin-top: 50px;
 }
 
@@ -501,3 +512,10 @@ button:hover {
 .text-center {text-align: center;}
 
 .p-t-70 {padding-top: 70px;}
+
+
+.check {
+    padding-left: 10px;
+    height: 30px;
+    flex: auto;
+}
