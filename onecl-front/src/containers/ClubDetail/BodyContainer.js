@@ -15,7 +15,10 @@ const mapDispatchToProps = (dispatch) => {
         },
         getAuthLevel : (id) => {
             dispatch(actions.getAuthLevelRequest(id))
-        }
+        },
+        submitDocument : (docTitle, docContent) => {
+            dispatch(actions.submitDocumentRequest(docTitle, docContent))
+        },
     }
 };
 

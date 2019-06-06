@@ -4,7 +4,7 @@ import * as types from '../actions/ClubDetail/ActionTypes'
 import * as actions from '../actions/ClubDetail/index'
 
 function* getDocumentList(id) {
-
+    /*TODO*/
 }
 
 function* watchGetDocListRequest(){
@@ -15,7 +15,7 @@ function* watchGetDocListRequest(){
 }
 
 function* getMemberList(id) {
-
+    /*TODO*/
 }
 
 function* watchGetMemListRequest(){
@@ -26,7 +26,7 @@ function* watchGetMemListRequest(){
 }
 
 function* getAuthLevel(id) {
-
+    /*TODO*/
 }
 
 function* watchGetAuthLevelRequest(){
@@ -37,7 +37,7 @@ function* watchGetAuthLevelRequest(){
 }
 
 function* getInfoPost(id) {
-
+    /*TODO*/
 }
 
 function* watchGetInfoPostRequest(){
@@ -47,9 +47,21 @@ function* watchGetInfoPostRequest(){
     }
 }
 
-export default function* ClubRegisterSaga() {
+function* submitDocument(title, content) {
+    /*TODO*/
+}
+
+function* watchSubmitDocumentRequest(){
+    while(true){
+        const {title, content} = yield take(types.SUBMIT_DOCUMENT_REQUEST);
+        yield call(submitDocument, title, content);
+    }
+}
+
+export default function* ClubDetailSaga() {
     yield fork(watchGetDocListRequest);
     yield fork(watchGetMemListRequest);
     yield fork(watchGetAuthLevelRequest);
     yield fork(watchGetInfoPostRequest);
+    yield fork(watchSubmitDocumentRequest);
 }

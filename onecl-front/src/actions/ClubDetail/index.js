@@ -28,6 +28,14 @@ export const getAuthLevelRequest = (id) => {
     }
 };
 
+export const submitDocumentRequest = (title, content) => {
+    return {
+        type : types.SUBMIT_DOCUMENT_REQUEST,
+        title,
+        content
+    }
+};
+
 export const changeStatus = (flag) => {
     return {
         type : types.CHANGE_STATUS,

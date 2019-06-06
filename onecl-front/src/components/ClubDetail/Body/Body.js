@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import CKEditor from 'ckeditor4-react'
 
 const Document = ({title}) => {
     return(
@@ -35,11 +36,7 @@ class Body extends Component{
     state = {
         isPost : false,
         docTitle : null,
-        docContent : null,
-        img : {
-            image_src : 'https://apod.nasa.gov/apod/image/1712/GeminidsYinHao1024.jpg',
-            name : 'NASA image',
-        }
+        docContent : '내용을 작성하세요.',
     };
     initialize = () => {
         const { getAuthLevel, getMemberList, getDocumentList, getInfoPost } = this.props;
@@ -62,9 +59,14 @@ class Body extends Component{
     };
 
     returnButtonHandler = () => {
-        this.setState({
-            isPost : false,
-        })
+        if (window.confirm('작성중인 정보가 사라집니다. 계속하시겠습니까?'))
+        {
+            this.setState({
+                isPost : false,
+                docTitle : null,
+                docContent : '내용을 입력하세요.',
+            })
+        }
     };
 
     docTitleInputHandler = (e) => {
@@ -73,19 +75,27 @@ class Body extends Component{
         });
     };
 
-    docContentInputHandler = (e) => {
+    editorChangeHandler = (e) => {
         this.setState({
-            docContent : e.target.value,
-        })
+            docContent : e.editor.getData(),
+        });
     };
 
-    addImageToTextArea(img){
-        let stringImage = `![${img.name}](${img.image_src})`;
-        let {textArea} = this.refs;
-        let value = textArea.value;
-        let position = textArea.selectionStart;
-        textArea.value = `${value.substr(0,position)}${stringImage}${value.substr(position)}`;
-    }
+    documentSubmitHandler = () => {
+        const {submitDocument} = this.props;
+        const {docTitle, docContent} = this.state;
+        submitDocument(docTitle, docContent);
+    };
+
+    componentWillReceiveProps(props){
+        if(this.props.componentStatus !== props.componentStatus){
+            this.setState({
+                isPost : false,
+                docTitle : null,
+                docContent : '내용을 입력하세요.'
+            })
+        }
+    };
 
     render() {
         const {componentStatus} = this.props;
@@ -154,24 +164,31 @@ class Body extends Component{
                 return(
                     <div style={{
                         'marginTop' : '20px',
+                        'border' : '1px solid grey',
+                        'width' : '100%',
+                        'boxShadow' : '3px 3px 3px 3px gray',
                     }}>
-                        <input placeholder={'제목'} type={'text'} onChange={this.docTitleInputHandler}/>
-                        <textarea
-                            ref='textArea'
-                            placeholder={'내용을 작성하세요'}
-                            onChange={this.docContentInputHandler}
+                        <textarea style={{
+                            'width' : '90%',
+                            'height' : '30px',
+                            'margin' : '20px',
+                        }}
+                          placeholder={'제목'}
+                          onChange={this.docTitleInputHandler}/>
+                        <select style={{'marginLeft' : '20px',}}>
+                            <option value = '공지게시판'>공지게시판</option>
+                            <option value = '자유게시판'>자유게시판</option>
+                        </select>
+                        <CKEditor
+                            data={this.state.docContent}
+                            onChange={this.editorChangeHandler}
                             style={{
-                                'height' : '300px',
-                                'marginTop' : '25px',
-                                'width' : '100%',
+                                'margin' : '20px',
                             }}
                         />
-                        <img
-                            style={{'height' : '200px'}}
-                            src={this.state.img.image_src}
-                            onClick={() => this.addImageToTextArea(this.state.img)}
-                        />
+                        <button onClick={this.documentSubmitHandler} style={{'marginRight' : '20px'}}>작성</button>
                         <button onClick={this.returnButtonHandler}>돌아가기</button>
+                        {/*<button onClick={() => {console.log(this.state.docContent)}}>show me doc content</button>*/}
                     </div>
                 )
             }
