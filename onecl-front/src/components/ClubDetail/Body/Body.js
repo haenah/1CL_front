@@ -32,6 +32,15 @@ const Member = ({name, auth_level}) => {
 
 
 class Body extends Component{
+    state = {
+        isPost : false,
+        docTitle : null,
+        docContent : null,
+        img : {
+            image_src : 'https://apod.nasa.gov/apod/image/1712/GeminidsYinHao1024.jpg',
+            name : 'NASA image',
+        }
+    };
     initialize = () => {
         const { getAuthLevel, getMemberList, getDocumentList, getInfoPost } = this.props;
         const {id} = this.props;
@@ -44,6 +53,38 @@ class Body extends Component{
 
     componentDidMount() {
         this.initialize();
+    };
+
+    postButtonHandler = () => {
+        this.setState({
+            isPost : true,
+        })
+    };
+
+    returnButtonHandler = () => {
+        this.setState({
+            isPost : false,
+        })
+    };
+
+    docTitleInputHandler = (e) => {
+        this.setState({
+            docTitle : e.target.value,
+        });
+    };
+
+    docContentInputHandler = (e) => {
+        this.setState({
+            docContent : e.target.value,
+        })
+    };
+
+    addImageToTextArea(img){
+        let stringImage = `![${img.name}](${img.image_src})`;
+        let {textArea} = this.refs;
+        let value = textArea.value;
+        let position = textArea.selectionStart;
+        textArea.value = `${value.substr(0,position)}${stringImage}${value.substr(position)}`;
     }
 
     render() {
@@ -82,6 +123,17 @@ class Body extends Component{
         ];
         const tmp_infoPost = 'his information post';
 
+        const docList = tmp_docList.map(
+            (document) => {
+                return(
+                    <Document
+                        key={document.id}
+                        title={document.title}
+                    />
+                )
+            }
+        );
+
         if(componentStatus === 2){
             return(
                 tmp_memList.map(
@@ -98,18 +150,41 @@ class Body extends Component{
             )
         }
         if(componentStatus === 1){
-            return(
-                tmp_docList && tmp_docList.map(
-                    (document) => {
-                        return(
-                            <Document
-                                key={document.id}
-                                title={document.title}
-                            />
-                        )
-                    }
+            if(this.state.isPost){
+                return(
+                    <div style={{
+                        'marginTop' : '20px',
+                    }}>
+                        <input placeholder={'제목'} type={'text'} onChange={this.docTitleInputHandler}/>
+                        <textarea
+                            ref='textArea'
+                            placeholder={'내용을 작성하세요'}
+                            onChange={this.docContentInputHandler}
+                            style={{
+                                'height' : '300px',
+                                'marginTop' : '25px',
+                                'width' : '100%',
+                            }}
+                        />
+                        <img
+                            style={{'height' : '200px'}}
+                            src={this.state.img.image_src}
+                            onClick={() => this.addImageToTextArea(this.state.img)}
+                        />
+                        <button onClick={this.returnButtonHandler}>돌아가기</button>
+                    </div>
                 )
-            )
+            }
+            else{
+                return(
+                    <div>
+                        <button onClick={this.postButtonHandler}>글쓰기</button>
+                        <div>
+                            {docList}
+                        </div>
+                    </div>
+                )
+            }
         }
         else{
             return(
