@@ -131,7 +131,7 @@ class Body extends Component{
                 auth_level: 2,
             },
         ];
-        const tmp_infoPost = 'his information post';
+        const tmp_infoPost = `<p>HIS에서 동아리원을 모집합니다.</p><p><strong>지원기간 : 5/30 ~ 5/31</strong></p><img src="https://apod.nasa.gov/apod/image/1712/GeminidsYinHao1024.jpg"/>`;
 
         const docList = tmp_docList.map(
             (document) => {
@@ -205,9 +205,13 @@ class Body extends Component{
         }
         else{
             return(
-                <div>
-                    {/*{infoPost}*/}
-                    {tmp_infoPost}
+                <div
+                    style={{
+                        'boxShadow' : '3px 3px 3px 3px gray'
+                    }}
+                    dangerouslySetInnerHTML={
+                    {__html : tmp_infoPost}
+                }>
                 </div>
             )
         }
