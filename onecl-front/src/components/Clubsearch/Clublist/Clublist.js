@@ -60,19 +60,10 @@ const Clublist = ({clubs}) => {
                             </table>
 
                             {clubs === null &&
-                            <div style={{
-                                'background':'white',
-                                'text-align':'center',
-                                'font-size':'40px',
-                            }}>동아리를 검색하세요!</div>}
+                            <div className='nothing'>동아리를 검색하세요!</div>}
 
                             {(clubs && clubs.count === 0) &&
-                            <div style={{
-                                'background':'white',
-                                'text-align':'center',
-                                'font-size':'40px',
-                            }}>조건에 맞는 동아리가 없습니다.</div>
-                            }
+                            <div className='nothing' >조건에 맞는 동아리가 없습니다.</div>}
                         </div>
                     </div>
                 </div>

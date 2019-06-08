@@ -114,6 +114,7 @@ class Category extends Component {
                                         {/*// options={options}*/}
                                         {/*styles={customStyles}*/}
                                     {/*/>*/}
+                                    <p className='title'>학과</p>
                                     <Input type={'select'} className={'deptSelect'} value={selectedDept} onChange={e => this.setState({selectedDept: e.target.value})}>
                                         <option value={'전체'}>All</option>
                                         {deptList && deptList.results.map(department => <option key={department.name} value={department.name}>{department.name}</option>)}
@@ -127,6 +128,7 @@ class Category extends Component {
                                         {/*// options={options}*/}
                                         {/*styles={customStyles}*/}
                                     {/*/>*/}
+                                    <p className='title'>분류</p>
                                     <Input type={'select'} className={'catSelect'} value={selectedCategory} onChange={e => this.setState({selectedCategory: e.target.value})}>
                                         <option value={'전체'}>All</option>
                                         {categoryList && categoryList.results.map(category => <option key={category.name} value={category.name}>{category.name}</option>)}

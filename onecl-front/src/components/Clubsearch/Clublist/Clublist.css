@@ -134,3 +134,11 @@ tbody tr:hover {
     text-align: center;
 }
 
+.nothing {
+    background: white;
+    text-align: center;
+    font-size: 40px;
+    border-radius: 10px;
+    padding: 15% 0 15% 0;
+    font: NotoSerifKR-Black;
+}
