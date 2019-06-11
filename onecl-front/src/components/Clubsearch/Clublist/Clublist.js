@@ -15,32 +15,32 @@ const ClubItem = ({name, id, department, category}) => {
 };
 
 const Clublist = ({clubs}) => {
-     // const temp_clubs = [
-     //     {
-     //         id: 1,
-     //         name: 'HIS',
-     //         department: 'Central',
-     //         category: 'Dance',
-     //     },
-     //     {
-     //         id: 2,
-     //         name: 'Waffle Studio',
-     //         department: 'CSE',
-     //         category: 'SW Development',
-     //     },
-     //     {
-     //         id: 3,
-     //         name: 'Soccer301',
-     //         department: 'CSE',
-     //         category: 'Sports',
-     //     },
-     //     {
-     //         id: 4,
-     //         name: 'Sajahoo',
-     //         department: 'Central',
-     //         category: 'Dance',
-     //     },
-     // ];
+     const temp_clubs = [
+         {
+             id: 1,
+             name: 'HIS',
+             dept: 'Central',
+             category: 'Dance',
+         },
+         {
+             id: 2,
+             name: 'Waffle Studio',
+             dept: 'CSE',
+             category: 'SW Development',
+         },
+         {
+             id: 3,
+             name: 'Soccer301',
+             dept: 'CSE',
+             category: 'Sports',
+         },
+         {
+             id: 4,
+             name: 'Sajahoo',
+             dept: 'Central',
+             category: 'Dance',
+         },
+     ];
 
     if(clubs === null || clubs && clubs.count === 0){
         return (
