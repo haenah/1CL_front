@@ -1,0 +1,21 @@
+.headerOptions {
+    display: inline-block;
+    width: 250px;
+    text-align: center;
+    background-color: grey;
+    color : white;
+    margin-right: 50px;
+}
+
+.wrapper {
+    height : 55px;
+    width : 100%;
+    box-shadow: 5px 5px 5px grey;
+}
+
+.optionSet {
+    position : fixed;
+    transform: translate(-50%, 0);
+    left : 50%;
+    width : 900px;
+}

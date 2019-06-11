@@ -127,7 +127,7 @@ class Main extends Component {
                 <div>
                   {this.state.clubs && this.state.clubs.map(c =>
                     <div key={c.id} style={{display: 'block', textAlign: 'center', justifyContent: 'center', borderBottom: '1px solid lightgrey', padding: '16px', color: 'grey'}}>
-                      <a style={{textDecoration: 'none'}} href={c.id}>{c.name}</a>
+                      <a style={{textDecoration: 'none'}} href={`/club/${c.id}`}>{c.name}</a>
                     </div>
                     )
                   }
