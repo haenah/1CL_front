@@ -6,6 +6,9 @@ const initialState = {
     infoPost : null,
     componentStatus : 0,
     authLevel: 0,
+    visualize : false,
+    authChange_clubID : 0,
+    authChange_memberID : 0,
 };
 
 const ClubDetail = (state=initialState, action) => {
@@ -33,6 +36,23 @@ const ClubDetail = (state=initialState, action) => {
                 ...state,
                 componentStatus : action.flag,
             };
+
+        case types.AUTH_CHANGE_MODAL_VISUALIZE :
+            return {
+                ...state,
+                visualize : true,
+                authChange_clubID: action.clubID,
+                authChange_memberID: action.memberID,
+            };
+
+        case types.REMOVE_MODAL :
+            return {
+                ...state,
+                visualize : false,
+                authChange_clubID: 0,
+                authChange_memberID: 0,
+            };
+
         default :
             return state;
     }

@@ -6,6 +6,7 @@
     "babel-core": "^6.26.3",
     "babel-jest": "^24.8.0",
     "bootstrap": "^4.3.1",
+    "ckeditor": "^4.11.4",
     "ckeditor4-react": "^1.0.0-beta",
     "config": "^3.1.0",
     "enzyme": "^3.9.0",

@@ -63,3 +63,33 @@ export const updateInfoPost = (infoPost) => {
         infoPost
     }
 };
+
+export const searchDocumentRequest = (category) => {
+    return {
+        type: types.SEARCH_DOCUMENT_REQUEST,
+        category
+    }
+};
+
+export const authChangeModalVisualize = (clubID, memberID) => {
+    return {
+        type: types.AUTH_CHANGE_MODAL_VISUALIZE,
+        clubID,
+        memberID,
+    }
+};
+
+export const changeAuthLevelRequest = (clubID, memberID, authLevel) => {
+    return {
+        type: types.CHANGE_AUTH_LEVEL_REQUEST,
+        clubID,
+        memberID,
+        authLevel,
+    }
+};
+
+export const removeModal = () => {
+    return {
+        type: types.REMOVE_MODAL
+    }
+}

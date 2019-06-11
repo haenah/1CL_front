@@ -19,6 +19,12 @@ const mapDispatchToProps = (dispatch) => {
         submitDocument : (docTitle, docContent) => {
             dispatch(actions.submitDocumentRequest(docTitle, docContent))
         },
+        searchDocument : (category) => {
+            dispatch(actions.searchDocumentRequest(category))
+        },
+        authChangeModalVisualize : (clubID, memberID) => {
+            dispatch(actions.authChangeModalVisualize(clubID, memberID))
+        }
     }
 };
 

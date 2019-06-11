@@ -58,10 +58,34 @@ function* watchSubmitDocumentRequest(){
     }
 }
 
+function* searchDocument(category) {
+    /*TODO*/
+}
+
+function* watchSearchDocumentRequest(){
+    while(true){
+        const {category} = yield take(types.SEARCH_DOCUMENT_REQUEST);
+        yield call(searchDocument, category);
+    }
+}
+
+function* changeAuthLevel(clubID, memberID, authLevel) {
+    /*TODO*/
+}
+
+function* watchChangeAuthLevelRequest(){
+    while(true){
+        const {clubID, memberID, authLevel} = yield take(types.CHANGE_AUTH_LEVEL_REQUEST);
+        yield call(changeAuthLevel, clubID, memberID, authLevel)
+    }
+}
+
 export default function* ClubDetailSaga() {
     yield fork(watchGetDocListRequest);
     yield fork(watchGetMemListRequest);
     yield fork(watchGetAuthLevelRequest);
     yield fork(watchGetInfoPostRequest);
     yield fork(watchSubmitDocumentRequest);
+    yield fork(watchSearchDocumentRequest);
+    yield fork(watchChangeAuthLevelRequest);
 }

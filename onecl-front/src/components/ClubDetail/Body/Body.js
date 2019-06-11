@@ -1,32 +1,35 @@
 import React, {Component} from 'react'
 import CKEditor from 'ckeditor4-react'
+import {Link} from 'react-router-dom';
+import './Body.css'
 
-const Document = ({title}) => {
+const Document = ({clubID, id, title}) => {
     return(
         <div>
-            <p>{title}</p>
+            <p><Link to={`/club/${clubID}/document/${id}`}>{title}</Link></p>
         </div>
     );
 };
 
-const Member = ({name, auth_level}) => {
+const Member = ({name, auth_level, clubID, memberID, buttonClickHandler}) => {
     const position = (auth_level) => {
         switch (auth_level){
             case 0 :
-                return 'master';
+                return '회장';
             case 1 :
-                return 'executive';
+                return '임원';
             case 2 :
-                return 'normal member';
+                return '일반 회원';
             default :
-                return 'normal member';
+                return '일반 회원';
         }
     };
 
     return(
-        <div>
+        <div style={{'margin' : '20px'}}>
             <p style={{'display':'inline-block', 'width':'250px'}}>{name}</p>
             <p style={{'display':'inline-block', 'width':'250px'}}>{position(auth_level)}</p>
+            <button style={{'display' : 'inline-block'}} onClick={() => buttonClickHandler(clubID, memberID)}>등급 변경</button>
         </div>
     );
 };
@@ -76,6 +79,7 @@ class Body extends Component{
     };
 
     editorChangeHandler = (e) => {
+        console.log( e, e.editor.getData());
         this.setState({
             docContent : e.editor.getData(),
         });
@@ -87,6 +91,12 @@ class Body extends Component{
         submitDocument(docTitle, docContent);
     };
 
+    categorySearchHandler = (e) => {
+        const {searchDocument} = this.props;
+        console.log('hi');
+        searchDocument(e.target.value);
+    };
+
     componentWillReceiveProps(props){
         if(this.props.componentStatus !== props.componentStatus){
             this.setState({
@@ -95,6 +105,10 @@ class Body extends Component{
                 docContent : '내용을 입력하세요.'
             })
         }
+    };
+
+    authChangeButtonHandler = (clubID, memberID) => {
+        this.props.authChangeModalVisualize(clubID, memberID);
     };
 
     render() {
@@ -113,6 +127,14 @@ class Body extends Component{
                 id: 3,
                 title: 'third post',
             },
+            {
+                id: 4,
+                title: 'fourth post',
+            },
+            {
+                id: 5,
+                title: 'fifth post',
+            },
         ];
         const tmp_memList = [
             {
@@ -130,33 +152,58 @@ class Body extends Component{
                 name: 'seo jun won',
                 auth_level: 2,
             },
+            {
+                id: 4,
+                name: '백근영',
+                auth_level: 3,
+            }
         ];
-        const tmp_infoPost = `<p>HIS에서 동아리원을 모집합니다.</p><p><strong>지원기간 : 5/30 ~ 5/31</strong></p><img src="https://apod.nasa.gov/apod/image/1712/GeminidsYinHao1024.jpg"/>`;
+        const tmp_infoPost = `<p>HIS에서 동아리원을 모집합니다.</p><p><strong>지원기간 : 5/30 ~ 5/31</strong></p><img src="http://127.0.0.1:8000/media/백근영님_인터넷용.jpg"/>`;
 
         const docList = tmp_docList.map(
             (document) => {
                 return(
-                    <Document
-                        key={document.id}
-                        title={document.title}
-                    />
+                    <div>
+                        <Document
+                            clubID={this.props.id}
+                            key={document.id}
+                            id={document.id}
+                            title={document.title}
+                        />
+                        <hr />
+                    </div>
+                )
+            }
+        );
+
+        const memList = tmp_memList.map(
+            (member) => {
+                return(
+                    <div>
+                        <Member
+                            key={member.id}
+                            name={member.name}
+                            auth_level={member.auth_level}
+                            clubID={this.props.id}
+                            memberID={member.id}
+                            buttonClickHandler={this.authChangeButtonHandler}
+                        />
+                        <hr/>
+                    </div>
                 )
             }
         );
 
         if(componentStatus === 2){
             return(
-                tmp_memList.map(
-                    (member) => {
-                        return(
-                            <Member
-                                key={member.id}
-                                name={member.name}
-                                auth_level={member.auth_level}
-                            />
-                        )
-                    }
-                )
+                <div className={'memListWrapper'}>
+                    <div className={'labelWrapper'}>
+                        <p className={'memListLabel'}>회원 이름</p>
+                        <p className={'memListLabel'}>등급</p>
+                        <hr/>
+                    </div>
+                    {memList}
+                </div>
             )
         }
         if(componentStatus === 1){
@@ -185,6 +232,10 @@ class Body extends Component{
                             style={{
                                 'margin' : '20px',
                             }}
+                            config={{
+                                filebrowserBrowseUrl: 'http://127.0.0.1:8000/image/',
+                                filebrowserUploadUrl: 'http://127.0.0.1:8000/image/',
+                            }}
                         />
                         <button onClick={this.documentSubmitHandler} style={{'marginRight' : '20px'}}>작성</button>
                         <button onClick={this.returnButtonHandler}>돌아가기</button>
@@ -194,9 +245,14 @@ class Body extends Component{
             }
             else{
                 return(
-                    <div>
-                        <button onClick={this.postButtonHandler}>글쓰기</button>
-                        <div>
+                    <div className={'boardWrapper'}>
+                        <select className={'categorySelect'} onChange={this.categorySearchHandler}>
+                            <option value='전체'>전체</option>
+                            <option value='공지게시판'>공지게시판</option>
+                            <option value='자유게시판'>자유게시판</option>
+                        </select>
+                        <button className={'postButton'} onClick={this.postButtonHandler}>글쓰기</button>
+                        <div className={'docListWrapper'}>
                             {docList}
                         </div>
                     </div>
@@ -207,7 +263,8 @@ class Body extends Component{
             return(
                 <div
                     style={{
-                        'boxShadow' : '3px 3px 3px 3px gray'
+                        'boxShadow' : '3px 3px 3px 3px gray',
+                        'margin' : '20px',
                     }}
                     dangerouslySetInnerHTML={
                     {__html : tmp_infoPost}

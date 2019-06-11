@@ -1,0 +1,49 @@
+.grayBackground {
+    background: rgba(100,100,100,0.5);
+    position : fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom : 0;
+    z-index: 5;
+}
+
+.modalWrapper {
+    z-index : 10;
+    position: fixed;
+    width : 500px;
+    height : 400px;
+    background-color: white;
+    box-shadow: 3px 3px 3px 3px gray;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modalLabelWrapper {
+    height : 80px;
+    line-height: 80px;
+    background-color: #c0dcf3;
+    color : white;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: center;
+}
+
+.authChangeLabel {
+    vertical-align: middle;
+    display: inline-block;
+    line-height: normal;
+}
+
+.modalOptionWrapper {
+    position: fixed;
+    right : 0;
+    bottom : 0;
+}
+
+.modalOptions {
+    margin-right : 20px;
+    margin-bottom: 20px;
+}

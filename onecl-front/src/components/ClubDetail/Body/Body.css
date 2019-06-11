@@ -1,0 +1,43 @@
+.boardWrapper {
+    width : 500px;
+    position : fixed;
+    top : 50%;
+    left : 50%;
+    transform : translate(-50%,-50%);
+}
+
+.categorySelect {
+    height : 52px;
+    background-color: #6bb8d0;
+    color : white;
+    margin-right: 10px;
+    box-shadow: 3px 0px 3px 0px gray;
+}
+
+.postButton {
+    box-shadow: 3px 0px 3px 0px gray;
+}
+
+.docListWrapper {
+    box-shadow : 3px 3px 3px 3px gray;
+    z-index : 2;
+}
+
+.memListWrapper {
+    box-shadow : 3px 3px 3px 3px gray;
+    position : fixed;
+    top : 50%;
+    left : 50%;
+    transform : translate(-50%,-50%);
+}
+
+.labelWrapper {
+    margin : 20px;
+}
+
+.memListLabel {
+    display : inline-block;
+    width : 250px;
+    /*text-align: center;*/
+    font-size : 25px;
+}

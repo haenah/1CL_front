@@ -2731,6 +2731,11 @@ ckeditor4-react@^1.0.0-beta:
     load-script "^1.0.0"
     prop-types "^15.6.2"
 
+ckeditor@^4.11.4:
+  version "4.11.4"
+  resolved "https://registry.yarnpkg.com/ckeditor/-/ckeditor-4.11.4.tgz#5edbc235808f9e0f562e8e642eeb04fa1b01b633"
+  integrity sha512-h1EymdwFDdQuDO1vEisUagZ/WYiDnvvvtftYmbmqbbUf9vk21ovXb7mXnQimvTYJfRQBgJCoqfjFDfcQIfw9ig==
+
 class-utils@^0.3.5:
   version "0.3.6"
   resolved "https://registry.yarnpkg.com/class-utils/-/class-utils-0.3.6.tgz#f93369ae8b9a7ce02fd41faad0ca83033190c463"
