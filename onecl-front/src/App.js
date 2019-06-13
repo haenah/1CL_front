@@ -2,7 +2,7 @@ import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 import Start from "./components/StartPage";
 import {Col, Container} from 'reactstrap';
-import {SignupPage, ClubsearchPage, LoginPage, MainPage, ClubRegisterPage, ClubPage, ClubDocumentPage, ClubApplyPage} from './page';
+import {SignupPage, ClubsearchPage, LoginPage, MainPage, ClubRegisterPage, ClubPage, ClubDocumentPage, ClubApplyPage, ApplicantListPage} from './page';
 
 const App = () => {
     return(
@@ -19,6 +19,7 @@ const App = () => {
                   <Route exact path="/club/:id" component={ClubPage} />
                   <Route exact path="/club/:id/apply" component={ClubApplyPage} />
                   <Route exact path="/club/:clubID/document/:id" component={ClubDocumentPage} />
+                  <Route exact path="/club/:id/recruiter" component={ApplicantListPage} />
               </Switch>
             {/*</Col>*/}
           </Container>

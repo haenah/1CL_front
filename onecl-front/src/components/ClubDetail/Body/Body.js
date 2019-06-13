@@ -111,7 +111,7 @@ class Body extends Component{
     };
 
     render() {
-        const {componentStatus} = this.props;
+        const {componentStatus, id, history} = this.props;
         const {documentList, memberList, infoPost} = this.props;
         const tmp_docList = [
             {
@@ -200,7 +200,7 @@ class Body extends Component{
                     <div className={'adminOptionSet'}>
                         <button className={'adminOption'}>동아리 기본 정보 수정</button>
                         <button className={'adminOption'}>동아리 소개글 수정</button>
-                        <button className={'adminOption'}>지원자 관리</button>
+                        <button className={'adminOption'} onClick={() => {history.push(`/club/${id}/recruiter`)}}>지원자 관리</button>
                         <button className={'adminOption'}>차기 회장 임명</button>
                     </div>
                 </div>

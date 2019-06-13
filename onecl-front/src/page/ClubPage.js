@@ -10,7 +10,7 @@ const ClubPage = ({history, match}) => {
     return(
         <div>
             <HeaderContainer id={id}/>
-            <BodyContainer id={id}/>
+            <BodyContainer id={id} history={history}/>
             <FooterContainer id={id}/>
             <ModalContainer/>
         </div>

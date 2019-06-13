@@ -28,12 +28,13 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
     return {
         infoPost : state.ClubDetail.infoPost,
         memberList : state.ClubDetail.memberList,
         documentList : state.ClubDetail.documentList,
         componentStatus : state.ClubDetail.componentStatus,
+        history : props.history,
     }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Body)
