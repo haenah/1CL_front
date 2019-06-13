@@ -13,6 +13,9 @@ const mapDispatchToProps = (dispatch) => {
         clickMemberListButton : () => {
             dispatch(actions.changeStatus(2))
         },
+        clickAdminButton : () => {
+            dispatch(actions.changeStatus(3))
+        },
     }
 };
 

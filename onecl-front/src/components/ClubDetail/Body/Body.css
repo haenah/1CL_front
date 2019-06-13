@@ -41,3 +41,31 @@
     /*text-align: center;*/
     font-size : 25px;
 }
+
+.adminOptionWrapper {
+    margin-top: 20px;
+    box-shadow: 3px 3px 3px 3px grey;
+    height : 600px;
+    position : relative;
+}
+
+.adminOptionSet {
+    width: fit-content;
+    position : absolute;
+    left : 50%;
+    top : 50%;
+    transform: translate(-50%, -50%);
+}
+
+.adminOption {
+    margin-right: 25px;
+    margin-left: 25px;
+}
+
+.adminMessage {
+    position : absolute;
+    top : 20%;
+    text-align: center;
+    width : 100%;
+    font-size: 30px;
+}

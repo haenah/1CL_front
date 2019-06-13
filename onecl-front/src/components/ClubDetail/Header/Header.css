@@ -4,18 +4,20 @@
     text-align: center;
     background-color: grey;
     color : white;
-    margin-right: 50px;
+    margin-right: 25px;
+    margin-left : 25px;
 }
 
-.wrapper {
+.headerWrapper {
     height : 55px;
     width : 100%;
     box-shadow: 5px 5px 5px grey;
+    position : relative;
 }
 
 .optionSet {
-    position : fixed;
-    transform: translate(-50%, 0);
+    position : absolute;
     left : 50%;
-    width : 900px;
+    transform: translateX(-50%);
+    width : fit-content;
 }
