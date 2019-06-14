@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Container, ListGroup, ListGroupItem} from "reactstrap";
 
 class MyPage extends Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class MyPage extends Component {
   }
 
   render() {
-    console.log('props', this.props);
+    const joinList = this.props.joinList;
     return(
       <div>
         {this.loginCheck()}
@@ -32,7 +33,9 @@ class MyPage extends Component {
         <span>Email: </span>
         <span>{sessionStorage.getItem('email')}</span>
 
-
+        <ListGroup>
+          {joinList.results && joinList.results.map(club => <ListGroupItem key={club.id} tag={'a'} href={`/club/${club.id}`}>{club.id}</ListGroupItem>)}
+        </ListGroup>
 
       </div>
 

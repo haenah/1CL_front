@@ -4,7 +4,7 @@ import * as actions from '../../actions/MyPage/index';
 // import {fetchJoinRequest} from '../../actions/MyPage/index';
 
 const mapStateToProps = (state, props) => ({
-    joinList: state.MyPage.joinList,
+    joinList: {...state.MyPage.joinList},
     history: props.history,
 });
 

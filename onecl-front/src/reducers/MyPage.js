@@ -1,7 +1,7 @@
 import * as types from '../actions/MyPage/ActionTypes';
 
 const initialState = {
-  join: null,
+  joinList: null,
 };
 
 const MyPage = (state = initialState, action) => {
