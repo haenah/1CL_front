@@ -1,4 +1,4 @@
-import * as types from '../actions/Clubsearch/ActionTypes'
+import * as types from '../actions/Main/ActionTypes'
 
 const initialState = {
   clubList: null,
@@ -6,7 +6,7 @@ const initialState = {
 
 const Main = (state=initialState, action) => {
   switch(action.type) {
-    case types.GET_CLUB_LIST:
+    case types.FETCH_CLUB_LIST:
       return {
         ...state,
         clubList: action.clubList,

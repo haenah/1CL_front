@@ -20,13 +20,11 @@ import {SignupPage, ClubsearchPage, LoginPage, MainPage, ClubRegisterPage} from 
 const App = () => {
     return(
       <div>
-          <Row>
-              <Switch>
+              {/*<Switch>*/}
                   {/*<Route exact path={"/"} component={MainPage} />*/}
                   {/*<Route exact path="/register" component={SignupPage}/>*/}
                   {/*<Route exact path="/login" component={LoginPage} />*/}
-              </Switch>
-          </Row>
+              {/*</Switch>*/}
 
           {/*<Navbar color="light" light expand="md">*/}
               {/*<NavbarBrand href="/">logo</NavbarBrand>*/}
@@ -43,7 +41,7 @@ const App = () => {
               {/*</Collapse>*/}
           {/*</Navbar>*/}
 
-          <div style={{height: '50%'}}>
+          <div>
               <MainPage />
           </div>
 

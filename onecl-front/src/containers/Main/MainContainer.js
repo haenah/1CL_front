@@ -1,17 +1,17 @@
 import Main from '../../components/Main/Main';
 import {connect} from 'react-redux';
-import {getClubListRequest} from "../../actions/Common";
+import {fetchClubListRequest} from "../../actions/Main";
 
 const mapStateToProps = (state) => {
   return {
-    clubs: state.ClubSearch.clubList
+    clubs: state.Main.clubList
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchClubs: (dept, category) => {
-      dispatch(getClubListRequest(dept, category));
+    fetchClubs: () => {
+      dispatch(fetchClubListRequest());
     }
   }
 };

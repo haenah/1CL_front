@@ -2,12 +2,13 @@ import React, {Component} from 'react';
 import Sidebar from 'react-sidebar';
 import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.css';
+import MyNavBar from './Navbar';
 
 import {
   Input,
   Container,
   Header,
-  Navbar,
+  // Navbar,
   NavbarBrand,
   NavbarToggler,
   Collapse,
@@ -17,6 +18,7 @@ import {
 } from 'reactstrap';
 import {ClubRegisterPage, ClubsearchPage, LoginPage, MainPage, SignupPage} from "../../page";
 import {Route, Switch} from "react-router-dom";
+import MyPage from "../../page/MyPage";
 
 class Main extends Component {
 
@@ -25,16 +27,16 @@ class Main extends Component {
     this.state = {
       search: '',
       clubs: null,
+      isOpen: false,
     }
   }
 
   componentWillMount() {
-    this.props.fetchClubs("전체", "전체");
+    this.props.fetchClubs();
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('next', nextProps);
-    this.setState({clubs: nextProps.clubs.results});
+    nextProps.clubs && this.setState({clubs: nextProps.clubs.results});
   }
 
   toggle() {
@@ -46,7 +48,6 @@ class Main extends Component {
   handleSearch(search) {
     const {clubs} = this.props;
     this.setState({search});
-    console.log('search', clubs.results.filter(c => c.name === search), "농구".includes(search));
     if (!search) {
       this.setState({clubs: this.props.clubs.results});
     }
@@ -58,7 +59,7 @@ class Main extends Component {
       <div>
 
         {/*<Row>*/}
-          {/*<Col md={{size: 10, offset: 1}}>*/}
+          {/*<Col md>*/}
           {/*<div className='heading-space'>*/}
             {/*<div className='heading'>*/}
               {/*<div className='options'>*/}
@@ -79,75 +80,82 @@ class Main extends Component {
           {/*</Col>*/}
         {/*</Row>*/}
 
-          <Navbar color="light" light expand="md">
-            <NavbarBrand href="/">logo</NavbarBrand>
-            <NavbarToggler onClick={this.toggle} />
-            <Collapse isOpen={this.state.isOpen} navbar>
-              <Nav className="ml-auto" navbar>
-                <NavItem>
-                  <NavLink href="/club_search/">동아리 검색</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
-                </NavItem>
-                <UncontrolledDropdown nav inNavbar>
-                  <DropdownToggle nav caret>
-                    Options
-                  </DropdownToggle>
-                  <DropdownMenu right>
-                    <DropdownItem>
-                      Option 1
-                    </DropdownItem>
-                    <DropdownItem>
-                      Option 2
-                    </DropdownItem>
-                    <DropdownItem divider />
-                    <DropdownItem>
-                      Reset
-                    </DropdownItem>
-                  </DropdownMenu>
-                </UncontrolledDropdown>
-              </Nav>
-            </Collapse>
-          </Navbar>
+          {/*<Navbar color="light" light expand="md">*/}
+            {/*<NavbarBrand href="/">logo</NavbarBrand>*/}
+            {/*<NavbarToggler onClick={this.toggle} />*/}
+            {/*<Collapse isOpen={this.state.isOpen} navbar>*/}
+              {/*<Nav className="ml-auto" navbar>*/}
+                {/*<NavItem>*/}
+                  {/*<NavLink href="/club_search/">동아리 검색</NavLink>*/}
+                {/*</NavItem>*/}
+                {/*<NavItem>*/}
+                  {/*<NavLink href="/club_register">동아리 등록</NavLink>*/}
+                {/*</NavItem>*/}
+                {/*<UncontrolledDropdown nav inNavbar>*/}
+                  {/*<DropdownToggle nav caret>*/}
+                    {/*User*/}
+                  {/*</DropdownToggle>*/}
+                  {/*<DropdownMenu right>*/}
+                    {/*<DropdownItem href="/register">*/}
+                      {/*Sign Up*/}
+                    {/*</DropdownItem>*/}
+                    {/*{sessionStorage.getItem('token') ?*/}
+                       {/*<DropdownItem onClick={() => sessionStorage.removeItem('token')}>*/}
+                        {/*Logout*/}
+                      {/*</DropdownItem> :*/}
+                      {/*<DropdownItem href="/login">*/}
+                        {/*Login*/}
+                      {/*</DropdownItem>*/}
+                    {/*}*/}
+                  {/*</DropdownMenu>*/}
+                {/*</UncontrolledDropdown>*/}
+              {/*</Nav>*/}
+            {/*</Collapse>*/}
+          {/*</Navbar>*/}
 
-          {/*<div style={{height: '50%'}}>*/}
-          {/*<Sidebar*/}
-            {/*sidebar={*/}
-              {/*<div>*/}
-                {/*<div style={{backgroundColor: 'lightblue', padding: '16px'}}>*/}
-                 {/*동아리 리스트*/}
-                {/*</div>*/}
-                {/*<Input name={'search'} type={'text'} value={this.state.search} onChange={e => this.handleSearch(e.target.value)} placeholder={'검색'} />*/}
-                {/*<div style={{margin: '8px', height: '1px', backgroundColor: 'black'}} />*/}
-                {/*<div>*/}
-                  {/*{this.state.clubs && this.state.clubs.map(c =>*/}
-                    {/*<div key={c.id} style={{display: 'block', textAlign: 'center', justifyContent: 'center', borderBottom: '1px solid lightgrey', padding: '16px', color: 'grey'}}>*/}
-                      {/*<a style={{textDecoration: 'none'}} href={c.id}>{c.name}</a>*/}
-                    {/*</div>*/}
-                    {/*)*/}
-                  {/*}*/}
-                {/*</div>*/}
-              {/*</div>*/}
-            {/*}*/}
-            {/*docked*/}
-            {/*shadow={false}*/}
-            {/*styles={*/}
-              {/*{*/}
-                {/*sidebar: {*/}
-                  {/*background: "white",*/}
-                {/*}*/}
-              {/*}*/}
-            {/*}*/}
-          {/*>*/}
-            {/*<Switch>*/}
-              {/*<Route exact path="/club_search" component={ClubsearchPage}/>*/}
-              {/*<Route exact path="/club_register" component={ClubRegisterPage}/>*/}
-              {/*<Route exact path="/register" component={SignupPage}/>*/}
-              {/*<Route exact path="/login" component={LoginPage} />*/}
-            {/*</Switch>*/}
-          {/*</Sidebar>*/}
-          {/*</div>*/}
+          <div style={{paddingTop: '56px'}}>
+            <Sidebar
+              sidebar={
+                <div>
+                  <div style={{backgroundColor: 'lightblue', padding: '16px'}}>
+                   동아리 리스트
+                  </div>
+                  <Input name={'search'} type={'text'} value={this.state.search} onChange={e => this.handleSearch(e.target.value)} placeholder={'검색'} />
+                  <div style={{margin: '8px', height: '1px', backgroundColor: 'black'}} />
+                  <div>
+                    {this.state.clubs && this.state.clubs.map(c =>
+                      <div key={c.id} style={{display: 'block', textAlign: 'center', justifyContent: 'center', borderBottom: '1px solid lightgrey', padding: '16px', color: 'grey'}}>
+                        <a style={{textDecoration: 'none'}} href={c.id}>{c.name}</a>
+                      </div>
+                      )
+                    }
+                  </div>
+                </div>
+              }
+              docked
+              shadow={false}
+              styles={
+                {
+                  sidebar: {
+                    background: "white",
+                  }
+                }
+              }
+            >
+              <MyNavBar />
+              <div>
+                <Switch>
+                  <Route exact path="/club_search" component={ClubsearchPage}/>
+                  <Route exact path="/club_register" component={ClubRegisterPage}/>
+                  <Route exact path="/register" component={SignupPage}/>
+                  <Route exact path="/login" component={LoginPage} />
+                  <Route exact path="/register" component={SignupPage}/>
+                  <Route exact path="/login" component={LoginPage} />
+                  <Route exact path="/mypage" component={MyPage} />
+                </Switch>
+              </div>
+            </Sidebar>
+          </div>
       </div>
     );
   }
