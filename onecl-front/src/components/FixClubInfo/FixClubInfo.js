@@ -48,7 +48,7 @@ class FixClubInfo extends Component{
                 <label className={'inputLabel'}>소속학과</label>
                 <input className={'inputField'} value={this.state.clubDept} onChange={(e) => {this.setState({clubDept : e.target.value})}}/>
                 <label className={'inputLabel'}>지원서 제출 시 주의사항</label>
-                <input className={'inputField'} value={this.state.clubApplyMessage} onChange={(e) => {this.setState({clubApplyMessage : e.target.value})}}/>
+                <textarea className={'messageField'} value={this.state.clubApplyMessage} onChange={(e) => {this.setState({clubApplyMessage : e.target.value})}}/>
                 <div className={'buttonWrapper'}>
                     <button style={{'marginRight' : '20px'}} onClick={this.returnButtonHandler}>돌아가기</button>
                     <button onClick={this.clubInfoSubmitHandler}>확인</button>

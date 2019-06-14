@@ -42,12 +42,16 @@ class FileSubmit extends Component{
 
     render(){
         // const {applyMessage} = this.props;
-        const tmp_message = '지원서 제출 시 주의사항 적는 칸';
+        const tmp_message = '파일 제출 형식 : \n 이름 : (학번)_(이름)_지원서.pdf (ex: 2019-12345_홍길동_지원서.pdf) \n 반드시 pdf로 변환 후 제출해주세요.';
         return(
             <div className={'fileSubmitWrapper'}>
                 <p className={'clubApplyTitle'}><strong>동아리 지원</strong></p>
                 <div className={'applyMessage'}>
-                    {tmp_message}
+                    {
+                        tmp_message.split('\n').map( line => {
+                            return (<span>{line}<br/></span>)
+                        })
+                    }
                 </div>
                 <hr/>
                 <input type={'file'} style={{'marginBottom' : '20px'}} onChange={this.fileSelectHandler} />
