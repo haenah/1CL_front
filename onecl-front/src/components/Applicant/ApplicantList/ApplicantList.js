@@ -6,7 +6,20 @@ import {Link} from 'react-router-dom'
 class ApplicantList extends Component{
     state={
         applicantList : [],
-        new_applicantList : [],
+        tmp_applicantList : [
+            {
+                user : '음정훈',
+                name : '지원서1',
+            },
+            {
+                user : '백근영',
+                name : '지원서2',
+            },
+            {
+                user : '안재원',
+                name : '지원서3',
+            },
+        ],
     };
 
     initialize = async () => {
@@ -91,7 +104,7 @@ class ApplicantList extends Component{
     render(){
         return(
             <div>
-                {this.state.applicantList.map(
+                {this.state.tmp_applicantList.map(
                     (applicant) => {
                         return(
                             <div>
