@@ -31,7 +31,10 @@
     src: url('./fonts/Noto_Serif_KR/NotoSerifKR-Black.otf') format('otf');
 }
 
-
+.limiter-cat {
+    width: 100%;
+    margin: 10px;
+}
 
 .Category-box {
     position:relative;

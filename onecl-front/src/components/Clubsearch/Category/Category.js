@@ -101,7 +101,7 @@ class Category extends Component {
         const { handleGetClubList } = this;
         return (
 
-            <div className="limiter">
+            <div className="limiter-cat">
                 {/*<div className="container-clubregister">*/}
                     <div className="wrap-clubregister">
                         <form id="app-cover">

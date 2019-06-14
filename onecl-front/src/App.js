@@ -8,7 +8,6 @@ import {SignupPage, ClubsearchPage, LoginPage, MainPage, ClubRegisterPage} from 
 const App = () => {
     return(
         <div>
-          <Container fluid>
             {/*<MainPage />*/}
             {/*<Col md={{size: '12', offset: '1'}}>*/}
               <Switch>
@@ -19,7 +18,6 @@ const App = () => {
                   <Route exact path="/login" component={LoginPage} />
               </Switch>
             {/*</Col>*/}
-          </Container>
         </div>
     );
 };
