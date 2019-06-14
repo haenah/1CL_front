@@ -8,6 +8,10 @@ class MyPage extends Component {
     };
   }
 
+  componentWillMount() {
+    this.props.fetchJoin();
+  }
+
   loginCheck() {
     if (!sessionStorage.getItem('token')) {
       this.props.history.push('/login');
@@ -15,6 +19,7 @@ class MyPage extends Component {
   }
 
   render() {
+    console.log('props', this.props);
     return(
       <div>
         {this.loginCheck()}
@@ -26,7 +31,11 @@ class MyPage extends Component {
         <br/>
         <span>Email: </span>
         <span>{sessionStorage.getItem('email')}</span>
+
+
+
       </div>
+
     );
   }
 }

@@ -44,7 +44,7 @@ class MyNavBar extends Component {
                   <DropdownItem href={'/mypage'}>
                     마이페이지
                   </DropdownItem>
-                  <DropdownItem onClick={() => sessionStorage.removeItem('token')}>
+                  <DropdownItem onClick={() => sessionStorage.clear()}>
                     Logout
                   </DropdownItem>
                 </div> :
