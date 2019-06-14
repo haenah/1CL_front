@@ -1,9 +1,11 @@
 import React from 'react';
 import MyPageContainer from "../containers/MyPage/MyPageContainer";
 
-const MyPage = () => {
+const MyPage = ({history}) => {
   return(
-      <MyPageContainer />
+      <MyPageContainer
+        history={history}
+      />
   );
 };
 

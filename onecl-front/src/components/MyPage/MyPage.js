@@ -15,7 +15,6 @@ class MyPage extends Component {
   }
 
   render() {
-    console.log('user');
     return(
       <div>
         {this.loginCheck()}

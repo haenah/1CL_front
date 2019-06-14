@@ -12,7 +12,6 @@ class ApplicantList extends Component{
         const url = `http://127.0.0.1:8000/upload/file/?clubID=${this.props.id}`
         try{
             const data = await axios.get(url);
-            console.log(data);
             this.setState({
                 applicantList: data.data.results,
             });
