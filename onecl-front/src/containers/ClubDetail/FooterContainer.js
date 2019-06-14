@@ -5,7 +5,6 @@ import * as actions from '../../actions/ClubDetail/index';
 const mapStateToProps = (state, props) => {
     return {
         id : props.id,
-        history: props.history,
     }
 };
 

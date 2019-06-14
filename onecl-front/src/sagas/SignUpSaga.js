@@ -34,7 +34,7 @@ function* confirmCode(data) {
 
 function* confirmId(data) {
     try {
-        yield call(api.post, url_id, {username:data.id});
+        yield call(api.post, url_id, {username:data.id})
         yield put(actions.idValidation(1))
     } catch(e){
         yield put(actions.idValidation(2))

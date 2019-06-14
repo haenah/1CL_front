@@ -22,7 +22,6 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state, props) => {
     return {
         id : props.id,
-        authLevel : state.ClubDetail.authLevel,
     }
 };
 

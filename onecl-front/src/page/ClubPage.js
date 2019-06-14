@@ -11,7 +11,7 @@ const ClubPage = ({history, match}) => {
         <div>
             <HeaderContainer id={id}/>
             <BodyContainer id={id} history={history}/>
-            <FooterContainer id={id} history={history}/>
+            <FooterContainer id={id}/>
             <ModalContainer/>
         </div>
     )
