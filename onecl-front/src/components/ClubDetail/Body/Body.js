@@ -157,6 +157,9 @@ class Body extends Component{
         return (
           <div>
               <ReactTable
+                getTrProps={(state, rowInfo) => ({
+                    onClick: () => this.props.history.push(`/document/${rowInfo.original.id}`)
+                })}
                 data={tmp_docList}
                 columns={[
                     {
@@ -230,7 +233,7 @@ class Body extends Component{
         // );
 
 
-        const memList = (memberList.results === undefined) ? null : memberList.results.map(
+        const memList = !memberList.results ? null : memberList.results.map(
             (member) => {
                 return(
                     <div>
