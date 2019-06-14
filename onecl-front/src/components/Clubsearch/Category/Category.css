@@ -28,7 +28,7 @@
 
 @font-face {
     font-family: NotoSerifKR-Black;
-    src: url('./fonts/Noto_Serif_KR/NotoSerifKR-Black') format('otf');
+    src: url('./fonts/Noto_Serif_KR/NotoSerifKR-Black.otf') format('otf');
 }
 
 
@@ -60,6 +60,7 @@
     margin: 0 auto 0 auto;
 }
 
-.title {
-    margin-bottom: 5px;
+.naming {
+    font-family: NotoSerifKR-Black;
+    font-size: large;
 }
