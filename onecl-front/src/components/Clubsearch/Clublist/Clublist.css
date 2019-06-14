@@ -40,9 +40,17 @@
 .container-table100 {
     width: 100%;
     /*min-height: 100vh;*/
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+
+
 }
 
 .wrap-table100 {
@@ -99,6 +107,7 @@ table td.r, table th.r {
     font-weight: unset;
 }
 
+
 tbody tr:nth-child(even) {
     background-color: #f5f5f5;
 }
@@ -142,3 +151,80 @@ tbody tr:hover {
     padding: 15% 0 15% 0;
     font: NotoSerifKR-Black;
 }
+
+/*tbody, thead, table, table th, table tr {*/
+/*    display: block;*/
+/*}*/
+
+/*tbody{*/
+/*    overflow-x: scroll;*/
+/*}*/
+
+/*@media screen and (max-width: 992px) {*/
+/*    table {*/
+/*        display: block;*/
+/*    }*/
+/*    table > *, table tr, table td, table th {*/
+/*        display: block;*/
+/*    }*/
+/*    table thead {*/
+/*        display: none;*/
+/*    }*/
+/*    table tbody tr {*/
+/*        height: auto;*/
+/*        padding: 37px 0;*/
+/*    }*/
+/*    table tbody tr td {*/
+/*        padding-left: 40% !important;*/
+/*        margin-bottom: 24px;*/
+/*    }*/
+/*    table tbody tr td:last-child {*/
+/*        margin-bottom: 0;*/
+/*    }*/
+/*    table tbody tr td:before {*/
+/*        font-family: OpenSans-Regular;*/
+/*        font-size: 14px;*/
+/*        color: #999999;*/
+/*        line-height: 1.2;*/
+/*        font-weight: unset;*/
+/*        position: absolute;*/
+/*        width: 40%;*/
+/*        left: 30px;*/
+/*        top: 0;*/
+/*    }*/
+/*    table tbody tr td:nth-child(1):before {*/
+/*        content: "Department";*/
+/*    }*/
+/*    table tbody tr td:nth-child(2):before {*/
+/*        content: "Category";*/
+/*    }*/
+/*    table tbody tr td:nth-child(3):before {*/
+/*        content: "Club Name";*/
+/*    }*/
+
+
+/*    .column1,*/
+/*    .column2,*/
+/*    .column3 {*/
+/*        text-align: left;*/
+/*    }*/
+
+/*    .column1,*/
+/*    .column2,*/
+/*    .column3 {*/
+/*        width: 100%;*/
+/*    }*/
+
+/*    tbody tr {*/
+/*        font-size: 14px;*/
+/*    }*/
+/*}*/
+
+/*@media (max-width: 576px) {*/
+/*    .container-table100 {*/
+/*        padding-left: 15px;*/
+/*        padding-right: 15px;*/
+/*    }*/
+/*}*/
+
+
