@@ -29,7 +29,7 @@ const Member = ({name, auth_level, clubID, memberID, buttonClickHandler}) => {
         <div style={{'margin' : '20px'}}>
             <p style={{'display':'inline-block', 'width':'250px'}}>{name}</p>
             <p style={{'display':'inline-block', 'width':'250px'}}>{position(auth_level)}</p>
-            <button style={{'display' : 'inline-block'}} onClick={() => buttonClickHandler(clubID, memberID)}>등급 변경</button>
+            <button className='change-lvl-button' onClick={() => buttonClickHandler(clubID, memberID)}>등급 변경</button>
         </div>
     );
 };
@@ -209,6 +209,7 @@ class Body extends Component{
 
         if(componentStatus === 2){
             return(
+                <div className='container-notice'>
                 <div className={'memListWrapper'}>
                     <div className={'labelWrapper'}>
                         <p className={'memListLabel'}>회원 이름</p>
@@ -216,6 +217,7 @@ class Body extends Component{
                         <hr/>
                     </div>
                     {memList}
+                </div>
                 </div>
             )
         }
@@ -258,6 +260,7 @@ class Body extends Component{
             }
             else{
                 return(
+                    <div className='container-notice'>
                     <div className={'boardWrapper'}>
                         <select className={'categorySelect'} onChange={this.categorySearchHandler}>
                             <option value='전체'>전체</option>
@@ -268,6 +271,7 @@ class Body extends Component{
                         <div className={'docListWrapper'}>
                             {docList}
                         </div>
+                    </div>
                     </div>
                 )
             }

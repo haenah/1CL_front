@@ -36,8 +36,8 @@ class ApplicantList extends Component{
                     (applicant) => {
                         return(
                             <div>
-                                <p style={{'display': 'inline-block'}}>{applicant.user}</p>
-                                <a style={{'display': 'inline-block'}} href={applicant.file}>{applicant.name}</a>
+                                <p style={{'display': 'inline-block', 'border-radius' : '10px'}}>{applicant.user}</p>
+                                <a style={{'display': 'inline-block', 'border-radius' : '10px'}} href={applicant.file}>{applicant.name}</a>
                                 <button >합격</button>
                                 <button>불합격</button>
                             </div>
@@ -45,7 +45,7 @@ class ApplicantList extends Component{
                     }
                 )}
                 <hr />
-                <button onClick={this.returnButtonHandler}>돌아가기</button>
+                <button style={{'border-radius' : '10px'}} onClick={this.returnButtonHandler}>돌아가기</button>
             </div>
         )
     }

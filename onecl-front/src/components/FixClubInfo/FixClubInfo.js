@@ -40,18 +40,58 @@ class FixClubInfo extends Component{
 
     render(){
         return(
-            <div>
-                <label className={'inputLabel'}>동아리명</label>
-                <input className={'inputField'} value={this.state.clubName} onChange={(e) => {this.setState({clubName : e.target.value})}}/>
-                <label className={'inputLabel'}>소속분류</label>
-                <input className={'inputField'} value={this.state.clubCat} onChange={(e) => {this.setState({clubCat : e.target.value})}}/>
-                <label className={'inputLabel'}>소속학과</label>
-                <input className={'inputField'} value={this.state.clubDept} onChange={(e) => {this.setState({clubDept : e.target.value})}}/>
-                <label className={'inputLabel'}>지원서 제출 시 주의사항</label>
-                <textarea className={'messageField'} value={this.state.clubApplyMessage} onChange={(e) => {this.setState({clubApplyMessage : e.target.value})}}/>
-                <div className={'buttonWrapper'}>
-                    <button style={{'marginRight' : '20px'}} onClick={this.returnButtonHandler}>돌아가기</button>
-                    <button onClick={this.clubInfoSubmitHandler}>확인</button>
+            <div className='limiter'>
+                <div className='container-login100'>
+                    <div className='wrap-login100'>
+                        <span className="fix-title">
+                          <h2>동아리 기본 정보 수정하기</h2>
+                        </span>
+                        <div className='boxbox'>
+                            <label className={'inputLabel'}>동아리명</label>
+                            <div className='clubName'>
+                              <span>
+                              <input className='inputField' value={this.state.clubName} onChange={(e) => {this.setState({clubName : e.target.value})}}/>
+                              <span className="focus-fix"></span>
+                                <span className="symbol-fix">
+                                  <i className="fa fa-users" aria-hidden="true"></i>
+                                </span>
+                              </span>
+                            </div>
+
+
+                            <label className={'inputLabel'}>소속분류</label>
+                            <div className='catName'>
+                            <span>
+                            <input className={'inputField'} value={this.state.clubCat} onChange={(e) => {this.setState({clubCat : e.target.value})}}/>
+                            <span className="focus-fix"></span>
+                                <span className="symbol-fix">
+                                  <i className="fa fa-tag" aria-hidden="true"></i>
+                                </span>
+                            </span>
+                            </div>
+
+                            <label className={'inputLabel'}>소속학과</label>
+                            <div className='deptName'>
+                              <span>
+                              <input className='inputField' value={this.state.clubDept} onChange={(e) => {this.setState({clubDept : e.target.value})}}/>
+                              <span className="focus-fix"></span>
+                                <span className="symbol-fix">
+                                  <i className="fa fa-compass" aria-hidden="true"></i>
+                                </span>
+                              </span>
+                            </div>
+
+
+
+
+                            <label className={'inputLabel'}>지원서 제출 시 주의사항 : </label>
+                            <textarea className={'messageField'} placeholder={' 200자 이하로 적어주세요.'} value={this.state.clubApplyMessage} onChange={(e) => {this.setState({clubApplyMessage : e.target.value})}}/>
+                            <div className={'buttonWrapper'}>
+                                <button style={{'marginRight' : '20px', 'border-radius' : '10px'}} onClick={this.returnButtonHandler}>돌아가기</button>
+                                <button style={{'border-radius' : '10px'}}onClick={this.clubInfoSubmitHandler}>확인</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         )

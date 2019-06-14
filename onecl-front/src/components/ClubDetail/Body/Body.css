@@ -1,3 +1,8 @@
+.change-lvl-button {
+    display: inline-block;
+    border-radius: 10px;
+}
+
 .boardWrapper {
     width : 500px;
     position : fixed;
@@ -24,11 +29,12 @@
 }
 
 .memListWrapper {
-    box-shadow : 3px 3px 3px 3px gray;
+    box-shadow : 3px 3px 3px 3px;
     position : fixed;
     top : 50%;
     left : 50%;
     transform : translate(-50%,-50%);
+    background-color: white;
 }
 
 .labelWrapper {
@@ -60,6 +66,7 @@
 .adminOption {
     margin-right: 25px;
     margin-left: 25px;
+    border-radius: 10px;
 }
 
 .adminMessage {

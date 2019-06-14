@@ -34,6 +34,12 @@ class FixClubPost extends Component {
 
     render(){
         return(
+            <div className='limiter'>
+                <div className='container-login100'>
+                    <div className='wrap-login100'>
+                        <span className="fix-title">
+                          <h2>동아리 소개글 수정</h2>
+                        </span>
             <div style={{
                 'marginTop' : '20px',
                 'border' : '1px solid grey',
@@ -44,6 +50,7 @@ class FixClubPost extends Component {
                             'width' : '90%',
                             'height' : '30px',
                             'margin' : '20px',
+                            'border-radius': '2px',
                             }}
                           placeholder={'제목'}
                           onChange={this.docTitleInputHandler}/>
@@ -62,9 +69,12 @@ class FixClubPost extends Component {
                         filebrowserUploadUrl: 'http://127.0.0.1:8000/image/',
                     }}
                 />
-                <button onClick={this.documentSubmitHandler} style={{'marginRight' : '20px'}}>작성</button>
-                <button onClick={this.returnButtonHandler}>돌아가기</button>
+                <button onClick={this.documentSubmitHandler} style={{'margin' : '20px', 'border-radius': '10px'}}>작성</button>
+                <button style={{'border-radius': '10px'}} onClick={this.returnButtonHandler}>돌아가기</button>
                 {/*<button onClick={() => {console.log(this.state.docContent)}}>show me doc content</button>*/}
+            </div>
+                    </div>
+                </div>
             </div>
         )
     }
