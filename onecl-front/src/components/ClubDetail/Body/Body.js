@@ -246,8 +246,8 @@ class Body extends Component{
                                 'margin' : '20px',
                             }}
                             config={{
-                                filebrowserBrowseUrl: 'http://127.0.0.1:8000/image/',
-                                filebrowserUploadUrl: 'http://127.0.0.1:8000/image/',
+                                filebrowserBrowseUrl: `http://127.0.0.1:8000/upload/image/?clubID=${id}`,
+                                filebrowserUploadUrl: `http://127.0.0.1:8000/upload/image/?clubID=${id}`,
                             }}
                         />
                         <button onClick={this.documentSubmitHandler} style={{'marginRight' : '20px'}}>작성</button>
