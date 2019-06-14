@@ -7,3 +7,6 @@ export {default as ClubPage} from './ClubPage';
 export {default as ClubDocumentPage} from './ClubDocumentPage';
 export {default as ClubApplyPage} from './ClubApplyPage';
 export {default as ApplicantListPage} from './ApplicantListPage';
+export {default as FixClubInfoPage} from './FixClubInfoPage';
+export {default as AssignMasterPage} from './AssignMasterPage';
+export {default as FixClubPostPage} from './FixClubPostPage';

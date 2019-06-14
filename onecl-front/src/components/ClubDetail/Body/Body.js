@@ -198,10 +198,10 @@ class Body extends Component{
                 <div className={'adminOptionWrapper'}>
                     <p className={'adminMessage'}>{'원하시는 옵션을 선택하세요.'}</p>
                     <div className={'adminOptionSet'}>
-                        <button className={'adminOption'}>동아리 기본 정보 수정</button>
-                        <button className={'adminOption'}>동아리 소개글 수정</button>
+                        <button className={'adminOption'} onClick={() => {history.push(`/club/${id}/fix_club_info`)}}>동아리 기본 정보 수정</button>
+                        <button className={'adminOption'} onClick={() => {history.push(`/club/${id}/fix_club_post`)}}>동아리 소개글 수정</button>
                         <button className={'adminOption'} onClick={() => {history.push(`/club/${id}/recruiter`)}}>지원자 관리</button>
-                        <button className={'adminOption'}>차기 회장 임명</button>
+                        <button className={'adminOption'} onClick={() => {history.push(`/club/${id}/assign_next_master`)}}>차기 회장 임명</button>
                     </div>
                 </div>
             )

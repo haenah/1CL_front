@@ -25,18 +25,28 @@ class ApplicantList extends Component{
         this.initialize();
     };
 
+    returnButtonHandler = () => {
+        this.props.history.push(`/club/${this.props.id}`);
+    };
+
     render(){
         return(
-            this.state.applicantList.map(
-                (applicant) => {
-                    return(
-                        <div>
-                            <p style={{'display': 'inline-block'}}>{applicant.user}</p>
-                            <a style={{'display': 'inline-block'}} href={applicant.file}>{applicant.name}</a>
-                        </div>
-                    )
-                }
-            )
+            <div>
+                {this.state.applicantList.map(
+                    (applicant) => {
+                        return(
+                            <div>
+                                <p style={{'display': 'inline-block'}}>{applicant.user}</p>
+                                <a style={{'display': 'inline-block'}} href={applicant.file}>{applicant.name}</a>
+                                <button >합격</button>
+                                <button>불합격</button>
+                            </div>
+                        )
+                    }
+                )}
+                <hr />
+                <button onClick={this.returnButtonHandler}>돌아가기</button>
+            </div>
         )
     }
 }
