@@ -1,0 +1,15 @@
+.inputField {
+}
+
+.inputLabel {
+    margin-top: 20px;
+}
+
+.buttonWrapper {
+    margin-top: 20px;
+}
+
+.messageField {
+    width : 100%;
+    height : 200px;
+}
