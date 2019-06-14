@@ -9,7 +9,7 @@ class ApplicantList extends Component{
     };
 
     initialize = async () => {
-        const url = `http://127.0.0.1:8000/upload/file/?clubID=${this.props.id}`
+        const url = `http://127.0.0.1:8000/upload/file/?clubID=${this.props.id}`;
         try{
             const data = await axios.get(url);
             console.log(data);
@@ -29,6 +29,51 @@ class ApplicantList extends Component{
         this.props.history.push(`/club/${this.props.id}`);
     };
 
+    removeFromList = async (id) => {
+        const delete_url = `http://127.0.0.1:8000/upload/file/${id}`;
+        try{
+            const response = await axios.delete(delete_url);
+            console.log(response)
+        }catch (e) {
+            alert(e)
+        }
+
+        const get_url = `http://127.0.0.1:8000/upload/file/?clubID=${this.props.id}`;
+        try{
+            const response = await axios.get(get_url);
+            this.setState({
+                applicantList : response.data.results,
+            })
+        }catch (e) {
+            alert(e)
+        }
+    };
+
+    passHandler = async (applicant) => {
+        const url = `http://127.0.0.1:8000/join/`;
+        try{
+            const data = {
+                user : applicant.user,
+                club : this.props.id,
+            };
+            const config = {
+                headers : {
+                    authorization : 'token ' + sessionStorage.getItem('token')
+                }
+            };
+            await axios.post(url, data, config);
+            alert('가입 승인이 완료되었습니다.');
+        }catch (e) {
+            alert('an error was caught : ' + e)
+        }
+        this.removeFromList(applicant.id)
+    };
+
+    failHandler = async (applicant) => {
+        alert('불합격 처리되었습니다.')
+        this.removeFromList(applicant.id)
+    };
+
     render(){
         return(
             <div>
@@ -38,8 +83,8 @@ class ApplicantList extends Component{
                             <div>
                                 <p style={{'display': 'inline-block'}}>{applicant.user}</p>
                                 <a style={{'display': 'inline-block'}} href={applicant.file}>{applicant.name}</a>
-                                <button >합격</button>
-                                <button>불합격</button>
+                                <button onClick={() => this.passHandler(applicant)}>합격</button>
+                                <button onClick={() => this.failHandler(applicant)}>불합격</button>
                             </div>
                         )
                     }

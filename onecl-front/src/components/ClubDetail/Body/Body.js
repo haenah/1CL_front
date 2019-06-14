@@ -14,14 +14,14 @@ const Document = ({clubID, id, title}) => {
 const Member = ({name, auth_level, clubID, memberID, buttonClickHandler}) => {
     const position = (auth_level) => {
         switch (auth_level){
-            case 0 :
-                return '회장';
             case 1 :
-                return '임원';
+                return '일반 회원';
             case 2 :
-                return '일반 회원';
+                return '임원';
+            case 3 :
+                return '회장';
             default :
-                return '일반 회원';
+                return '비회원';
         }
     };
 
@@ -107,6 +107,7 @@ class Body extends Component{
     };
 
     authChangeButtonHandler = (clubID, memberID) => {
+        console.log(this.props.memberList);
         this.props.authChangeModalVisualize(clubID, memberID);
     };
 
@@ -175,13 +176,13 @@ class Body extends Component{
             }
         );
 
-        const memList = tmp_memList.map(
+        const memList = (memberList.results === undefined) ? null : memberList.results.map(
             (member) => {
                 return(
                     <div>
                         <Member
                             key={member.id}
-                            name={member.name}
+                            name={member.user}
                             auth_level={member.auth_level}
                             clubID={this.props.id}
                             memberID={member.id}
@@ -252,7 +253,7 @@ class Body extends Component{
                         />
                         <button onClick={this.documentSubmitHandler} style={{'marginRight' : '20px'}}>작성</button>
                         <button onClick={this.returnButtonHandler}>돌아가기</button>
-                        {/*<button onClick={() => {console.log(this.state.docContent)}}>show me doc content</button>*/}
+                        <button onClick={() => {console.log(this.state.docContent)}}>show me doc content</button>
                     </div>
                 )
             }

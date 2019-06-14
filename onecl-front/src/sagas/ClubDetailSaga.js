@@ -15,7 +15,18 @@ function* watchGetDocListRequest(){
 }
 
 function* getMemberList(id) {
-    /*TODO*/
+    const url = `http://127.0.0.1:8000/join/?club=${id}&auth_level=1`;
+    const config = {
+        headers : {
+            'authorization' : 'token ' + sessionStorage.getItem('token')
+        }
+    };
+    try{
+        const response = yield call(api.get, url, config);
+        yield put(actions.updateMemberList(response))
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 function* watchGetMemListRequest(){
@@ -26,7 +37,19 @@ function* watchGetMemListRequest(){
 }
 
 function* getAuthLevel(id) {
-    /*TODO*/
+    const url = `http://127.0.0.1:8000/join/auth_level/?club=${id}`;
+    const config = {
+        headers : {
+            'authorization' : 'token ' + sessionStorage.getItem('token')
+        }
+    };
+    try{
+        const response = yield call(api.get, url, config);
+        console.log(response);
+        yield put(actions.updateAuthLevel(response.auth_level))
+    }catch (e) {
+        alert(e)
+    }
 }
 
 function* watchGetAuthLevelRequest(){
