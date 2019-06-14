@@ -4,21 +4,19 @@ import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.css';
 import MyNavBar from './Navbar';
 
+import {Input} from 'reactstrap';
 import {
-  Input,
-  Container,
-  Header,
-  // Navbar,
-  NavbarBrand,
-  NavbarToggler,
-  Collapse,
-  Nav,
-  NavItem,
-  NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Row, Col
-} from 'reactstrap';
-import {ClubRegisterPage, ClubsearchPage, LoginPage, MainPage, SignupPage} from "../../page";
+  ApplicantListPage, AssignMasterPage,
+  ClubApplyPage,
+  ClubDocumentPage,
+  ClubRegisterPage,
+  ClubsearchPage, FixClubInfoPage, FixClubPostPage,
+  LoginPage,
+  SignupPage
+} from "../../page";
 import {Route, Switch} from "react-router-dom";
 import MyPage from "../../page/MyPage";
+import ClubPage from "../../page/ClubPage";
 
 class Main extends Component {
 
@@ -57,62 +55,6 @@ class Main extends Component {
   render() {
     return(
       <div>
-
-        {/*<Row>*/}
-          {/*<Col md>*/}
-          {/*<div className='heading-space'>*/}
-            {/*<div className='heading'>*/}
-              {/*<div className='options'>*/}
-                {/*<a href={'/'}>logo</a>*/}
-                {/*<div className='search-bar'>*/}
-                  {/*<div className='search'>*/}
-                    {/*<input className='search-type' maxLength='2048' type='text' placeholder='검색'/>*/}
-                  {/*</div>*/}
-                {/*</div>*/}
-                {/*<div className='login-section'>*/}
-                  {/*<div className='line' />*/}
-                  {/*<a className='login' href='/login'>Login</a>*/}
-                  {/*<a className='signup' href='/register'>Sign Up Here</a>*/}
-                {/*</div>*/}
-              {/*</div>*/}
-            {/*</div>*/}
-          {/*</div>*/}
-          {/*</Col>*/}
-        {/*</Row>*/}
-
-          {/*<Navbar color="light" light expand="md">*/}
-            {/*<NavbarBrand href="/">logo</NavbarBrand>*/}
-            {/*<NavbarToggler onClick={this.toggle} />*/}
-            {/*<Collapse isOpen={this.state.isOpen} navbar>*/}
-              {/*<Nav className="ml-auto" navbar>*/}
-                {/*<NavItem>*/}
-                  {/*<NavLink href="/club_search/">동아리 검색</NavLink>*/}
-                {/*</NavItem>*/}
-                {/*<NavItem>*/}
-                  {/*<NavLink href="/club_register">동아리 등록</NavLink>*/}
-                {/*</NavItem>*/}
-                {/*<UncontrolledDropdown nav inNavbar>*/}
-                  {/*<DropdownToggle nav caret>*/}
-                    {/*User*/}
-                  {/*</DropdownToggle>*/}
-                  {/*<DropdownMenu right>*/}
-                    {/*<DropdownItem href="/register">*/}
-                      {/*Sign Up*/}
-                    {/*</DropdownItem>*/}
-                    {/*{sessionStorage.getItem('token') ?*/}
-                       {/*<DropdownItem onClick={() => sessionStorage.removeItem('token')}>*/}
-                        {/*Logout*/}
-                      {/*</DropdownItem> :*/}
-                      {/*<DropdownItem href="/login">*/}
-                        {/*Login*/}
-                      {/*</DropdownItem>*/}
-                    {/*}*/}
-                  {/*</DropdownMenu>*/}
-                {/*</UncontrolledDropdown>*/}
-              {/*</Nav>*/}
-            {/*</Collapse>*/}
-          {/*</Navbar>*/}
-
           <div style={{paddingTop: '56px'}}>
             <Sidebar
               sidebar={
@@ -152,6 +94,13 @@ class Main extends Component {
                   <Route exact path="/register" component={SignupPage}/>
                   <Route exact path="/login" component={LoginPage} />
                   <Route exact path="/mypage" component={MyPage} />
+                  <Route exact path="/club/:id" component={ClubPage} />
+                  <Route exact path="/club/:id/apply" component={ClubApplyPage} />
+                  <Route exact path="/club/:clubID/document/:id" component={ClubDocumentPage} />
+                  <Route exact path="/club/:id/recruiter" component={ApplicantListPage} />
+                  <Route exact path="/club/:id/fix_club_info" component={FixClubInfoPage} />
+                  <Route exact path="/club/:id/fix_club_post" component={FixClubPostPage} />
+                  <Route exact path="/club/:id/assign_next_master" component={AssignMasterPage} />
                 </Switch>
               </div>
             </Sidebar>
