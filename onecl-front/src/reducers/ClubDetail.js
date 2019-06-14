@@ -31,6 +31,12 @@ const ClubDetail = (state=initialState, action) => {
                 memberList: action.memberList,
             };
 
+        case types.UPDATE_AUTH_LEVEL :
+            return {
+                ...state,
+                authLevel : action.authLevel,
+            };
+
         case types.CHANGE_STATUS :
             return {
                 ...state,
