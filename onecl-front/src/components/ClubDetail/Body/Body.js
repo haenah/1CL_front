@@ -157,7 +157,7 @@ class Body extends Component{
                 auth_level: 3,
             }
         ];
-        const tmp_infoPost = `<p>HIS에서 동아리원을 모집합니다.</p><p><strong>지원기간 : 5/30 ~ 5/31</strong></p><img src="http://127.0.0.1:8000/media/백근영님_인터넷용.jpg"/>`;
+        const tmp_infoPost = `<p>HIS에서 동아리원을 모집합니다.</p><p><strong>지원기간 : 5/30 ~ 5/31</strong></p><img style="height:200px; width:142px" src="http://127.0.0.1:8000/media/0005.jpg"/>`;
 
         const docList = tmp_docList.map(
             (document) => {
