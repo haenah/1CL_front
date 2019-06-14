@@ -8,7 +8,6 @@ import {SignupPage, ClubsearchPage, LoginPage, MainPage, ClubRegisterPage, ClubP
 const App = () => {
     return(
         <div>
-          <Container fluid>
             {/*<MainPage />*/}
             {/*<Col md={{size: '12', offset: '1'}}>*/}
               <Switch>
@@ -26,7 +25,6 @@ const App = () => {
                   <Route exact path="/club/:id/assign_next_master" component={AssignMasterPage} />
               </Switch>
             {/*</Col>*/}
-          </Container>
         </div>
     )
 };

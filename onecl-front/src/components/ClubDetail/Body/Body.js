@@ -274,14 +274,14 @@ class Body extends Component{
         }
         else{
             return(
-                <div
-                    style={{
-                        'boxShadow' : '3px 3px 3px 3px gray',
-                        'margin' : '20px',
-                    }}
-                    dangerouslySetInnerHTML={
-                    {__html : tmp_infoPost}
-                }>
+                <div className='container-notice'>
+                    <div className='wrap-notice'>
+                        <div className='notice'
+                            dangerouslySetInnerHTML={
+                            {__html : tmp_infoPost}
+                        }>
+                        </div>
+                    </div>
                 </div>
             )
         }

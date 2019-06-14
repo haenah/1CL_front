@@ -69,3 +69,29 @@
     width : 100%;
     font-size: 30px;
 }
+
+.container-notice {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    background: linear-gradient(-135deg, #c0dcf3, white);
+}
+
+.wrap-notice {
+    align-self: start;
+    margin: 10px;
+    width: 100%;
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.notice {
+    boxShadow : '3px 3px 3px 3px gray';
+    margin : 20px;
+    border: black;
+}
+
