@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom'
 class ApplicantList extends Component{
     state={
         applicantList : [],
+        new_applicantList : [],
     };
 
     initialize = async () => {
@@ -16,10 +17,23 @@ class ApplicantList extends Component{
             this.setState({
                 applicantList: data.data.results,
             });
+            // this.getUserInfo();
         }catch (e) {
             alert('an error was caught :' + e);
         }
     };
+    //
+    // getUserInfo = () => {
+    //     this.setState({
+    //         new_applicantList : this.state.applicantList.map(
+    //             async (applicant) => {
+    //                 const url = `http://127.0.0.1:8000/auth/user/${applicant.user}`;
+    //                 const response = await axios.get(url);
+    //             }
+    //         )
+    //     });
+    //     console.log(this.state.new_applicantList)
+    // };
 
     componentDidMount(){
         this.initialize();

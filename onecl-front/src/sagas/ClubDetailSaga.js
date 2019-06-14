@@ -48,7 +48,7 @@ function* getAuthLevel(id) {
         console.log(response);
         yield put(actions.updateAuthLevel(response.auth_level))
     }catch (e) {
-        alert(e)
+        console.log(e)
     }
 }
 
