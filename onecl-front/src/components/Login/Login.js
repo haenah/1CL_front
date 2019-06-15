@@ -28,6 +28,10 @@ class Login extends Component {
     }
   };
 
+  keyPressHandler = (e) => {
+    if (e.key === 'Enter') this.onLogin(this.state)
+  }
+
   render() {
     return (
         <div>
@@ -63,8 +67,8 @@ class Login extends Component {
                       type={'text'}
                       placeholder={'Username'}
                       value={this.state.username}
-                      onChange={e => this.setState({ username: e.target.value })
-                      }
+                      onChange={e => this.setState({ username: e.target.value })}
+                      onKeyPress={this.keyPressHandler}
                   />
                 </span>
                 <span className="focus-input100"></span>
@@ -80,6 +84,7 @@ class Login extends Component {
                       placeholder={'Password'}
                       value={this.state.password}
                       onChange={e => this.setState({ password: e.target.value })}
+                      onKeyPress={this.keyPressHandler}
                   />
                 </span>
                 <span className="focus-input100"></span>
