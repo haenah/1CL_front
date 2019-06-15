@@ -3,10 +3,24 @@ import api from '../api'
 import * as types from '../actions/ClubApply/ActionTypes'
 import * as actions from '../actions/ClubApply/index'
 
+const base_url = 'http://127.0.0.1:8000/';
+const config = {
+    headers : {
+        'authorization' : 'token ' + sessionStorage.getItem('token'),
+        'content-type' : 'application/json',
+    }
+};
+
 function* getApplyMessage(clubID) {
-    const url = '/*TODO*/';
-    const applyMessage = api.get(url);
-    yield put(actions.updateApplyMessage(applyMessage))
+    const url = base_url + `club/${clubID}`;
+    try{
+        let response;
+        if(sessionStorage.getItem('token') === null) response = yield call(api.get, url);
+        else response = yield call(api.get, url, config);
+        yield put(actions.updateApplyMessage(response.apply_message))
+    }catch (e) {
+        console.log('get applymessage' + e);
+    }
 }
 
 function* watchGetApplyMessageRequest(){

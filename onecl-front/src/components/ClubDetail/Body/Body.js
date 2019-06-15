@@ -24,48 +24,10 @@ const Member = ({name, auth_level, clubID, joinID, buttonClickHandler}) => {
         <div style={{'margin' : '20px'}}>
             <p style={{'display':'inline-block', 'width':'250px'}}>{name}</p>
             <p style={{'display':'inline-block', 'width':'250px'}}>{position(auth_level)}</p>
-            <button style={{'display' : 'inline-block'}} onClick={() => buttonClickHandler(clubID, joinID, name)}>등급 변경</button>
+            <button style={{'display' : 'inline-block'}} disabled={auth_level === 3} onClick={() => buttonClickHandler(clubID, joinID, name)}>등급 변경</button>
         </div>
     );
 };
-
-const tmp_docList = [
-    {
-        id: 1,
-        title: 'first post',
-        type: 'announcement',
-        date: 'date1',
-        writer: 'baek'
-    },
-    {
-        id: 2,
-        title: 'second post',
-        type: 'announcement',
-        date: 'date2',
-        writer: 'eum'
-    },
-    {
-        id: 3,
-        title: 'third post',
-        type: 'open',
-        date: 'date3',
-        writer: 'ahn'
-    },
-    {
-        id: 4,
-        title: 'fourth post',
-        type: 'open',
-        date: 'date4',
-        writer: 'park'
-    },
-    {
-        id: 5,
-        title: 'fifth post',
-        type: 'announcement',
-        date: 'date5',
-        writer: 'baek'
-    },
-];
 
 class Body extends Component{
     state = {
@@ -171,7 +133,7 @@ class Body extends Component{
                     },
                     {
                         Header: "게시판",
-                        accessor: 'type',
+                        accessor: 'type_name',
                     },
                     {
                         Header: "날짜",
@@ -195,8 +157,6 @@ class Body extends Component{
     render() {
         const {componentStatus, id, history} = this.props;
         const {documentList, memberList, infoPost, docTypeList} = this.props;
-
-        const tmp_infoPost = `<p>HIS에서 동아리원을 모집합니다.</p><p><strong>지원기간 : 5/30 ~ 5/31</strong></p><img style="height:200px; width:142px" src="http://127.0.0.1:8000/media/0005.jpg"/>`;
 
         const memList = !memberList.results ? null : memberList.results.map(
             (member) => {
@@ -302,7 +262,7 @@ class Body extends Component{
                         'margin' : '20px',
                     }}
                     dangerouslySetInnerHTML={
-                    {__html : tmp_infoPost}
+                    {__html : infoPost}
                 }>
                 </div>
             )

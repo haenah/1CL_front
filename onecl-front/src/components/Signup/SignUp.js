@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './Signup.css'
+import {Button} from "reactstrap";
 
 class SignUp extends Component{
   constructor(props){
@@ -148,8 +149,6 @@ class SignUp extends Component{
           <div className="limiter">
             <div className="container-login100">
               <div className="wrap-login100">
-
-
 
                 <form className='sign-up-form'>
                   <span className="sign-up-form-title">

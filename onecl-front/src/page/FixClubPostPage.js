@@ -1,12 +1,12 @@
 import React from 'react';
-import FixClubPost from '../components/FixClubPost/FixClubPost';
+import FixClubPostContainer from '../containers/FixClubPost/FixClubPostContainer';
 
 const FixClubPostPage = ({history, match}) => {
     const {id} = match.params;
 
     return(
         <div>
-            <FixClubPost id={id} history={history} />
+            <FixClubPostContainer id={id} history={history} />
         </div>
     )
 };

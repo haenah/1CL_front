@@ -1,0 +1,117 @@
+/*.limiter {*/
+/*    position : fixed;*/
+/*    width: 100%;*/
+/*    height : 100%;*/
+/*    z-index: -10;*/
+/*    background: linear-gradient(-135deg, #c0dcf3, white);*/
+/*}*/
+
+.container-clubregister {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrap-clubregister {
+    width: 100%;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 10px;
+}
+
+.club_name {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    margin-bottom: 10px;
+}
+
+form {
+    width: 100%;
+    margin: 20px;
+}
+
+.registerButton {
+    margin-top: 40px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.deptSelect, .catSelect {
+    background-color: #e6e6e6;
+    border: none;
+    margin: 10px;
+    width: 95%;
+}
+
+.search-button {
+    text-transform: uppercase;
+    width: 100px;
+    margin-bottom: 10px;
+    font-size: small;
+    display: inline-block;
+    border-radius: 20px;
+}
+.clubRegister-form-title {
+    font-family: Poppins-Bold;
+    font-size: 24px;
+    color: #333333;
+    line-height: 1.2;
+    text-align: center;
+
+    width: 100%;
+    display: block;
+    padding-bottom: 30px;
+}
+
+.wrap-clubRegister {
+    width: 960px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 70px;
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ Club Search (Category) ]*/
+.limiter-cat {
+    width: 100%;
+    text-align: center;
+}
+
+.wrap-cat {
+    width: 70%;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: inline-block;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 30px;
+}
