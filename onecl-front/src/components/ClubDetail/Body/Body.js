@@ -2,6 +2,9 @@ import React, {Component} from 'react'
 import CKEditor from 'ckeditor4-react'
 import {Link} from 'react-router-dom';
 import './Body.css'
+import {Table} from "reactstrap";
+import ReactTable from 'react-table';
+import 'react-table/react-table.css';
 
 const Document = ({clubID, id, title}) => {
     return(
@@ -14,14 +17,14 @@ const Document = ({clubID, id, title}) => {
 const Member = ({name, auth_level, clubID, memberID, buttonClickHandler}) => {
     const position = (auth_level) => {
         switch (auth_level){
-            case 0 :
-                return '회장';
             case 1 :
-                return '임원';
+                return '일반 회원';
             case 2 :
-                return '일반 회원';
+                return '임원';
+            case 3 :
+                return '회장';
             default :
-                return '일반 회원';
+                return '비회원';
         }
     };
 
@@ -34,6 +37,43 @@ const Member = ({name, auth_level, clubID, memberID, buttonClickHandler}) => {
     );
 };
 
+const tmp_docList = [
+    {
+        id: 1,
+        title: 'first post',
+        type: 'announcement',
+        date: 'date1',
+        writer: 'baek'
+    },
+    {
+        id: 2,
+        title: 'second post',
+        type: 'announcement',
+        date: 'date2',
+        writer: 'eum'
+    },
+    {
+        id: 3,
+        title: 'third post',
+        type: 'open',
+        date: 'date3',
+        writer: 'ahn'
+    },
+    {
+        id: 4,
+        title: 'fourth post',
+        type: 'open',
+        date: 'date4',
+        writer: 'park'
+    },
+    {
+        id: 5,
+        title: 'fifth post',
+        type: 'announcement',
+        date: 'date5',
+        writer: 'baek'
+    },
+];
 
 class Body extends Component{
     state = {
@@ -41,6 +81,8 @@ class Body extends Component{
         docTitle : null,
         docContent : '내용을 작성하세요.',
     };
+
+
     initialize = () => {
         const { getAuthLevel, getMemberList, getDocumentList, getInfoPost } = this.props;
         const {id} = this.props;
@@ -106,34 +148,46 @@ class Body extends Component{
     };
 
     authChangeButtonHandler = (clubID, memberID) => {
+        console.log(this.props.memberList);
         this.props.authChangeModalVisualize(clubID, memberID);
     };
+
+    renderDocList() {
+        return (
+          <div>
+              <ReactTable
+                data={tmp_docList}
+                columns={[
+                    {
+                        Header: "제목",
+                        accessor: "title",
+                    },
+                    {
+                        Header: "게시판",
+                        accessor: 'type',
+                    },
+                    {
+                        Header: "날짜",
+                        accessor: 'date',
+                    },
+                    {
+                        Header: '작성자',
+                        accessor: 'writer',
+                    }
+                ]}
+                defaultPageSize={20}
+                style={{
+                    height: '400px',
+                }}
+                className={'-striped -highlight'}
+              />
+          </div>
+        );
+    }
 
     render() {
         const {componentStatus, id, history} = this.props;
         const {documentList, memberList, infoPost} = this.props;
-        const tmp_docList = [
-            {
-                id: 1,
-                title: 'first post',
-            },
-            {
-                id: 2,
-                title: 'second post',
-            },
-            {
-                id: 3,
-                title: 'third post',
-            },
-            {
-                id: 4,
-                title: 'fourth post',
-            },
-            {
-                id: 5,
-                title: 'fifth post',
-            },
-        ];
         const tmp_memList = [
             {
                 id: 1,
@@ -156,31 +210,32 @@ class Body extends Component{
                 auth_level: 3,
             }
         ];
-        const tmp_infoPost = `<p>HIS에서 동아리원을 모집합니다.</p><p><strong>지원기간 : 5/30 ~ 5/31</strong></p><img src="http://127.0.0.1:8000/media/백근영님_인터넷용.jpg"/>`;
+        const tmp_infoPost = `<p>HIS에서 동아리원을 모집합니다.</p><p><strong>지원기간 : 5/30 ~ 5/31</strong></p><img style="height:200px; width:142px" src="http://127.0.0.1:8000/media/0005.jpg"/>`;
 
-        const docList = tmp_docList.map(
-            (document) => {
-                return(
-                    <div>
-                        <Document
-                            clubID={this.props.id}
-                            key={document.id}
-                            id={document.id}
-                            title={document.title}
-                        />
-                        <hr />
-                    </div>
-                )
-            }
-        );
+        // const docList = tmp_docList.map(
+        //     (document) => {
+        //         return(
+        //             <div>
+        //                 {/*<Document*/}
+        //                     {/*clubID={this.props.id}*/}
+        //                     {/*key={document.id}*/}
+        //                     {/*id={document.id}*/}
+        //                     {/*title={document.title}*/}
+        //                 {/*/>*/}
+        //                 {/*<hr />*/}
+        //             </div>x
+        //         )
+        //     }
+        // );
 
-        const memList = tmp_memList.map(
+
+        const memList = (memberList.results === undefined) ? null : memberList.results.map(
             (member) => {
                 return(
                     <div>
                         <Member
                             key={member.id}
-                            name={member.name}
+                            name={member.user}
                             auth_level={member.auth_level}
                             clubID={this.props.id}
                             memberID={member.id}
@@ -245,19 +300,19 @@ class Body extends Component{
                                 'margin' : '20px',
                             }}
                             config={{
-                                filebrowserBrowseUrl: 'http://127.0.0.1:8000/image/',
-                                filebrowserUploadUrl: 'http://127.0.0.1:8000/image/',
+                                filebrowserBrowseUrl: `http://127.0.0.1:8000/upload/image/?clubID=${id}`,
+                                filebrowserUploadUrl: `http://127.0.0.1:8000/upload/image/?clubID=${id}`,
                             }}
                         />
                         <button onClick={this.documentSubmitHandler} style={{'marginRight' : '20px'}}>작성</button>
                         <button onClick={this.returnButtonHandler}>돌아가기</button>
-                        {/*<button onClick={() => {console.log(this.state.docContent)}}>show me doc content</button>*/}
+                        <button onClick={() => {console.log(this.state.docContent)}}>show me doc content</button>
                     </div>
                 )
             }
             else{
                 return(
-                    <div className={'boardWrapper'}>
+                    <div>
                         <select className={'categorySelect'} onChange={this.categorySearchHandler}>
                             <option value='전체'>전체</option>
                             <option value='공지게시판'>공지게시판</option>
@@ -265,7 +320,8 @@ class Body extends Component{
                         </select>
                         <button className={'postButton'} onClick={this.postButtonHandler}>글쓰기</button>
                         <div className={'docListWrapper'}>
-                            {docList}
+                            {/*{docList}*/}
+                            {this.renderDocList()}
                         </div>
                     </div>
                 )

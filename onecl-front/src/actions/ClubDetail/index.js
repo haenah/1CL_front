@@ -92,4 +92,11 @@ export const removeModal = () => {
     return {
         type: types.REMOVE_MODAL
     }
-}
+};
+
+export const updateAuthLevel = (authLevel) => {
+    return {
+        type: types.UPDATE_AUTH_LEVEL,
+        authLevel,
+    }
+};
