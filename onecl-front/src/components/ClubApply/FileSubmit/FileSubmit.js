@@ -44,19 +44,31 @@ class FileSubmit extends Component{
         // const {applyMessage} = this.props;
         const tmp_message = '파일 제출 형식 : \n 이름 : (학번)_(이름)_지원서.pdf (ex: 2019-12345_홍길동_지원서.pdf) \n 반드시 pdf로 변환 후 제출해주세요.';
         return(
-            <div className={'fileSubmitWrapper'}>
-                <p className={'clubApplyTitle'}><strong>동아리 지원</strong></p>
-                <div className={'applyMessage'}>
-                    {
-                        tmp_message.split('\n').map( line => {
-                            return (<span>{line}<br/></span>)
-                        })
-                    }
+            <div className="limiter">
+                <div className="container-login100">
+                    <div className="wrap-login100">
+                        <div className={'fileSubmitWrapper'}>
+                            <p className={'clubApplyTitle'}><strong>동아리 지원</strong></p>
+                            <div className={'applyMessage'}>
+                                {
+                                    tmp_message.split('\n').map( line => {
+                                        return (<span>{line}<br/></span>)
+                                    })
+                                }
+                            </div>
+                            <hr/>
+                            <div className='submit-file'>
+                                <input type={'file'} onChange={this.fileSelectHandler} />
+                                <span className="focus-file"></span>
+                                    <span className="symbol-file">
+                                      <i className="fa fa-folder" aria-hidden="true"></i>
+                                    </span>
+                            </div>
+                            <button style={{'marginRight' : '20px', 'border-radius' : '10px'}} onClick={this.fileSubmitHandler}>제출</button>
+                            <button style={{'border-radius' : '10px'}} onClick={() => {this.props.history.push(`/club/${this.props.clubID}`)}}>돌아가기</button>
+                        </div>
+                    </div>
                 </div>
-                <hr/>
-                <input type={'file'} style={{'marginBottom' : '20px'}} onChange={this.fileSelectHandler} />
-                <button style={{'marginRight' : '20px'}} onClick={this.fileSubmitHandler}>제출</button>
-                <button onClick={() => {this.props.history.push(`/club/${this.props.clubID}`)}}>돌아가기</button>
             </div>
         )
     }

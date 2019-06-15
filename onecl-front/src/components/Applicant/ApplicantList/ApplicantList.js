@@ -91,20 +91,50 @@ class ApplicantList extends Component{
     render(){
         return(
             <div>
-                {this.state.tmp_applicantList.map(
-                    (applicant) => {
-                        return(
-                            <div>
-                                <p style={{'display': 'inline-block'}}>{applicant.user}</p>
-                                <a style={{'display': 'inline-block'}} href={applicant.file}>{applicant.name}</a>
-                                <button onClick={() => this.passHandler(applicant)}>합격</button>
-                                <button onClick={() => this.failHandler(applicant)}>불합격</button>
+                <div className="limiter">
+                    <div className="container-list">
+                        <div className="wrap-list">
+                            <div className="table-list">
+                                <table className="table_list">
+                                    <thead>
+                                    <tr className="table100-head">
+                                        <th className="column_1">Name</th>
+                                        <th className="column_2">Application Form</th>
+                                        <th className="column_3">Status</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {/*<tr>*/}
+                                    {/*    <td className="column_1" >dummy1</td>*/}
+                                    {/*    <td className="column_2" href={'#'}>dummy2</td>*/}
+                                    {/*    <td className="column_3">*/}
+                                    {/*        <button style={{'margin-right': '20px', 'border-radius' : '10px'}} onClick={() => this.passHandler('')}>합격</button>*/}
+                                    {/*        <button style={{'border-radius' : '10px'}} onClick={() => this.failHandler('')}>불합격</button>*/}
+                                    {/*    </td>*/}
+                                    {/*</tr>*/}
+                                        {this.state.tmp_applicantList.map(
+                                            (applicant) => {
+                                                return(
+                                                        <tr>
+                                                        <td className="column_1" >{applicant.user}</td>
+                                                        <td className="column_2" href={applicant.file}>{applicant.name}</td>
+                                                        <td className="column_3">
+                                                            <button className={'accept'} style={{'margin-right': '20px', 'border-radius' : '10px'}} onClick={() => this.passHandler(applicant)}>합격</button>
+                                                            <button className={'decline'} style={{'border-radius' : '10px'}} onClick={() => this.failHandler(applicant)}>불합격</button>
+                                                        </td>
+                                                        </tr>
+                                                )
+                                            }
+                                        )}
+                                    </tbody>
+                                </table>
+                                <hr />
+                                <button style={{'margin-bottom': '20px','border-radius' : '10px'}} onClick={this.returnButtonHandler}>돌아가기</button>
                             </div>
-                        )
-                    }
-                )}
-                <hr />
-                <button style={{'border-radius' : '10px'}} onClick={this.returnButtonHandler}>돌아가기</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         )
     }

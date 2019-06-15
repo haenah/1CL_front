@@ -11,6 +11,10 @@
     transform : translate(-50%,-50%);
 }
 
+.feed {
+    height: 100%;
+}
+
 .categorySelect {
     height : 52px;
     background-color: #6bb8d0;
@@ -49,8 +53,8 @@
 }
 
 .adminOptionWrapper {
-    margin-top: 20px;
-    box-shadow: 3px 3px 3px 3px grey;
+    margin: 20px 0 20px 0;
+    border-top: 3px solid #bfbfbf;
     height : 600px;
     position : relative;
 }

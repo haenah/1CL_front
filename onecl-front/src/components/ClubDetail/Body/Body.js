@@ -315,19 +315,17 @@ class Body extends Component{
             }
             else{
                 return(
-                    <div className='container-notice'>
-                    <div className={'boardWrapper'}>
-                        <select className={'categorySelect'} onChange={this.categorySearchHandler}>
+                    <div className={'feed'}>
+                        <select className={'categorySelect'} style={{'border-radius' : '10px'}} onChange={this.categorySearchHandler}>
                             <option value='전체'>전체</option>
                             <option value='공지게시판'>공지게시판</option>
                             <option value='자유게시판'>자유게시판</option>
                         </select>
-                        <button className={'postButton'} onClick={this.postButtonHandler}>글쓰기</button>
+                        <button className={'postButton'} style={{'border-radius' : '10px'}} onClick={this.postButtonHandler}>글쓰기</button>
                         <div className={'docListWrapper'}>
                             {/*{docList}*/}
                             {this.renderDocList()}
                         </div>
-                    </div>
                     </div>
                 )
             }
