@@ -35,14 +35,31 @@ class FileSubmit extends Component{
         }
     };
 
-    // componentDidMount(){
-    //     const {getApplyMessage, clubID} = this.props;
-    //     getApplyMessage(clubID);
-    // };
+    checkAuth = (authLevel) => {
+        if(authLevel && authLevel > 0){
+            alert('이미 가입되어 있는 동아리입니다.');
+            this.props.history.push(`/club/${this.props.clubID}`)
+        }
+        if(authLevel && authLevel === -1){
+            alert('로그인 후 이용할 수 있는 기능입니다.');
+            this.props.history.push(`/club/${this.props.clubID}`)
+        }
+    };
+
+    componentDidMount(){
+        const {getApplyMessage, getAuthLevel, clubID} = this.props;
+        getAuthLevel(clubID);
+        getApplyMessage(clubID);
+    };
+
+    componentWillReceiveProps(props){
+        if(props.authLevel !== this.props.authLevel){
+            this.checkAuth(props.authLevel)
+        }
+    }
 
     render(){
-        // const {applyMessage} = this.props;
-        const tmp_message = '파일 제출 형식 : \n 이름 : (학번)_(이름)_지원서.pdf (ex: 2019-12345_홍길동_지원서.pdf) \n 반드시 pdf로 변환 후 제출해주세요.';
+        const {applyMessage} = this.props;
         return(
             <div className="limiter">
                 <div className="container-login100">
@@ -51,14 +68,14 @@ class FileSubmit extends Component{
                             <p className={'clubApplyTitle'}><strong>동아리 지원</strong></p>
                             <div className={'applyMessage'}>
                                 {
-                                    tmp_message.split('\n').map( line => {
+                                    applyMessage && applyMessage.split('\n').map( line => {
                                         return (<span>{line}<br/></span>)
                                     })
                                 }
                             </div>
                             <hr/>
-                            <div className='submit-file'>
-                                <input type={'file'} onChange={this.fileSelectHandler} />
+                            <div className={'submit-file'}>
+                                <input type={'file'} style={{'marginBottom' : '20px'}} onChange={this.fileSelectHandler} />
                                 <span className="focus-file"></span>
                                     <span className="symbol-file">
                                       <i className="fa fa-folder" aria-hidden="true"></i>

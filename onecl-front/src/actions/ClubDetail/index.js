@@ -28,11 +28,13 @@ export const getAuthLevelRequest = (id) => {
     }
 };
 
-export const submitDocumentRequest = (title, content) => {
+export const submitDocumentRequest = (title, content, docType, clubID) => {
     return {
         type : types.SUBMIT_DOCUMENT_REQUEST,
         title,
-        content
+        content,
+        docType,
+        clubID
     }
 };
 
@@ -64,26 +66,27 @@ export const updateInfoPost = (infoPost) => {
     }
 };
 
-export const searchDocumentRequest = (category) => {
+export const searchDocumentRequest = (category, clubID) => {
     return {
         type: types.SEARCH_DOCUMENT_REQUEST,
-        category
+        category,
+        clubID,
     }
 };
 
-export const authChangeModalVisualize = (clubID, memberID) => {
+export const authChangeModalVisualize = (clubID, joinID, username) => {
     return {
         type: types.AUTH_CHANGE_MODAL_VISUALIZE,
         clubID,
-        memberID,
+        joinID,
+        username
     }
 };
 
-export const changeAuthLevelRequest = (clubID, memberID, authLevel) => {
+export const changeAuthLevelRequest = (joinID, authLevel) => {
     return {
         type: types.CHANGE_AUTH_LEVEL_REQUEST,
-        clubID,
-        memberID,
+        joinID,
         authLevel,
     }
 };
@@ -100,3 +103,29 @@ export const updateAuthLevel = (authLevel) => {
         authLevel,
     }
 };
+
+export const getDocTypeListRequest = (id) => {
+    return {
+        type : types.GET_DOC_TYPE_LIST_REQUEST,
+        id,
+    }
+};
+
+export const updateDocTypeList = (docTypeList) => {
+    return {
+        type: types.UPDATE_DOC_TYPE_LIST,
+        docTypeList,
+    }
+};
+
+export const finishPost = () => {
+    return {
+        type: types.FINISH_POST,
+    }
+};
+
+export const startPost = () => {
+    return {
+        type: types.START_POST,
+    }
+}

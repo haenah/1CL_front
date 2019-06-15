@@ -9,6 +9,7 @@ class Footer extends Component {
   }
 
   render() {
+      if(this.props.authLevel !== 0) return null;
     return (
       <div style={{
         'position': 'fixed',

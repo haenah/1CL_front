@@ -3,12 +3,15 @@ import * as types from '../actions/ClubDetail/ActionTypes'
 const initialState = {
     documentList : [],
     memberList : [],
+    docTypeList : [],
     infoPost : null,
     componentStatus : 0,
     authLevel: 0,
     visualize : false,
-    authChange_clubID : 0,
-    authChange_memberID : 0,
+    authChange_joinID : 0,
+    authChange_username : null,
+    authChange_clubID: 0,
+    post_complete: false,
 };
 
 const ClubDetail = (state=initialState, action) => {
@@ -48,7 +51,14 @@ const ClubDetail = (state=initialState, action) => {
                 ...state,
                 visualize : true,
                 authChange_clubID: action.clubID,
-                authChange_memberID: action.memberID,
+                authChange_joinID: action.joinID,
+                authChange_username: action.username,
+            };
+
+        case types.UPDATE_DOC_TYPE_LIST :
+            return {
+                ...state,
+                docTypeList: action.docTypeList,
             };
 
         case types.REMOVE_MODAL :
@@ -57,6 +67,18 @@ const ClubDetail = (state=initialState, action) => {
                 visualize : false,
                 authChange_clubID: 0,
                 authChange_memberID: 0,
+            };
+
+        case types.FINISH_POST :
+            return {
+                ...state,
+                post_complete: true,
+            };
+
+        case types.START_POST :
+            return {
+                ...state,
+                post_complete: false,
             };
 
         default :
