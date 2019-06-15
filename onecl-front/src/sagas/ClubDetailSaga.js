@@ -2,6 +2,7 @@ import {take,put,call,fork} from 'redux-saga/effects';
 import api from '../api'
 import * as types from '../actions/ClubDetail/ActionTypes'
 import * as actions from '../actions/ClubDetail/index'
+import {REQUEST_URL} from "../Constants/Constants";
 
 function* getDocumentList(id) {
     /*TODO*/
@@ -15,7 +16,7 @@ function* watchGetDocListRequest(){
 }
 
 function* getMemberList(id) {
-    const url = `http://127.0.0.1:8000/join/?club=${id}&auth_level=1`;
+    const url = `${REQUEST_URL}/join/?club=${id}&auth_level=1`;
     const config = {
         headers : {
             'authorization' : 'token ' + sessionStorage.getItem('token')
@@ -37,7 +38,7 @@ function* watchGetMemListRequest(){
 }
 
 function* getAuthLevel(id) {
-    const url = `http://127.0.0.1:8000/join/auth_level/?club=${id}`;
+    const url = `${REQUEST_URL}/join/auth_level/?club=${id}`;
     const config = {
         headers : {
             'authorization' : 'token ' + sessionStorage.getItem('token')

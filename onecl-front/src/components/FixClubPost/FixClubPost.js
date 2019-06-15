@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import './FixClubPost.css'
 import CKEditor from 'ckeditor4-react'
+import {REQUEST_URL} from "../../Constants/Constants";
 
 class FixClubPost extends Component {
     state={
@@ -58,8 +59,8 @@ class FixClubPost extends Component {
                         'margin' : '20px',
                     }}
                     config={{
-                        filebrowserBrowseUrl: 'http://127.0.0.1:8000/image/',
-                        filebrowserUploadUrl: 'http://127.0.0.1:8000/image/',
+                        filebrowserBrowseUrl: `${REQUEST_URL}/image/`,
+                        filebrowserUploadUrl: `${REQUEST_URL}/image/`,
                     }}
                 />
                 <button onClick={this.documentSubmitHandler} style={{'marginRight' : '20px'}}>작성</button>

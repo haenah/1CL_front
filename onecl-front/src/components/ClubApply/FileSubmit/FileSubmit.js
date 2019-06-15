@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import './FileSubmit.css'
+import {REQUEST_URL} from "../../../Constants/Constants";
 
 class FileSubmit extends Component{
     state={
@@ -15,7 +16,7 @@ class FileSubmit extends Component{
 
     fileSubmitHandler = async () => {
         const {clubID} = this.props;
-        const url = `http://127.0.0.1:8000/upload/file/?clubID=${clubID}`;
+        const url = `${REQUEST_URL}/upload/file/?clubID=${clubID}`;
         const tokenString = 'token ' + sessionStorage.getItem('token');
         const config = {
             headers: {

@@ -2,8 +2,9 @@ import {call, put, takeLatest} from 'redux-saga/effects';
 import api from '../api';
 import * as actions from '../actions/Common/index';
 import * as types from '../actions/Common/ActionTypes';
+import {REQUEST_URL} from "../Constants/Constants";
 
-const url = 'http://127.0.0.1:8000/club/';
+const url = `${REQUEST_URL}/club/`;
 
 function* getClubList() {
   const data = yield call(api.get, url);

@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import './ApplicantList.css'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import {REQUEST_URL} from "../../../Constants/Constants";
 
 class ApplicantList extends Component{
     state={
@@ -23,7 +24,7 @@ class ApplicantList extends Component{
     };
 
     initialize = async () => {
-        const url = `http://127.0.0.1:8000/upload/file/?clubID=${this.props.id}`;
+        const url = `${REQUEST_URL}/upload/file/?clubID=${this.props.id}`;
         try{
             const data = await axios.get(url);
             console.log(data);
@@ -57,7 +58,7 @@ class ApplicantList extends Component{
     };
 
     removeFromList = async (id) => {
-        const delete_url = `http://127.0.0.1:8000/upload/file/${id}`;
+        const delete_url = `${REQUEST_URL}/upload/file/${id}`;
         try{
             const response = await axios.delete(delete_url);
             console.log(response)
@@ -65,7 +66,7 @@ class ApplicantList extends Component{
             alert(e)
         }
 
-        const get_url = `http://127.0.0.1:8000/upload/file/?clubID=${this.props.id}`;
+        const get_url = `${REQUEST_URL}/upload/file/?clubID=${this.props.id}`;
         try{
             const response = await axios.get(get_url);
             this.setState({
@@ -77,7 +78,7 @@ class ApplicantList extends Component{
     };
 
     passHandler = async (applicant) => {
-        const url = `http://127.0.0.1:8000/join/`;
+        const url = `${REQUEST_URL}/join/`;
         try{
             const data = {
                 user : applicant.user,

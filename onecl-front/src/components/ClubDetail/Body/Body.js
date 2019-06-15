@@ -5,6 +5,7 @@ import './Body.css'
 import {Table} from "reactstrap";
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
+import {REQUEST_URL} from "../../../Constants/Constants";
 
 const Document = ({clubID, id, title}) => {
     return(
@@ -211,7 +212,7 @@ class Body extends Component{
                 auth_level: 3,
             }
         ];
-        const tmp_infoPost = `<p>HIS에서 동아리원을 모집합니다.</p><p><strong>지원기간 : 5/30 ~ 5/31</strong></p><img style="height:200px; width:142px" src="http://127.0.0.1:8000/media/0005.jpg"/>`;
+        const tmp_infoPost = `<p>HIS에서 동아리원을 모집합니다.</p><p><strong>지원기간 : 5/30 ~ 5/31</strong></p><img style="height:200px; width:142px" src="${REQUEST_URL}/media/0005.jpg"/>`;
 
         // const docList = tmp_docList.map(
         //     (document) => {
@@ -301,8 +302,8 @@ class Body extends Component{
                                 'margin' : '20px',
                             }}
                             config={{
-                                filebrowserBrowseUrl: `http://127.0.0.1:8000/upload/image/?clubID=${id}`,
-                                filebrowserUploadUrl: `http://127.0.0.1:8000/upload/image/?clubID=${id}`,
+                                filebrowserBrowseUrl: `${REQUEST_URL}/upload/image/?clubID=${id}`,
+                                filebrowserUploadUrl: `${REQUEST_URL}/upload/image/?clubID=${id}`,
                             }}
                         />
                         <button onClick={this.documentSubmitHandler} style={{'marginRight' : '20px'}}>작성</button>

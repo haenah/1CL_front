@@ -3,10 +3,10 @@ import queryString from 'query-string';
 import api from '../api'
 import * as actions from '../actions/Common/index'
 import * as types from '../actions/Common/ActionTypes'
+import {REQUEST_URL} from "../Constants/Constants";
 
-const url_getCategory = 'http://127.0.0.1:8000/club/category/'; /* todo */
-const url_getDepartment = 'http://127.0.0.1:8000/club/dept/'; /* todo */
-const url_getClub = 'http://127.0.0.1:8000/club/'; /* todo */
+const url_getCategory = `${REQUEST_URL}/club/category/`; /* todo */
+const url_getDepartment = `${REQUEST_URL}/club/dept/`; /* todo */
 
 function* getCategoryList(){
     const data = yield call(api.get, url_getCategory);
@@ -40,7 +40,7 @@ function* getClubList(url){
 function* watchGetClubListRequest(){
     while(true){
         const{ department, category } = yield take(types.GET_CLUB_LIST_REQUEST);
-        const url = `http://127.0.0.1:8000/club/?department=${department}&category=${category}`;
+        const url = `${REQUEST_URL}/club/?department=${department}&category=${category}`;
         yield call(getClubList, url);
     }
 }

@@ -1,12 +1,10 @@
 import React from 'react';
+import ClubDocument from '../components/ClubDetail/ClubDocument';
 
 const ClubDocumentPage = ({history, match}) => {
     const {clubID, id} = match.params;
-
     return(
-        <div>
-            club id is {clubID}, doc id is {id}
-        </div>
+        <ClubDocument clubID={clubID} docID={id} />
     )
 };
 

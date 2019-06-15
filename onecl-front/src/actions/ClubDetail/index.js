@@ -36,6 +36,17 @@ export const submitDocumentRequest = (title, content) => {
     }
 };
 
+export const getDocumentRequest = (clubID, docID) => ({
+    type: types.GET_DOCUMENT_REQUEST,
+    clubID,
+    docID,
+});
+
+export const getDocument = (document) => ({
+    type: types.GET_DOCUMENT,
+    document,
+});
+
 export const changeStatus = (flag) => {
     return {
         type : types.CHANGE_STATUS,
