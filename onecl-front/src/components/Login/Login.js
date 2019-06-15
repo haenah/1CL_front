@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {Button, Input} from "reactstrap";
 
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -63,7 +64,7 @@ class Login extends Component {
 
               <div className='id'>
                 <span>
-                  <Input
+                  <input
                       type={'text'}
                       placeholder={'Username'}
                       value={this.state.username}
@@ -73,13 +74,13 @@ class Login extends Component {
                 </span>
                 <span className="focus-input100"></span>
                 <span className="symbol-input100">
-                  {/*<i className="fa fa-id-card-o" aria-hidden="true"></i>*/}
+                  <i className="fa fa-user-circle" aria-hidden="true"></i>
                 </span>
               </div>
 
               <div className='pw'>
                 <span>
-                  <Input
+                  <input
                       type={'password'}
                       placeholder={'Password'}
                       value={this.state.password}
@@ -89,7 +90,7 @@ class Login extends Component {
                 </span>
                 <span className="focus-input100"></span>
                 <span className="symbol-input100">
-                  {/*<i className="fa fa-lock" aria-hidden="true"></i>*/}
+                  <i className="fa fa-lock" aria-hidden="true"></i>
                 </span>
               </div>
 
@@ -103,14 +104,14 @@ class Login extends Component {
               </div>
 
               <div>
-                <Button
+                <button
                     className='login-button'
-                    color={'primary'}
+                    //color={'primary'}
                     type='button'
                     onClick={() => this.onLogin(this.state)}
                 >
                   Log In
-                </Button>
+                </button>
 
                 <div className="text-center p-t-70">
                   <a className="txt2" href="/register">
