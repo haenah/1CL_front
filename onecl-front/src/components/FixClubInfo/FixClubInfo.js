@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import axios from 'axios'
 import './FixClubInfo.css'
 import {REQUEST_URL} from "../../Constants/Constants";
+import {Input} from "reactstrap";
 
 class FixClubInfo extends Component{
     state={
@@ -43,11 +44,11 @@ class FixClubInfo extends Component{
         return(
             <div>
                 <label className={'inputLabel'}>동아리명</label>
-                <input className={'inputField'} value={this.state.clubName} onChange={(e) => {this.setState({clubName : e.target.value})}}/>
+                <Input className={'inputField'} value={this.state.clubName} onChange={(e) => {this.setState({clubName : e.target.value})}}/>
                 <label className={'inputLabel'}>소속분류</label>
-                <input className={'inputField'} value={this.state.clubCat} onChange={(e) => {this.setState({clubCat : e.target.value})}}/>
+                <Input className={'inputField'} value={this.state.clubCat} onChange={(e) => {this.setState({clubCat : e.target.value})}}/>
                 <label className={'inputLabel'}>소속학과</label>
-                <input className={'inputField'} value={this.state.clubDept} onChange={(e) => {this.setState({clubDept : e.target.value})}}/>
+                <Input className={'inputField'} value={this.state.clubDept} onChange={(e) => {this.setState({clubDept : e.target.value})}}/>
                 <label className={'inputLabel'}>지원서 제출 시 주의사항</label>
                 <textarea className={'messageField'} value={this.state.clubApplyMessage} onChange={(e) => {this.setState({clubApplyMessage : e.target.value})}}/>
                 <div className={'buttonWrapper'}>
