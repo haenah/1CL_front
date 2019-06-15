@@ -147,7 +147,7 @@ function* changeAuthLevel(joinID, authLevel) {
         auth_level : authLevel,
     };
     try{
-        yield call(api.put, url, data)
+        yield call(api.put, url, data, global_config)
 
     }catch (e) {
         console.log('auth change error :' + e)
