@@ -31,7 +31,7 @@ function* getMemberList(id) {
         const response = yield call(api.get, url, config);
         yield put(actions.updateMemberList(response))
     } catch (e) {
-        console.log(e)
+        console.log('getmberlist :' + e)
     }
 }
 
@@ -50,11 +50,13 @@ function* getAuthLevel(id) {
         }
     };
     try{
-        const response = yield call(api.get, url, config);
+        let response;
+        if(sessionStorage.getItem('token') === null) response = yield call(api.get, url);
+        else response = yield call(api.get, url, config);
         console.log(response);
         yield put(actions.updateAuthLevel(response.auth_level))
     }catch (e) {
-        console.log(e)
+        console.log('get auth level : ' + e)
     }
 }
 
@@ -119,7 +121,7 @@ function* searchDocument(category, clubID) {
         console.log(data);
         yield put(actions.updateDocumentList(data.results));
     }catch (e) {
-        console.log(e);
+        console.log('search document : ' + e);
     }
 }
 
