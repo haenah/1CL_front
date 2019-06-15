@@ -68,7 +68,13 @@ function* watchGetAuthLevelRequest(){
 }
 
 function* getInfoPost(id) {
-    /*TODO*/
+    const url = `http://127.0.0.1:8000/club/${id}`;
+    try{
+        const response = yield call(api.get, url, global_config);
+        yield put(actions.updateInfoPost(response.intro));
+    }catch (e) {
+        console.log('get intro :' + e)
+    }
 }
 
 function* watchGetInfoPostRequest(){
