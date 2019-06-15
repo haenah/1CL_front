@@ -109,8 +109,11 @@ class ClubRegister extends Component {
             <div>
                 <div className="limiter">
                     <div className="container-login100">
-                        <div className="wrap-login100">
+                        <div className="wrap-clubRegister">
                             <form>
+                                <span className="clubRegister-form-title">
+                                  <h2>동아리 등록</h2>
+                                </span>
                                 <div>
                                     <p className='clubNameLabel'>동아리 이름</p>
                                 </div>

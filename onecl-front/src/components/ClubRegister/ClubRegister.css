@@ -64,4 +64,30 @@ form {
     display: inline-block;
     border-radius: 20px;
 }
+.clubRegister-form-title {
+    font-family: Poppins-Bold;
+    font-size: 24px;
+    color: #333333;
+    line-height: 1.2;
+    text-align: center;
 
+    width: 100%;
+    display: block;
+    padding-bottom: 30px;
+}
+
+.wrap-clubRegister {
+    width: 960px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 70px;
+}
