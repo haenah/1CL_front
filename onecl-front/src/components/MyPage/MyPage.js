@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Container, ListGroup, ListGroupItem} from "reactstrap";
+import './MyPage.css'
 
 class MyPage extends Component {
   constructor(props) {
@@ -22,26 +23,47 @@ class MyPage extends Component {
   render() {
     const joinList = this.props.joinList;
     return(
-      <div>
-        {this.loginCheck()}
-        <span>아이디: </span>
-        <span>{sessionStorage.getItem('username')}</span>
-        <br/>
-        <span>이름: </span>
-        <span>{sessionStorage.getItem('name')}</span>
-        <br/>
-        <span>Email: </span>
-        <span>{sessionStorage.getItem('email')}</span>
+        <div className="limiter-prof">
+            <div className="container-prof">
+                <div className="wrap-prof">
+                    <div className="box-prof">
+                    <div className="intro">
+                    <div className="prof-img">
+                    </div>
+                  <div>
+                    {this.loginCheck()}
+                    <h3>
+                      <span>이름: </span>
+                      <span>{sessionStorage.getItem('name')}</span>
+                      <br/>
+                    </h3>
 
-        <div>
-          내가 가입한 동아리:
-          <br />
-          <ListGroup>
-            {joinList.results && joinList.results.map(join => <ListGroupItem key={join.club_id} tag={'a'} href={`/club/${join.club_id}`}>{join.club_name}</ListGroupItem>)}
-          </ListGroup>
+
+                      <h6 className="font-colour">
+                          <span style={{'font-weight': 'bold'}}><strong>ID: </strong></span>
+                        <span>{sessionStorage.getItem('username')}</span>
+                        <br/>
+                      </h6>
+
+                      <h6>
+                    <span style={{'font-weight': 'bold'}}><strong>EMAIL: </strong></span>
+                    <span>{sessionStorage.getItem('email')}</span>
+                      </h6>
+
+                    <div>
+                      내가 가입한 동아리:
+                      <br />
+                      <ListGroup>
+                        {joinList.results && joinList.results.map(join => <ListGroupItem key={join.club_id} tag={'a'} href={`/club/${join.club_id}`}>{join.club_name}</ListGroupItem>)}
+                      </ListGroup>
+                    </div>
+                  </div>
+                    </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
-
-      </div>
 
     );
   }
