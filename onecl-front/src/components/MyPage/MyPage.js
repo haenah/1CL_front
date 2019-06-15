@@ -49,9 +49,15 @@ class MyPage extends Component {
                     <span style={{'font-weight': 'bold'}}><strong>EMAIL: </strong></span>
                     <span>{sessionStorage.getItem('email')}</span>
                       </h6>
+                  </div>
+                    </div>
+                    </div>
+                </div>
 
-                    <div>
-                      내가 가입한 동아리:
+                    <section style={{'padding':'30px 0 30px'}}></section>
+
+                    <div className='listClub'>
+                      <h5><b>내가 가입한 동아리:</b></h5>
                       <br />
                       <ListGroup>
                         {joinList.results && joinList.results.map(join => <ListGroupItem key={join.club_id} tag={'a'} href={`/club/${join.club_id}`}>{join.club_name}</ListGroupItem>)}
@@ -60,10 +66,7 @@ class MyPage extends Component {
                   </div>
                     </div>
 
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
     );
   }

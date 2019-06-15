@@ -1,19 +1,19 @@
 .limiter-prof {
     width: 100%;
     margin: 0 auto;
+    text-align: center;
 }
 
 .container-prof {
     width: 100%;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
     align-items: center;
     background: linear-gradient(-135deg, #c0dcf3, white);
+    display: inline-block;
 }
 
 .wrap-prof {
-
+    margin: 20px;
 }
 
 .box-prof {
@@ -26,6 +26,7 @@
     text-align: center;
     background: #fff;
     display: inline-block;
+    width: 70%;
 }
 
 .intro .prof-img {
@@ -43,4 +44,9 @@
 
 .font-colour {
     color: #FFA600;
+}
+
+.listClub {
+    padding-left: 10%;
+    text-align: left;
 }
