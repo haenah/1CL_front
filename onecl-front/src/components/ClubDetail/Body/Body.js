@@ -153,12 +153,12 @@ class Body extends Component{
         this.props.authChangeModalVisualize(clubID, memberID);
     };
 
-    renderDocList() {
+    renderDocList(clubID) {
         return (
           <div>
               <ReactTable
                 getTrProps={(state, rowInfo) => ({
-                    onClick: () => this.props.history.push(`/document/${rowInfo.original.id}`)
+                    onClick: () => this.props.history.push(`/club/${clubID}/document/${rowInfo.original.id}`)
                 })}
                 data={tmp_docList}
                 columns={[
@@ -325,7 +325,7 @@ class Body extends Component{
                         <button className={'postButton'} onClick={this.postButtonHandler}>글쓰기</button>
                         <div className={'docListWrapper'}>
                             {/*{docList}*/}
-                            {this.renderDocList()}
+                            {this.renderDocList(id)}
                         </div>
                     </div>
                 )
