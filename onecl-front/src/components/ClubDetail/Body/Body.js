@@ -136,9 +136,8 @@ class Body extends Component{
     };
 
     categorySearchHandler = (e) => {
-        const {searchDocument, clubID} = this.props;
-        console.log('hi');
-        searchDocument(e.target.value, clubID);
+        const {searchDocument} = this.props;
+        searchDocument(e.target.value);
     };
 
     componentWillReceiveProps(props){

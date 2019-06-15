@@ -1,0 +1,2 @@
+export const FETCH_JOIN = 'FETCH_JOIN';
+export const FETCH_JOIN_REQUEST = 'FETCH_JOIN_REQUEST';
