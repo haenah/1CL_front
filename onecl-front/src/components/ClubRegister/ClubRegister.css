@@ -44,9 +44,9 @@ form {
 }
 
 .registerButton {
-    margin: 10px;
-    width: 20%;
-    border-radius: 20px;
+    margin-top: 40px;
+    width: 100%;
+    border-radius: 10px;
 }
 
 .deptSelect, .catSelect {
@@ -90,4 +90,28 @@ form {
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 70px;
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ Club Search (Category) ]*/
+.limiter-cat {
+    width: 100%;
+    text-align: center;
+}
+
+.wrap-cat {
+    width: 70%;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: inline-block;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 30px;
 }

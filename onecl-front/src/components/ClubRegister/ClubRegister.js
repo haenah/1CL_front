@@ -115,7 +115,7 @@ class ClubRegister extends Component {
                                   <h2>동아리 등록</h2>
                                 </span>
                                 <div>
-                                    <p className='clubNameLabel'>동아리 이름</p>
+                                    <p className='clubNameLabel'  style={{'textAlign':'left'}}>동아리 이름</p>
                                 </div>
                                 <div className='club_name'>
                                     <span>
@@ -127,7 +127,7 @@ class ClubRegister extends Component {
                                     </span>
                                 </div>
                                 <div>
-                                    <p className='deptLabel'>학과</p>
+                                    <p className='deptLabel' style={{'textAlign':'left'}}>학과</p>
                                     {/*<Select*/}
                                         {/*value={selectedDept}*/}
                                         {/*onChange={handleChangeDept}*/}
@@ -140,7 +140,7 @@ class ClubRegister extends Component {
                                     </Input>
                                 </div>
                                 <div>
-                                    <p className='categoryLabel'>분류</p>
+                                    <p className='categoryLabel' style={{'textAlign':'left'}}>분류</p>
                                     {/*<Select*/}
                                         {/*value={selectedCategory}*/}
                                         {/*onChange={handleChangeCategory}*/}

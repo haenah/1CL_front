@@ -103,7 +103,7 @@ class Category extends Component {
 
             <div className="limiter-cat">
                 {/*<div className="container-clubregister">*/}
-                    <div className="wrap-clubregister">
+                    <div className="wrap-cat">
                         <form id="app-cover">
                             <div className="Category-box">
                                 <div className="Dept-box">
@@ -114,7 +114,10 @@ class Category extends Component {
                                         {/*// options={options}*/}
                                         {/*styles={customStyles}*/}
                                     {/*/>*/}
-                                    <div className='naming'>학과</div>
+                                    <span className="clubSearch-form-title">
+                                      <h3>동아리 검색</h3>
+                                    </span>
+                                    <div className='naming' style={{'textAlign':'left'}}>학과</div>
                                     <Input type={'select'} className={'deptSelect'} value={selectedDept} onChange={e => this.setState({selectedDept: e.target.value})}>
                                         <option value={'전체'}>All</option>
                                         {deptList && deptList.results.map(department => <option key={department.name} value={department.name}>{department.name}</option>)}
@@ -128,14 +131,14 @@ class Category extends Component {
                                         {/*// options={options}*/}
                                         {/*styles={customStyles}*/}
                                     {/*/>*/}
-                                    <div className='naming'>분류</div>
+                                    <div className='naming' style={{'textAlign':'left'}}>분류</div>
                                     <Input type={'select'} className={'catSelect'} value={selectedCategory} onChange={e => this.setState({selectedCategory: e.target.value})}>
                                         <option value={'전체'}>All</option>
                                         {categoryList && categoryList.results.map(category => <option key={category.name} value={category.name}>{category.name}</option>)}
                                     </Input>
                                 </div>
                                 <div>
-                                    <button type={'button'} className="search-button" onClick={() => handleGetClubList(selectedDept, selectedCategory)}> Search! </button>
+                                    <button type={'button'} className="search-button" style={{'float':'right', 'margin-right':'30px'}} onClick={() => handleGetClubList(selectedDept, selectedCategory)}> Search! </button>
                                 </div>
                             </div>
                         </form>
