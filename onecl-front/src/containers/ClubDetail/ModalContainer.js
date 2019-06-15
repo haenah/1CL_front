@@ -7,16 +7,20 @@ const mapDispatchToProps = (dispatch) => {
         removeModal : () => {
             dispatch(actions.removeModal())
         },
-        changeAuthLevel : (clubID, memberID, authLevel) => {
-            dispatch(actions.changeAuthLevelRequest(clubID,memberID,authLevel))
-        }
+        changeAuthLevel : (joinID, authLevel) => {
+            dispatch(actions.changeAuthLevelRequest(joinID,authLevel))
+        },
+        updateMemberList : (clubID) => {
+            dispatch(actions.getMemberListRequest(clubID))
+        },
     }
 };
 
 const mapStateToProps = (state) => {
     return {
         clubID : state.ClubDetail.authChange_clubID,
-        memberID : state.ClubDetail.authChange_memberID,
+        username : state.ClubDetail.authChange_username,
+        joinID : state.ClubDetail.authChange_joinID,
         visible : state.ClubDetail.visualize,
     }
 };

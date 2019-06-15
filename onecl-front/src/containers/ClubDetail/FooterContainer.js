@@ -6,6 +6,7 @@ const mapStateToProps = (state, props) => {
     return {
         id : props.id,
         history: props.history,
+        authLevel : state.ClubDetail.authLevel,
     }
 };
 
