@@ -13,9 +13,14 @@ const config = {
 
 function* getApplyMessage(clubID) {
     const url = base_url + `club/${clubID}`;
-    const data = yield call(api.get, url, config);
-    console.log(data);
-    yield put(actions.updateApplyMessage(data.apply_message))
+    try{
+        let response;
+        if(sessionStorage.getItem('token') === null) response = yield call(api.get, url);
+        else response = yield call(api.get, url, config);
+        yield put(actions.updateApplyMessage(response.apply_message))
+    }catch (e) {
+        console.log('get applymessage' + e);
+    }
 }
 
 function* watchGetApplyMessageRequest(){
