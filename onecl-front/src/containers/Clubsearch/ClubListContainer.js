@@ -1,9 +1,10 @@
 import {connect} from 'react-redux';
 import Clublist from '../../components/Clubsearch/Clublist';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
     return{
-        clubs : state.ClubSearch.clubList
+        clubs : state.ClubSearch.clubList,
+        history: props.history,
     }
 };
 
