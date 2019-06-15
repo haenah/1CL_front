@@ -1,18 +1,25 @@
 import ClubDocument from '../../components/ClubDetail/ClubDocument';
 import {connect} from 'react-redux';
-import {getDocumentRequest} from "../../actions/ClubDetail";
+import {reduxActions} from "../../actions/ClubDetail/index";
+import * as actions from '../../actions/ClubDetail/index';
 
 const mapStateToProps = (state, props) => {
   return {
     document: state.ClubDocument.document,
     history: props.history,
+    isFetching: state.ClubDocument.isFetching,
+    error: state.ClubDocument.errorMessage,
+    addCommentSuccess: state.ClubDocument.addCommentSuccess,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getDocument: (clubID, docID) => {
-      dispatch(getDocumentRequest(clubID, docID));
+    getDocument: (docID) => {
+      dispatch(reduxActions.getDocumentRequest(docID));
+    },
+    addComment: (document, content) => {
+      dispatch(actions.addCommentRequest(document, content));
     }
   }
 };

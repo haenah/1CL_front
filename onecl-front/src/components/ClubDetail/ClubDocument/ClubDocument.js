@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {Card, CardBody, CardHeader, CardFooter, CardText, CardTitle} from 'reactstrap';
+import {Card, CardBody, CardHeader, CardFooter, CardText, CardTitle, Input, Button, Col, Row} from 'reactstrap';
 import {REQUEST_URL} from "../../../Constants/Constants";
+import Moment from 'react-moment';
 
 const tmp_doc =
   {
@@ -32,34 +33,58 @@ const tmp_doc =
 class ClubDocument extends Component {
   constructor(props) {
     super(props);
+    this.state= {
+      comment: '',
+    }
+  }
+
+  componentWillMount() {
+    this.props.getDocument(this.props.docID);
+  }
+
+  checkForDocument(clubID) {
+    if (this.props.error) {
+      this.props.history.push(`/club/${clubID}`);
+    }
+  }
+
+  handleCommentSubmit() {
+    const {docID} = this.props;
+    this.props.addComment(docID, this.state.comment);
+    this.setState({comment: ''});
+    this.props.getDocument(docID);
   }
 
   render() {
+    console.log('doc',this.props);
+    const {document, clubID} = this.props;
     return(
       <div>
-        <Card>
+        {this.checkForDocument(clubID)}
+        {document &&  <Card>
           <CardHeader>
             <div style={{display: 'flex', justifyContent: 'space-between',}}>
-              <h3>{tmp_doc.title}</h3>
-              <h5>작성자: {tmp_doc.writer}</h5>
+              <h3>{document.document.title}</h3>
+              <h5>작성자: {document.document.owner_name}</h5>
             </div>
-              <div style={{display: 'flex', flexDirection: 'row-reverse'}}>
-                <span style={{fontSize: '14px', color: 'grey'}}>{tmp_doc.date}</span>
+              <div style={{display: 'flex', justifyContent: 'space-between'}}>
+                <span style={{fontSize: '14px', color: 'grey'}}><Moment format={'YY/MM/DD HH:MM'}>{document.document.date}</Moment></span>
+                <span style={{fontSize: '14px', color: 'grey'}}>조회수 {document.document.view}</span>
               </div>
           </CardHeader>
           <CardBody>
             <div
               // style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column',}}
               dangerouslySetInnerHTML={
-                {__html : tmp_doc.content}
+                {__html : document.document.content}
               }>
             </div>
           </CardBody>
           <CardFooter>
             댓글
             <br />
-              {tmp_doc.comments.map(comment =>
-                <Card style={{marginTop: '5px', padding: '12px'}}>
+              {document.comments.map(comment =>
+                <Card key={comment.id} style={{marginTop: '5px', padding: '12px'}}>
                   <CardTitle>
                     <h5>{comment.owner}</h5>
                   </CardTitle>
@@ -69,7 +94,18 @@ class ClubDocument extends Component {
                 </Card>
               )}
           </CardFooter>
+          <Card style={{padding: '15px', display: 'flex', justifyContent: 'space-between'}}>
+            <Row>
+              <Col className={'col-md-11'}>
+                <Input type={'textarea'} placeholder={'댓글을 입력하세요.'} value={this.state.comment} onChange={e => this.setState({comment: e.target.value})} />
+              </Col>
+              <Col className={'col-md-1'}>
+                <Button style={{marginTop: '10px'}} onClick={() => this.handleCommentSubmit} color={'primary'}>입력</Button>
+              </Col>
+            </Row>
+          </Card>
         </Card>
+        }
       </div>
     );
   }

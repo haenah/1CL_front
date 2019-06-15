@@ -1,19 +1,39 @@
 import * as types from '../actions/ClubDetail/ActionTypes'
+import {Types} from '../actions/ClubDetail/index';
 
 const initialState = {
-  document: null,
+  isFetching: false,
+  errorMessage: '',
+  addCommentSuccess: false,
 };
 
-const ClubRegister = (state=initialState, action) => {
+const ClubDocument = (state=initialState, action) => {
   switch (action.type) {
-    case types.GET_DOCUMENT:
+    case Types.GET_DOCUMENT_REQUEST:
       return {
         ...state,
-        document: action.document,
+        isFetching: true,
+      };
+    case Types.GET_DOCUMENT_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        document: {...action.payload},
+      };
+    case Types.GET_DOCUMENT_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        errorMessage: action.errorMessage,
+      };
+    case types.ADD_COMMENT:
+      return {
+        ...state,
+        addCommentSuccess: true,
       };
     default:
       return state;
   }
 };
 
-export default ClubRegister;
+export default ClubDocument;

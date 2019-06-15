@@ -1,10 +1,10 @@
 import React from 'react';
-import ClubDocument from '../components/ClubDetail/ClubDocument';
+import ClubDocumentContainer from '../containers/ClubDetail/ClubDocumentContainer';
 
 const ClubDocumentPage = ({history, match}) => {
     const {clubID, id} = match.params;
     return(
-        <ClubDocument clubID={clubID} docID={id} />
+        <ClubDocumentContainer clubID={clubID} docID={id} history={history} />
     )
 };
 

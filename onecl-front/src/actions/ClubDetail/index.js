@@ -1,4 +1,6 @@
 import * as types from './ActionTypes';
+import {WAIT_FOR_ACTION, ERROR_ACTION} from "redux-wait-for-action";
+import {createActions} from "reduxsauce";
 
 export const getDocumentListRequest = (id) => {
     return {
@@ -38,15 +40,44 @@ export const submitDocumentRequest = (title, content, docType, clubID) => {
     }
 };
 
-export const getDocumentRequest = (clubID, docID) => ({
-    type: types.GET_DOCUMENT_REQUEST,
-    clubID,
-    docID,
+// export const getDocumentRequest = (docID) => ({
+//     type: types.GET_DOCUMENT_REQUEST,
+//     docID,
+// });
+
+export const {Types, Creators} = createActions({
+   getDocumentRequest: ['docID', {[WAIT_FOR_ACTION]: types.GET_DOCUMENT_SUCCESS, [ERROR_ACTION]: types.GET_DOCUMENT_FAILURE}],
+   getDocumentSuccess: ['payload'],
+   getDocumentFailure: ['errorMessage'],
 });
 
-export const getDocument = (document) => ({
-    type: types.GET_DOCUMENT,
+export const reduxActions = Creators;
+
+// export const getDocument = (document) => ({
+//     type: types.GET_DOCUMENT,
+//     document,
+//     [WAIT_FOR_ACTION]: types.GET_DOCUMENT_SUCCESS,
+//     [ERROR_ACTION]: types.GET_DOCUMENT_FAILURE,
+// });
+//
+// export const getDocumentSuccess = (payload) => ({
+//    type: types.GET_DOCUMENT_SUCCESS,
+//    payload,
+// });
+//
+// export const getDocumentFailure = (error) => ({
+//     type: types.GET_DOCUMENT_FAILURE,
+//     error,
+// });
+
+export const addComment = () => ({
+  type: types.ADD_COMMENT,
+});
+
+export const addCommentRequest = (document, content) => ({
+    type: types.ADD_COMMENT_REQUEST,
     document,
+    content,
 });
 
 export const changeStatus = (flag) => {

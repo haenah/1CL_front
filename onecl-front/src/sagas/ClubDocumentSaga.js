@@ -1,22 +1,57 @@
-import {call, takeLatest, put, take} from 'redux-saga/effects';
+import {call, fork, put, take} from 'redux-saga/effects';
 import api from '../api'
 import * as actions from '../actions/ClubDetail/index'
 import * as types from '../actions/ClubDetail/ActionTypes'
+import {reduxActions, Types} from '../actions/ClubDetail/index';
 import {REQUEST_URL} from "../Constants/Constants";
 
-function* getDocumentRequest() {
-  const {clubID, docID} = yield take(types.GET_DOCUMENT_REQUEST);
-  const url = `${REQUEST_URL}/document/?clubID=${clubID}&docID=${docID}/`;
+const settings = {
+  headers : {
+    Authorization : 'token ' + sessionStorage.getItem('token'),
+    'Content-type': 'application/json',
+  }
+};
+
+function* getDocumentRequest(url) {
+
   try {
-    const response = yield call (api.get, url);
+    const response = yield call(api.get, url, settings);
     if (response) {
-      yield put(actions.getDocument(response));
+      yield put(reduxActions.getDocumentSuccess(response));
     }
   } catch (e) {
-    console.log('Document GET Error: ', e.message);
+    alert('존재하지 않거나 읽을 권한이 없는 게시물입니다.');
+    yield put(reduxActions.getDocumentFailure(e.message));
+  }
+}
+
+function* watchGetDocumentRequest() {
+  while(true){
+    const {docID} = yield take(Types.GET_DOCUMENT_REQUEST);
+    const url = `${REQUEST_URL}/document/${docID}/`;
+    yield call(getDocumentRequest, url);
+  }
+}
+
+function* addCommentRequest(data) {
+  const url = `${REQUEST_URL}/document/comment/`;
+  try {
+    yield call(api.post, url, settings, data);
+    yield put(actions.addComment);
+  } catch(e) {
+    alert('댓글 달기에 실패했습니다. 다시 시도해주세요.');
+    console.log('ADD COMMENT ERROR: ', e.message);
+  }
+}
+
+function* watchAddCommentRequest() {
+  while(true) {
+    const data = yield take(types.ADD_COMMENT_REQUEST);
+    yield call(addCommentRequest,data);
   }
 }
 
 export default function* ClubDocumentSaga() {
-  takeLatest(types.GET_DOCUMENT_REQUEST, getDocumentRequest);
+  yield fork(watchGetDocumentRequest);
+  yield fork(watchAddCommentRequest);
 }
