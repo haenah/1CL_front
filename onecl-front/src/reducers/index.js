@@ -6,6 +6,7 @@ import Main from "./Main";
 import ClubRegister from './ClubRegister';
 import ClubDetail from './ClubDetail';
 import ClubApply from './ClubApply';
+import MyPage from "./MyPage";
 
 const reducers = combineReducers({
     SignUpValidationData: SignUpValidation,
@@ -15,6 +16,7 @@ const reducers = combineReducers({
     ClubRegister,
     ClubDetail,
     ClubApply,
+    MyPage,
 });
 
 export default reducers;
