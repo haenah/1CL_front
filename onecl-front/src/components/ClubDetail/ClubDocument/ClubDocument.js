@@ -49,10 +49,10 @@ class ClubDocument extends Component {
   }
 
   handleCommentSubmit() {
+    console.log('test');
     const {docID} = this.props;
     this.props.addComment(docID, this.state.comment);
     this.setState({comment: ''});
-    this.props.getDocument(docID);
   }
 
   render() {
@@ -68,7 +68,7 @@ class ClubDocument extends Component {
               <h5>작성자: {document.document.owner_name}</h5>
             </div>
               <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                <span style={{fontSize: '14px', color: 'grey'}}><Moment format={'YY/MM/DD HH:MM'}>{document.document.date}</Moment></span>
+                <span style={{fontSize: '14px', color: 'grey'}}><Moment format={'YY/MM/DD LT'}>{document.document.date}</Moment></span>
                 <span style={{fontSize: '14px', color: 'grey'}}>조회수 {document.document.view}</span>
               </div>
           </CardHeader>
@@ -85,8 +85,9 @@ class ClubDocument extends Component {
             <br />
               {document.comments.map(comment =>
                 <Card key={comment.id} style={{marginTop: '5px', padding: '12px'}}>
-                  <CardTitle>
-                    <h5>{comment.owner}</h5>
+                  <CardTitle style={{display: 'flex', justifyContent: 'space-between'}}>
+                    <h5>{comment.owner_name}</h5>
+                    <span style={{fontSize: '14px', color: 'grey'}}><Moment format={'YY/MM/DD LT'}>{comment.date}</Moment></span>
                   </CardTitle>
                   <CardText>
                     {comment.content}
@@ -100,7 +101,7 @@ class ClubDocument extends Component {
                 <Input type={'textarea'} placeholder={'댓글을 입력하세요.'} value={this.state.comment} onChange={e => this.setState({comment: e.target.value})} />
               </Col>
               <Col className={'col-md-1'}>
-                <Button style={{marginTop: '10px'}} onClick={() => this.handleCommentSubmit} color={'primary'}>입력</Button>
+                <Button style={{marginTop: '10px'}} onClick={() => this.handleCommentSubmit()} color={'primary'}>입력</Button>
               </Col>
             </Row>
           </Card>

@@ -30,6 +30,7 @@ const ClubDocument = (state=initialState, action) => {
       return {
         ...state,
         addCommentSuccess: true,
+        comment: action.comment,
       };
     default:
       return state;

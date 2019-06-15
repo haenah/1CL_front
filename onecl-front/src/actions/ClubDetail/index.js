@@ -70,15 +70,20 @@ export const reduxActions = Creators;
 //     error,
 // });
 
-export const addComment = () => ({
-  type: types.ADD_COMMENT,
-});
+export const addComment = (comment) => {
+    return {
+        type: types.ADD_COMMENT,
+        comment,
+    }
+};
 
-export const addCommentRequest = (document, content) => ({
-    type: types.ADD_COMMENT_REQUEST,
-    document,
-    content,
-});
+export const addCommentRequest = (document, content) => {
+    return {
+        type: types.ADD_COMMENT_REQUEST,
+        document,
+        content,
+    }
+};
 
 export const changeStatus = (flag) => {
     return {

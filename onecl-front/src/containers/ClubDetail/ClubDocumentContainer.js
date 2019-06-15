@@ -10,6 +10,7 @@ const mapStateToProps = (state, props) => {
     isFetching: state.ClubDocument.isFetching,
     error: state.ClubDocument.errorMessage,
     addCommentSuccess: state.ClubDocument.addCommentSuccess,
+    comment: state.ClubDocument.comment,
   };
 };
 

@@ -36,8 +36,10 @@ function* watchGetDocumentRequest() {
 function* addCommentRequest(data) {
   const url = `${REQUEST_URL}/document/comment/`;
   try {
-    yield call(api.post, url, settings, data);
-    yield put(actions.addComment);
+    const response = yield call(api.post, url, data, settings);
+    console.log(data);
+    yield put(actions.addComment(response));
+    yield call(getDocumentRequest, `${REQUEST_URL}/document/${data.document}`);
   } catch(e) {
     alert('댓글 달기에 실패했습니다. 다시 시도해주세요.');
     console.log('ADD COMMENT ERROR: ', e.message);
