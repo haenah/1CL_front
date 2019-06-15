@@ -35,10 +35,28 @@ class FileSubmit extends Component{
         }
     };
 
+    checkAuth = (authLevel) => {
+        if(authLevel && authLevel > 0){
+            alert('이미 가입되어 있는 동아리입니다.');
+            this.props.history.push(`/club/${this.props.clubID}`)
+        }
+        if(authLevel && authLevel === -1){
+            alert('로그인 후 이용할 수 있는 기능입니다.');
+            this.props.history.push(`/club/${this.props.clubID}`)
+        }
+    };
+
     componentDidMount(){
-        const {getApplyMessage, clubID} = this.props;
+        const {getApplyMessage, getAuthLevel, clubID} = this.props;
+        getAuthLevel(clubID);
         getApplyMessage(clubID);
     };
+
+    componentWillReceiveProps(props){
+        if(props.authLevel !== this.props.authLevel){
+            this.checkAuth(props.authLevel)
+        }
+    }
 
     render(){
         const {applyMessage} = this.props;
