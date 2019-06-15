@@ -26,7 +26,6 @@ class SignUp extends Component{
       switch (e.target.name) {
           case 'pw':
               if (e.target.name === 'pw') {
-                  console.log(e.target.value);
                   if (this.pwRegex.test(e.target.value)) {
                       this.setState({
                           pw: e.target.value,

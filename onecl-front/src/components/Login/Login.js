@@ -30,7 +30,6 @@ class Login extends Component {
 
   render() {
     return (
-
         <div>
           {this.onAlreadyLoggedIn()}
         {/*<div className='heading-space'>*/}
