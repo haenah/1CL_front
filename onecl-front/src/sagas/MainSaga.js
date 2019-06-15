@@ -1,20 +1,18 @@
 import {call, put, takeLatest} from 'redux-saga/effects';
 import api from '../api';
-import * as actions from '../actions/Common/index';
-import * as types from '../actions/Common/ActionTypes';
+import * as actions from '../actions/Main/index';
+import * as types from '../actions/Main/ActionTypes';
 import {REQUEST_URL} from "../Constants/Constants";
 
 const url = `${REQUEST_URL}/club/`;
 
-function* getClubList() {
+function* fetchClubListRequest() {
   const data = yield call(api.get, url);
-  yield put (actions.getClubList(data));
-}
-
-//TODO
-function* clubSearchRequest() {
+  if (data) {
+    yield put(actions.fetchClubList(data));
+    }
 }
 
 export default function* MainSaga() {
-  yield takeLatest(types.GET_CLUB_LIST_REQUEST, getClubList)
+  yield takeLatest(types.FETCH_CLUB_LIST_REQUEST, fetchClubListRequest)
 }

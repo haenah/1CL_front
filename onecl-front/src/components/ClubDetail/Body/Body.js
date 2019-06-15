@@ -135,7 +135,6 @@ class Body extends Component{
 
     categorySearchHandler = (e) => {
         const {searchDocument} = this.props;
-        console.log('hi');
         searchDocument(e.target.value);
     };
 
