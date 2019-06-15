@@ -32,7 +32,7 @@ class MyNavBar extends Component {
 
   handleLogOut() {
     sessionStorage.clear();
-    this.setState({loggedIn: false});
+    alert('로그아웃 되었습니다');
   }
 
   render() {
@@ -51,7 +51,7 @@ class MyNavBar extends Component {
                 <NavLink href={'/mypage'}>내 정보</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink onClick={() => this.handleLogOut()}>로그아웃</NavLink>
+                <NavLink href={'/'} onClick={() => this.handleLogOut()}>로그아웃</NavLink>
               </NavItem>
               <span style={{marginTop: '8px'}}>{`${sessionStorage.getItem('name')}님, 환영합니다!`}</span>
             </div> :

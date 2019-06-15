@@ -67,7 +67,7 @@ class Main extends Component {
                   <div>
                     {this.state.clubs && this.state.clubs.map(c =>
                       <div key={c.id} style={{display: 'block', textAlign: 'center', justifyContent: 'center', borderBottom: '1px solid lightgrey', padding: '16px', color: 'grey'}}>
-                        <a style={{textDecoration: 'none'}} href={c.id}>{c.name}</a>
+                        <a style={{textDecoration: 'none'}} href={`/club/${c.id}`}>{c.name}</a>
                       </div>
                       )
                     }
@@ -89,8 +89,6 @@ class Main extends Component {
                 <Switch>
                   <Route exact path="/club_search" component={ClubsearchPage}/>
                   <Route exact path="/club_register" component={ClubRegisterPage}/>
-                  <Route exact path="/register" component={SignupPage}/>
-                  <Route exact path="/login" component={LoginPage} />
                   <Route exact path="/register" component={SignupPage}/>
                   <Route exact path="/login" component={LoginPage} />
                   <Route exact path="/mypage" component={MyPage} />
