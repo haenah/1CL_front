@@ -25,6 +25,7 @@ const tmp_doc =
         date: 'date2',
         docID: 5,
       },
+
     ]
 };
 
@@ -38,15 +39,17 @@ class ClubDocument extends Component {
       <div>
         <Card>
           <CardHeader>
-            {tmp_doc.title}
-            <div style={{display: 'flex', justifyContent: 'flex-end'}}>
-              <span>{tmp_doc.writer}</span>
-              <span>{tmp_doc.date}</span>
+            <div style={{display: 'flex', justifyContent: 'space-between',}}>
+              <h3>{tmp_doc.title}</h3>
+              <h5>작성자: {tmp_doc.writer}</h5>
             </div>
+              <div style={{display: 'flex', flexDirection: 'row-reverse'}}>
+                <span style={{fontSize: '14px', color: 'grey'}}>{tmp_doc.date}</span>
+              </div>
           </CardHeader>
           <CardBody>
             <div
-              style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column',}}
+              // style={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column',}}
               dangerouslySetInnerHTML={
                 {__html : tmp_doc.content}
               }>
@@ -56,9 +59,9 @@ class ClubDocument extends Component {
             댓글
             <br />
               {tmp_doc.comments.map(comment =>
-                <Card style={{marginTop: '5px'}}>
+                <Card style={{marginTop: '5px', padding: '12px'}}>
                   <CardTitle>
-                    {comment.owner}
+                    <h5>{comment.owner}</h5>
                   </CardTitle>
                   <CardText>
                     {comment.content}
