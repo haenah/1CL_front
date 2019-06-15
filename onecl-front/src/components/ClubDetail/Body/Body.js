@@ -1,18 +1,9 @@
 import React, {Component} from 'react'
 import CKEditor from 'ckeditor4-react'
-import {Link} from 'react-router-dom';
 import './Body.css'
-import {Table} from "reactstrap";
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 
-const Document = ({clubID, id, title}) => {
-    return(
-        <div>
-            <p><Link to={`/club/${clubID}/document/${id}`}>{title}</Link></p>
-        </div>
-    );
-};
 
 const Member = ({name, auth_level, clubID, memberID, buttonClickHandler}) => {
     const position = (auth_level) => {
@@ -191,46 +182,8 @@ class Body extends Component{
     render() {
         const {componentStatus, id, history} = this.props;
         const {documentList, memberList, infoPost} = this.props;
-        const tmp_memList = [
-            {
-                id: 1,
-                name: 'baek geun young',
-                auth_level: 0,
-            },
-            {
-                id: 2,
-                name: 'ahn jae won',
-                auth_level: 3,
-            },
-            {
-                id: 3,
-                name: 'seo jun won',
-                auth_level: 2,
-            },
-            {
-                id: 4,
-                name: '백근영',
-                auth_level: 3,
-            }
-        ];
+
         const tmp_infoPost = `<p>HIS에서 동아리원을 모집합니다.</p><p><strong>지원기간 : 5/30 ~ 5/31</strong></p><img style="height:200px; width:142px" src="http://127.0.0.1:8000/media/0005.jpg"/>`;
-
-        // const docList = tmp_docList.map(
-        //     (document) => {
-        //         return(
-        //             <div>
-        //                 {/*<Document*/}
-        //                     {/*clubID={this.props.id}*/}
-        //                     {/*key={document.id}*/}
-        //                     {/*id={document.id}*/}
-        //                     {/*title={document.title}*/}
-        //                 {/*/>*/}
-        //                 {/*<hr />*/}
-        //             </div>x
-        //         )
-        //     }
-        // );
-
 
         const memList = !memberList.results ? null : memberList.results.map(
             (member) => {
