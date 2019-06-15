@@ -1,20 +1,11 @@
 import React, {Component} from 'react'
 import CKEditor from 'ckeditor4-react'
-import {Link} from 'react-router-dom';
 import './Body.css'
-import {Table} from "reactstrap";
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 
-const Document = ({clubID, id, title}) => {
-    return(
-        <div>
-            <p><Link to={`/club/${clubID}/document/${id}`}>{title}</Link></p>
-        </div>
-    );
-};
 
-const Member = ({name, auth_level, clubID, memberID, buttonClickHandler}) => {
+const Member = ({name, auth_level, clubID, joinID, buttonClickHandler}) => {
     const position = (auth_level) => {
         switch (auth_level){
             case 1 :
@@ -32,65 +23,29 @@ const Member = ({name, auth_level, clubID, memberID, buttonClickHandler}) => {
         <div style={{'margin' : '20px'}}>
             <p style={{'display':'inline-block', 'width':'250px'}}>{name}</p>
             <p style={{'display':'inline-block', 'width':'250px'}}>{position(auth_level)}</p>
-            <button style={{'display' : 'inline-block'}} onClick={() => buttonClickHandler(clubID, memberID)}>등급 변경</button>
+            <button style={{'display' : 'inline-block'}} disabled={auth_level === 3} onClick={() => buttonClickHandler(clubID, joinID, name)}>등급 변경</button>
         </div>
     );
 };
-
-const tmp_docList = [
-    {
-        id: 1,
-        title: 'first post',
-        type: 'announcement',
-        date: 'date1',
-        writer: 'baek'
-    },
-    {
-        id: 2,
-        title: 'second post',
-        type: 'announcement',
-        date: 'date2',
-        writer: 'eum'
-    },
-    {
-        id: 3,
-        title: 'third post',
-        type: 'open',
-        date: 'date3',
-        writer: 'ahn'
-    },
-    {
-        id: 4,
-        title: 'fourth post',
-        type: 'open',
-        date: 'date4',
-        writer: 'park'
-    },
-    {
-        id: 5,
-        title: 'fifth post',
-        type: 'announcement',
-        date: 'date5',
-        writer: 'baek'
-    },
-];
 
 class Body extends Component{
     state = {
         isPost : false,
         docTitle : null,
         docContent : '내용을 작성하세요.',
+        selectedType : 1,
     };
 
 
     initialize = () => {
-        const { getAuthLevel, getMemberList, getDocumentList, getInfoPost } = this.props;
-        const {id} = this.props;
+        const { getAuthLevel, getMemberList, getDocumentList, getInfoPost, getDocTypeList, searchDocument } = this.props;
+        const {clubID} = this.props;
 
-        getAuthLevel(id);
-        getMemberList(id);
-        getDocumentList(id);
-        getInfoPost(id);
+        getAuthLevel(clubID);
+        getMemberList(clubID);
+        searchDocument('all', clubID);
+        getInfoPost(clubID);
+        getDocTypeList(clubID);
     };
 
     componentDidMount() {
@@ -100,7 +55,8 @@ class Body extends Component{
     postButtonHandler = () => {
         this.setState({
             isPost : true,
-        })
+        });
+        this.props.startPost();
     };
 
     returnButtonHandler = () => {
@@ -127,14 +83,14 @@ class Body extends Component{
     };
 
     documentSubmitHandler = () => {
-        const {submitDocument} = this.props;
-        const {docTitle, docContent} = this.state;
-        submitDocument(docTitle, docContent);
+        const {submitDocument, clubID} = this.props;
+        const {docTitle, docContent, selectedType} = this.state;
+        submitDocument(docTitle, docContent, selectedType, clubID);
     };
 
     categorySearchHandler = (e) => {
-        const {searchDocument} = this.props;
-        searchDocument(e.target.value);
+        const {searchDocument, clubID} = this.props;
+        searchDocument(e.target.value, clubID);
     };
 
     componentWillReceiveProps(props){
@@ -145,18 +101,30 @@ class Body extends Component{
                 docContent : '내용을 입력하세요.'
             })
         }
+
+        if((this.props.post_complete !== props.post_complete) && props.post_complete){
+            alert("게시글 작성에 성공했습니다.");
+            this.setState({
+                isPost : false,
+                docTitle : null,
+                docContent : '내용을 입력하세요.'
+            })
+        }
     };
 
-    authChangeButtonHandler = (clubID, memberID) => {
+    authChangeButtonHandler = (clubID, joinID, username) => {
         console.log(this.props.memberList);
-        this.props.authChangeModalVisualize(clubID, memberID);
+        this.props.authChangeModalVisualize(clubID, joinID, username);
     };
 
-    renderDocList() {
+    renderDocList(docList, clubID) {
         return (
           <div>
               <ReactTable
-                data={tmp_docList}
+                getTrProps={(state, rowInfo) => ({
+                    onClick: () => this.props.history.push(`/club/${clubID}/document/${rowInfo.original.id}`)
+                })}
+                data={docList}
                 columns={[
                     {
                         Header: "제목",
@@ -164,7 +132,7 @@ class Body extends Component{
                     },
                     {
                         Header: "게시판",
-                        accessor: 'type',
+                        accessor: 'type_name',
                     },
                     {
                         Header: "날짜",
@@ -172,7 +140,7 @@ class Body extends Component{
                     },
                     {
                         Header: '작성자',
-                        accessor: 'writer',
+                        accessor: 'owner',
                     }
                 ]}
                 defaultPageSize={20}
@@ -187,49 +155,9 @@ class Body extends Component{
 
     render() {
         const {componentStatus, id, history} = this.props;
-        const {documentList, memberList, infoPost} = this.props;
-        const tmp_memList = [
-            {
-                id: 1,
-                name: 'baek geun young',
-                auth_level: 0,
-            },
-            {
-                id: 2,
-                name: 'ahn jae won',
-                auth_level: 3,
-            },
-            {
-                id: 3,
-                name: 'seo jun won',
-                auth_level: 2,
-            },
-            {
-                id: 4,
-                name: '백근영',
-                auth_level: 3,
-            }
-        ];
-        const tmp_infoPost = `<p>HIS에서 동아리원을 모집합니다.</p><p><strong>지원기간 : 5/30 ~ 5/31</strong></p><img style="height:200px; width:142px" src="http://127.0.0.1:8000/media/0005.jpg"/>`;
+        const {documentList, memberList, infoPost, docTypeList} = this.props;
 
-        // const docList = tmp_docList.map(
-        //     (document) => {
-        //         return(
-        //             <div>
-        //                 {/*<Document*/}
-        //                     {/*clubID={this.props.id}*/}
-        //                     {/*key={document.id}*/}
-        //                     {/*id={document.id}*/}
-        //                     {/*title={document.title}*/}
-        //                 {/*/>*/}
-        //                 {/*<hr />*/}
-        //             </div>x
-        //         )
-        //     }
-        // );
-
-
-        const memList = (memberList.results === undefined) ? null : memberList.results.map(
+        const memList = !memberList.results ? null : memberList.results.map(
             (member) => {
                 return(
                     <div>
@@ -237,8 +165,8 @@ class Body extends Component{
                             key={member.id}
                             name={member.user}
                             auth_level={member.auth_level}
-                            clubID={this.props.id}
-                            memberID={member.id}
+                            joinID={member.id}
+                            clubID={member.club}
                             buttonClickHandler={this.authChangeButtonHandler}
                         />
                         <hr/>
@@ -289,9 +217,8 @@ class Body extends Component{
                         }}
                           placeholder={'제목'}
                           onChange={this.docTitleInputHandler}/>
-                        <select style={{'marginLeft' : '20px',}}>
-                            <option value = '공지게시판'>공지게시판</option>
-                            <option value = '자유게시판'>자유게시판</option>
+                        <select style={{'marginLeft' : '20px',}} onChange={(e) => {this.setState({selectedType: e.target.value})}}>
+                            {docTypeList && docTypeList.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
                         </select>
                         <CKEditor
                             data={this.state.docContent}
@@ -314,14 +241,13 @@ class Body extends Component{
                 return(
                     <div>
                         <select className={'categorySelect'} onChange={this.categorySearchHandler}>
-                            <option value='전체'>전체</option>
-                            <option value='공지게시판'>공지게시판</option>
-                            <option value='자유게시판'>자유게시판</option>
+                            <option value= 'all'>전체</option>
+                            {docTypeList && docTypeList.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
                         </select>
                         <button className={'postButton'} onClick={this.postButtonHandler}>글쓰기</button>
                         <div className={'docListWrapper'}>
                             {/*{docList}*/}
-                            {this.renderDocList()}
+                            {this.renderDocList(documentList, id)}
                         </div>
                     </div>
                 )
@@ -335,7 +261,7 @@ class Body extends Component{
                         'margin' : '20px',
                     }}
                     dangerouslySetInnerHTML={
-                    {__html : tmp_infoPost}
+                    {__html : infoPost}
                 }>
                 </div>
             )

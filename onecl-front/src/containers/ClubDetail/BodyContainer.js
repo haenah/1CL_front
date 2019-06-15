@@ -16,15 +16,21 @@ const mapDispatchToProps = (dispatch) => {
         getAuthLevel : (id) => {
             dispatch(actions.getAuthLevelRequest(id))
         },
-        submitDocument : (docTitle, docContent) => {
-            dispatch(actions.submitDocumentRequest(docTitle, docContent))
+        submitDocument : (docTitle, docContent, type, clubID) => {
+            dispatch(actions.submitDocumentRequest(docTitle, docContent, type, clubID))
         },
-        searchDocument : (category) => {
-            dispatch(actions.searchDocumentRequest(category))
+        searchDocument : (category, clubID) => {
+            dispatch(actions.searchDocumentRequest(category, clubID))
         },
-        authChangeModalVisualize : (clubID, memberID) => {
-            dispatch(actions.authChangeModalVisualize(clubID, memberID))
-        }
+        authChangeModalVisualize : (clubID, joinID, username) => {
+            dispatch(actions.authChangeModalVisualize(clubID, joinID, username))
+        },
+        getDocTypeList : (id) => {
+            dispatch(actions.getDocTypeListRequest(id))
+        },
+        startPost : () => {
+            dispatch(actions.startPost())
+        },
     }
 };
 
@@ -34,7 +40,10 @@ const mapStateToProps = (state, props) => {
         memberList : state.ClubDetail.memberList,
         documentList : state.ClubDetail.documentList,
         componentStatus : state.ClubDetail.componentStatus,
+        docTypeList: state.ClubDetail.docTypeList,
         history : props.history,
+        clubID : props.id,
+        post_complete : state.ClubDetail.post_complete,
     }
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Body)

@@ -8,12 +8,6 @@ class FixClubPost extends Component {
         docContent : null,
     };
 
-    docTitleInputHandler = (e) => {
-        this.setState({
-            docTitle : e.target.value,
-        });
-    };
-
     editorChangeHandler = (e) => {
         this.setState({
             docContent : e.editor.getData(),
@@ -31,6 +25,22 @@ class FixClubPost extends Component {
         }
     };
 
+    componentDidMount(){
+        this.props.getInfoPost(this.props.id);
+        this.setState({
+            docContent : this.props.infoPost,
+        })
+    };
+
+    documentSubmitHandler = () => {
+        const {id, fixIntroPost} = this.props;
+        const {docContent} = this.state;
+
+        console.log(id, docContent);
+        fixIntroPost(id, docContent);
+        alert('소개글 수정이 완료되었습니다.');
+        this.props.history.push(`/club/${id}`)
+    };
 
     render(){
         return(
@@ -40,17 +50,6 @@ class FixClubPost extends Component {
                 'width' : '100%',
                 'boxShadow' : '3px 3px 3px 3px gray',
             }}>
-                <textarea style={{
-                            'width' : '90%',
-                            'height' : '30px',
-                            'margin' : '20px',
-                            }}
-                          placeholder={'제목'}
-                          onChange={this.docTitleInputHandler}/>
-                <select style={{'marginLeft' : '20px',}}>
-                    <option value = '공지게시판'>공지게시판</option>
-                    <option value = '자유게시판'>자유게시판</option>
-                </select>
                 <CKEditor
                     data={this.state.docContent}
                     onChange={this.editorChangeHandler}
@@ -58,8 +57,8 @@ class FixClubPost extends Component {
                         'margin' : '20px',
                     }}
                     config={{
-                        filebrowserBrowseUrl: 'http://127.0.0.1:8000/image/',
-                        filebrowserUploadUrl: 'http://127.0.0.1:8000/image/',
+                        filebrowserBrowseUrl: `http://127.0.0.1:8000/upload/image/?clubID=${this.props.id}`,
+                        filebrowserUploadUrl: `http://127.0.0.1:8000/upload/image/?clubID=${this.props.id}`,
                     }}
                 />
                 <button onClick={this.documentSubmitHandler} style={{'marginRight' : '20px'}}>작성</button>
