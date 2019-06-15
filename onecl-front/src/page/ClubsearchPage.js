@@ -2,11 +2,11 @@ import React from 'react';
 import CategoryContainer from '../containers/Clubsearch/CategoryContainer';
 import ClubListContainer from '../containers/Clubsearch/ClubListContainer';
 
-const ClubsearchPage = () => {
+const ClubsearchPage = ({history}) => {
     return(
         <div>
             <CategoryContainer/>
-            <ClubListContainer/>
+            <ClubListContainer history={history} />
         </div>
     );
 };

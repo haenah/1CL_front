@@ -28,7 +28,7 @@ export const Header = ({id, authLevel, clickInfoPostButton, clickMemberListButto
         )
     }
 
-    else{
+    else if(authLevel === 1) {
         return(
             <div className={'headerWrapper'}>
                 <div className={'optionSet'}>
@@ -39,7 +39,15 @@ export const Header = ({id, authLevel, clickInfoPostButton, clickMemberListButto
         )
     }
 
-
+    else {
+        return(
+            <div className={'headerWrapper'}>
+                <div className={'optionSet'}>
+                    <button className='headerOptions' onClick={() => clickInfoPostButton()}> 동아리 소개 </button>
+                </div>
+            </div>
+        )
+    }
 };
 
 export default Header;
