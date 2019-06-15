@@ -1,0 +1,23 @@
+.headerOptions {
+    display: inline-block;
+    width: 250px;
+    text-align: center;
+    background-color: grey;
+    color : white;
+    margin-right: 25px;
+    margin-left : 25px;
+}
+
+.headerWrapper {
+    height : 55px;
+    width : 100%;
+    box-shadow: 5px 5px 5px grey;
+    position : relative;
+}
+
+.optionSet {
+    position : absolute;
+    left : 50%;
+    transform: translateX(-50%);
+    width : fit-content;
+}

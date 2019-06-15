@@ -4,14 +4,20 @@ import LoginSaga from "./LoginSaga";
 import ClubSearchSaga from './ClubSearchSaga';
 import MainSaga from "./MainSaga";
 import ClubRegisterSaga from './ClubRegisterSaga';
+import ClubDetailSaga from './ClubDetailSaga';
+import ClubApplySaga from './ClubApplySaga';
+import MyPageSaga from "./MyPageSaga";
 
 export default function* rootSaga() {
   yield all(
     [
-      LoginSaga,
-      SignUpSaga,
-      ClubSearchSaga,
-      ClubRegisterSaga,
-      MainSaga,
+        LoginSaga,
+        SignUpSaga,
+        ClubSearchSaga,
+        ClubRegisterSaga,
+        MainSaga,
+        ClubDetailSaga,
+        ClubApplySaga,
+        MyPageSaga,
     ].map(saga => fork(saga)));
 }
