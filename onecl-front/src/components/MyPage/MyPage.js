@@ -33,9 +33,13 @@ class MyPage extends Component {
         <span>Email: </span>
         <span>{sessionStorage.getItem('email')}</span>
 
-        <ListGroup>
-          {joinList.results && joinList.results.map(club => <ListGroupItem key={club.id} tag={'a'} href={`/club/${club.id}`}>{club.id}</ListGroupItem>)}
-        </ListGroup>
+        <div>
+          내가 가입한 동아리:
+          <br />
+          <ListGroup>
+            {joinList.results && joinList.results.map(join => <ListGroupItem key={join.club_id} tag={'a'} href={`/club/${join.club_id}`}>{join.club_name}</ListGroupItem>)}
+          </ListGroup>
+        </div>
 
       </div>
 

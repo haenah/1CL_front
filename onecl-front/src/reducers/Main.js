@@ -1,7 +1,9 @@
-import * as types from '../actions/Main/ActionTypes'
+import * as types from '../actions/Main/ActionTypes';
+import * as login from '../actions/Login/ActionTypes';
 
 const initialState = {
   clubList: null,
+  login: null,
 };
 
 const Main = (state=initialState, action) => {
@@ -10,6 +12,11 @@ const Main = (state=initialState, action) => {
       return {
         ...state,
         clubList: action.clubList,
+      };
+    case login.LOGIN_REQUEST_SUCCESS:
+      return {
+        ...state,
+        login: action.user,
       };
     default:
       return initialState;

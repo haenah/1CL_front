@@ -4,7 +4,8 @@ import {fetchClubListRequest} from "../../actions/Main";
 
 const mapStateToProps = (state) => {
   return {
-    clubs: state.Main.clubList
+    clubs: state.Main.clubList,
+    login: state.Login.user,
   };
 };
 

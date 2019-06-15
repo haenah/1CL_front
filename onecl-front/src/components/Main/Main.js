@@ -84,7 +84,7 @@ class Main extends Component {
                 }
               }
             >
-              <MyNavBar />
+              <MyNavBar token={this.props.token} user={this.props.login} />
               <div>
                 <Switch>
                   <Route exact path="/club_search" component={ClubsearchPage}/>
