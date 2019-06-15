@@ -18,12 +18,17 @@ class FixClubInfo extends Component{
                 'authorization' : tokenString,
             }
         };
-        const response = await axios.get(url, config);
-        this.setState({
-            clubName : response.data.name,
-            clubCat : response.data.category,
-            clubDept : response.data.dept,
-        });
+        try{
+            const response = await axios.get(url, config);
+            this.setState({
+                clubName : response.data.name,
+                clubCat : response.data.category,
+                clubDept : response.data.dept,
+            });
+        }catch (e) {
+            alert('권한이 없습니다.');
+            this.props.history.push(`/club/${this.props.id}`);
+        }
     };
 
     componentDidMount(){

@@ -14,7 +14,7 @@ const Document = ({clubID, id, title}) => {
     );
 };
 
-const Member = ({name, auth_level, clubID, memberID, buttonClickHandler}) => {
+const Member = ({name, auth_level, clubID, joinID, buttonClickHandler}) => {
     const position = (auth_level) => {
         switch (auth_level){
             case 1 :
@@ -32,7 +32,7 @@ const Member = ({name, auth_level, clubID, memberID, buttonClickHandler}) => {
         <div style={{'margin' : '20px'}}>
             <p style={{'display':'inline-block', 'width':'250px'}}>{name}</p>
             <p style={{'display':'inline-block', 'width':'250px'}}>{position(auth_level)}</p>
-            <button style={{'display' : 'inline-block'}} onClick={() => buttonClickHandler(clubID, memberID)}>등급 변경</button>
+            <button style={{'display' : 'inline-block'}} onClick={() => buttonClickHandler(clubID, joinID, name)}>등급 변경</button>
         </div>
     );
 };
@@ -80,17 +80,19 @@ class Body extends Component{
         isPost : false,
         docTitle : null,
         docContent : '내용을 작성하세요.',
+        selectedType : 1,
     };
 
 
     initialize = () => {
-        const { getAuthLevel, getMemberList, getDocumentList, getInfoPost } = this.props;
-        const {id} = this.props;
+        const { getAuthLevel, getMemberList, getDocumentList, getInfoPost, getDocTypeList, searchDocument } = this.props;
+        const {clubID} = this.props;
 
-        getAuthLevel(id);
-        getMemberList(id);
-        getDocumentList(id);
-        getInfoPost(id);
+        getAuthLevel(clubID);
+        getMemberList(clubID);
+        searchDocument('all', clubID);
+        getInfoPost(clubID);
+        getDocTypeList(clubID);
     };
 
     componentDidMount() {
@@ -100,7 +102,8 @@ class Body extends Component{
     postButtonHandler = () => {
         this.setState({
             isPost : true,
-        })
+        });
+        this.props.startPost();
     };
 
     returnButtonHandler = () => {
@@ -127,15 +130,15 @@ class Body extends Component{
     };
 
     documentSubmitHandler = () => {
-        const {submitDocument} = this.props;
-        const {docTitle, docContent} = this.state;
-        submitDocument(docTitle, docContent);
+        const {submitDocument, clubID} = this.props;
+        const {docTitle, docContent, selectedType} = this.state;
+        submitDocument(docTitle, docContent, selectedType, clubID);
     };
 
     categorySearchHandler = (e) => {
-        const {searchDocument} = this.props;
+        const {searchDocument, clubID} = this.props;
         console.log('hi');
-        searchDocument(e.target.value);
+        searchDocument(e.target.value, clubID);
     };
 
     componentWillReceiveProps(props){
@@ -146,18 +149,27 @@ class Body extends Component{
                 docContent : '내용을 입력하세요.'
             })
         }
+
+        if((this.props.post_complete !== props.post_complete) && props.post_complete){
+            alert("게시글 작성에 성공했습니다.");
+            this.setState({
+                isPost : false,
+                docTitle : null,
+                docContent : '내용을 입력하세요.'
+            })
+        }
     };
 
-    authChangeButtonHandler = (clubID, memberID) => {
+    authChangeButtonHandler = (clubID, joinID, username) => {
         console.log(this.props.memberList);
-        this.props.authChangeModalVisualize(clubID, memberID);
+        this.props.authChangeModalVisualize(clubID, joinID, username);
     };
 
-    renderDocList() {
+    renderDocList(docList) {
         return (
           <div>
               <ReactTable
-                data={tmp_docList}
+                data={docList}
                 columns={[
                     {
                         Header: "제목",
@@ -173,7 +185,7 @@ class Body extends Component{
                     },
                     {
                         Header: '작성자',
-                        accessor: 'writer',
+                        accessor: 'owner',
                     }
                 ]}
                 defaultPageSize={20}
@@ -188,7 +200,7 @@ class Body extends Component{
 
     render() {
         const {componentStatus, id, history} = this.props;
-        const {documentList, memberList, infoPost} = this.props;
+        const {documentList, memberList, infoPost, docTypeList} = this.props;
         const tmp_memList = [
             {
                 id: 1,
@@ -238,8 +250,8 @@ class Body extends Component{
                             key={member.id}
                             name={member.user}
                             auth_level={member.auth_level}
-                            clubID={this.props.id}
-                            memberID={member.id}
+                            joinID={member.id}
+                            clubID={member.club}
                             buttonClickHandler={this.authChangeButtonHandler}
                         />
                         <hr/>
@@ -290,9 +302,8 @@ class Body extends Component{
                         }}
                           placeholder={'제목'}
                           onChange={this.docTitleInputHandler}/>
-                        <select style={{'marginLeft' : '20px',}}>
-                            <option value = '공지게시판'>공지게시판</option>
-                            <option value = '자유게시판'>자유게시판</option>
+                        <select style={{'marginLeft' : '20px',}} onChange={(e) => {this.setState({selectedType: e.target.value})}}>
+                            {docTypeList && docTypeList.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
                         </select>
                         <CKEditor
                             data={this.state.docContent}
@@ -315,14 +326,13 @@ class Body extends Component{
                 return(
                     <div>
                         <select className={'categorySelect'} onChange={this.categorySearchHandler}>
-                            <option value='전체'>전체</option>
-                            <option value='공지게시판'>공지게시판</option>
-                            <option value='자유게시판'>자유게시판</option>
+                            <option value= 'all'>전체</option>
+                            {docTypeList && docTypeList.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
                         </select>
                         <button className={'postButton'} onClick={this.postButtonHandler}>글쓰기</button>
                         <div className={'docListWrapper'}>
                             {/*{docList}*/}
-                            {this.renderDocList()}
+                            {this.renderDocList(documentList)}
                         </div>
                     </div>
                 )
