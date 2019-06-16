@@ -3,7 +3,9 @@ import CKEditor from 'ckeditor4-react'
 import './Body.css'
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
-import {Button} from "reactstrap";
+import {REQUEST_URL} from "../../../Constants/Constants";
+import {Button, Col, Input, Row} from "reactstrap";
+import Moment from "react-moment";
 
 const AUTH_LEVEL = [
   '비회원', '일반 회원', '임원', '회장',
@@ -117,11 +119,11 @@ class Body extends Component{
                     },
                     {
                         Header: "날짜",
-                        accessor: 'date',
+                        Cell: row => <Moment format={'YYYY년 M월 DD일 LT'}>{row.original.date}</Moment>
                     },
                     {
                         Header: '작성자',
-                        accessor: 'owner',
+                        Cell: row => <span>{row.original.owner_name} <span style={{fontSize: '14px', color: 'grey'}}>({row.original.owner_username})</span></span>,
                     }
                 ]}
                 defaultPageSize={20}
@@ -213,8 +215,8 @@ class Body extends Component{
                                 'margin' : '20px',
                             }}
                             config={{
-                                filebrowserBrowseUrl: `http://127.0.0.1:8000/upload/image/?clubID=${id}`,
-                                filebrowserUploadUrl: `http://127.0.0.1:8000/upload/image/?clubID=${id}`,
+                                filebrowserBrowseUrl: `${REQUEST_URL}/upload/image/?clubID=${id}`,
+                                filebrowserUploadUrl: `${REQUEST_URL}/upload/image/?clubID=${id}`,
                             }}
                         />
                         <button onClick={this.documentSubmitHandler} style={{'marginRight' : '20px'}}>작성</button>
@@ -225,13 +227,19 @@ class Body extends Component{
             }
             else{
                 return(
-                    <div className={'feed'}>
-                        <select className={'categorySelect'} onChange={this.categorySearchHandler}>
-                            <option value= 'all'>전체</option>
-                            {docTypeList && docTypeList.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
-                        </select>
-                        <button className={'postButton'} style={{'border-radius' : '10px'}} onClick={this.postButtonHandler}>글쓰기</button>
-                        <div className={'docListWrapper'}>
+                    <div style={{marginTop: '10px'}} className={'feed'}>
+                      <Row>
+                        <Col className={'col-md-2'}>
+                          <Input bsSize={'small'} type={'select'} label={'게시판 필터'} onChange={this.categorySearchHandler}>
+                              <option value= 'all'>전체</option>
+                              {docTypeList && docTypeList.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
+                          </Input>
+                        </Col>
+                        <Col>
+                          <Button color={'info'} style={{'borderRadius' : '10px'}} onClick={this.postButtonHandler}>글쓰기</Button>
+                        </Col>
+                      </Row>
+                        <div style={{marginTop: '15px'}} className={'docListWrapper'}>
                             {/*{docList}*/}
                             {this.renderDocList(documentList, id)}
                         </div>

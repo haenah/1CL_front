@@ -7,6 +7,7 @@ import ClubRegister from './ClubRegister';
 import ClubDetail from './ClubDetail';
 import ClubApply from './ClubApply';
 import MyPage from "./MyPage";
+import ClubDocument from "./ClubDocument";
 import AddClubDocumentCategory from './AddClubDocumentCategory';
 
 const reducers = combineReducers({
@@ -19,6 +20,7 @@ const reducers = combineReducers({
     ClubApply,
     MyPage,
     AddClubDocumentCategory,
+    ClubDocument,
 });
 
 export default reducers;
