@@ -68,7 +68,7 @@ class ClubDocument extends Component {
               <h5>작성자: {document.document.owner_name}</h5>
             </div>
               <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                <span style={{fontSize: '14px', color: 'grey'}}><Moment format={'YY/MM/DD LT'}>{document.document.date}</Moment></span>
+                <span style={{fontSize: '14px', color: 'grey'}}><Moment format={'YYYY년 M월 DD일 LT'}>{document.document.date}</Moment></span>
                 <span style={{fontSize: '14px', color: 'grey'}}>조회수 {document.document.view}</span>
               </div>
           </CardHeader>
@@ -87,7 +87,7 @@ class ClubDocument extends Component {
                 <Card key={comment.id} style={{marginTop: '5px', padding: '12px'}}>
                   <CardTitle style={{display: 'flex', justifyContent: 'space-between'}}>
                     <h5>{comment.owner_name}</h5>
-                    <span style={{fontSize: '14px', color: 'grey'}}><Moment format={'YY/MM/DD LT'}>{comment.date}</Moment></span>
+                    <span style={{fontSize: '14px', color: 'grey'}}><Moment format={'YYYY년 M월 DD일 LT'}>{comment.date}</Moment></span>
                   </CardTitle>
                   <CardText>
                     {comment.content}
