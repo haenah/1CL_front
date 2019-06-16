@@ -226,11 +226,9 @@ class Body extends Component{
                                     }}
                                       placeholder={'제목'}
                                       onChange={this.docTitleInputHandler}/>
-                                    <div style={{'width' : '100%'}}>
-                                        <select  onChange={(e) => {this.setState({selectedType: e.target.value})}}>
-                                            {docTypeList && docTypeList.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
-                                        </select>
-                                    </div>
+                                    <select style={{'display':'inline-block', 'marginLeft': '20px'}} onChange={(e) => {this.setState({selectedType: e.target.value})}}>
+                                        {docTypeList && docTypeList.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
+                                    </select>
                                     <CKEditor
                                         data={this.state.docContent}
                                         onChange={this.editorChangeHandler}
