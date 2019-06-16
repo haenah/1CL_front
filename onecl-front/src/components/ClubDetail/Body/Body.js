@@ -151,7 +151,10 @@ class Body extends Component{
                         <br></br>
                         <button className={'adminOption3'} onClick={() => {history.push(`/club/${id}/recruiter`)}}>지원자 관리</button>
                         <button className={'adminOption4'} onClick={() => {history.push(`/club/${id}/assign_next_master`)}}>차기 회장 임명</button>
-                        <button className={'adminOption'} onClick={() => {history.push(`/club/${id}/manage_doctype`)}}>게시판 카테고리 추가</button>
+                        <br></br>
+                        <button className={'adminOption5'} onClick={() => {history.push(`/club/${id}/manage_doctype`)}}>게시판 카테고리 추가</button>
+                        <button className={'adminOption6'}>CHOOSE ONE</button>
+
                     </div>
                 </div>
             )

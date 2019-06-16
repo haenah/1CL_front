@@ -72,7 +72,7 @@
 
 /*//////////////////////////////////////////////////////////////////
 [ Service Buttons ]*/
-.adminOption1, .adminOption2, .adminOption3, .adminOption4 {
+.adminOption1, .adminOption2, .adminOption3, .adminOption4, .adminOption5, .adminOption6 {
     color:#fff;
     border:none;
     position:relative;
@@ -123,8 +123,27 @@
     color:#fae3e6;
 }
 
+.adminOption5 {
+    background: #ffb7b3b0;
+}
 
-.adminOption1:before,.adminOption1:after, .adminOption2:before,.adminOption2:after, .adminOption3:before,.adminOption3:after, .adminOption4:before,.adminOption4:after{
+.adminOption5:hover{
+    background:#fff;
+    color:#ffb7b3b0;
+}
+
+.adminOption6 {
+    background: white;
+    color: #6c7871;
+}
+
+.adminOption6:hover{
+    background:#fff;
+    color:#ffb7b3b0;
+}
+
+
+.adminOption1:before,.adminOption1:after, .adminOption2:before,.adminOption2:after, .adminOption3:before,.adminOption3:after, .adminOption4:before,.adminOption4:after, .adminOption5:before,.adminOption5:after, .adminOption6:before,.adminOption6:after{
     content:'';
     position:absolute;
     top:0;
@@ -150,14 +169,21 @@
     background: #fae3e6;
 }
 
-.adminOption1:after, .adminOption2:after, .adminOption3:after, .adminOption4:after{
+.adminOption5:before,.adminOption5:after {
+    background: #ffb7b3b0;
+}
+.adminOption6:before,.adminOption6:after {
+    background: white;
+}
+
+.adminOption1:after, .adminOption2:after, .adminOption3:after, .adminOption4:after, .adminOption5:after, .adminOption6:after{
     right:inherit;
     top:inherit;
     left:0;
     bottom:0;
 }
 
-.adminOption1:hover:before,.adminOption1:hover:after, .adminOption2:hover:before,.adminOption2:hover:after, .adminOption3:hover:before,.adminOption3:hover:after, .adminOption4:hover:before,.adminOption4:hover:after{
+.adminOption1:hover:before,.adminOption1:hover:after, .adminOption2:hover:before,.adminOption2:hover:after, .adminOption3:hover:before,.adminOption3:hover:after, .adminOption4:hover:before,.adminOption4:hover:after, .adminOption5:hover:before,.adminOption5:hover:after, .adminOption6:hover:before,.adminOption6:hover:after{
     width:100%;
     transition:800ms ease all;
 }
