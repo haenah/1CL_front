@@ -35,17 +35,17 @@ class AddClubDocumentCategory extends Component {
   renderDocTypeList() {
     const {doc_type_list} = this.props;
     if (doc_type_list) {
-      const filtered = doc_type_list.results.filter(type => type.club !== null);
-      console.log('filtered', filtered);
-      if (!filtered) {
+      const filtered = doc_type_list.results.filter(d => d.club === null);
+      if (doc_type_list.results.length === 0) {
         return <span>현재 동아리 게시판이 없습니다. 게시판을 추가해보세요!</span>;
       } else {
         return (
           <div>
             <h3><Badge color={'info'}>게시판</Badge></h3>
             <ListGroup style={{marginTop: '15px'}}>
-              {filtered.map(type => <ListGroupItem style={{minWidth: '500px'}} key={type.id}>{type.name}</ListGroupItem>)}
+              {doc_type_list.results.map(type => <ListGroupItem className={'justify-content-between'} style={{minWidth: '500px'}} key={type.id}>{type.name}{type.club === null && <Badge color={'primary'} style={{marginLeft: '5px'}} pill>!</Badge>}</ListGroupItem>)}
             </ListGroup>
+            <span style={{fontSize: '12px', color: 'grey', marginTop: '12px'}}>! 표시가 돼 있는 게시판은 기본 게시판이며 수정할 수 없습니다.</span>
           </div>
         );
       }

@@ -137,7 +137,6 @@ class Body extends Component{
     render() {
         const {componentStatus, id, history} = this.props;
         const {documentList, memberList, infoPost, docTypeList} = this.props;
-        memberList && console.log('mem', memberList);
 
         if(componentStatus === 3){
             return(
@@ -220,18 +219,18 @@ class Body extends Component{
                         />
                         <button onClick={this.documentSubmitHandler} style={{'marginRight' : '20px'}}>작성</button>
                         <button onClick={this.returnButtonHandler}>돌아가기</button>
-                        <button onClick={() => {console.log(this.state.docContent)}}>show me doc content</button>
+                        {/*<button onClick={() => {console.log(this.state.docContent)}}>show me doc content</button>*/}
                     </div>
                 )
             }
             else{
                 return(
-                    <div>
+                    <div className={'feed'}>
                         <select className={'categorySelect'} onChange={this.categorySearchHandler}>
                             <option value= 'all'>전체</option>
                             {docTypeList && docTypeList.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
                         </select>
-                        <button className={'postButton'} onClick={this.postButtonHandler}>글쓰기</button>
+                        <button className={'postButton'} style={{'border-radius' : '10px'}} onClick={this.postButtonHandler}>글쓰기</button>
                         <div className={'docListWrapper'}>
                             {/*{docList}*/}
                             {this.renderDocList(documentList, id)}
@@ -242,14 +241,14 @@ class Body extends Component{
         }
         else{
             return(
-                <div
-                    style={{
-                        'boxShadow' : '3px 3px 3px 3px gray',
-                        'margin' : '20px',
-                    }}
-                    dangerouslySetInnerHTML={
-                    {__html : infoPost}
-                }>
+                <div className={'container-notice'}>
+                    <div className={'wrap-notice'}>
+                        <div className={'notice'}
+                            dangerouslySetInnerHTML={
+                            {__html : infoPost}
+                        }>
+                        </div>
+                    </div>
                 </div>
             )
         }

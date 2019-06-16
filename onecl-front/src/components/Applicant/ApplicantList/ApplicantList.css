@@ -1,0 +1,128 @@
+/*//////////////////////////////////////////////////////////////////
+[ Table ]*/
+
+.limiter {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.container-list {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-135deg, #c0dcf3, white);
+}
+
+.wrap-list {
+    width: 1170px;
+}
+
+.table_list {
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+table * {
+    position: relative;
+}
+table td, table th {
+    padding-left: 8px;
+}
+table thead tr {
+    height: 60px;
+    background: #20455a;
+}
+table tbody tr {
+    height: 50px;
+}
+table tbody tr:last-child {
+    border: 0;
+}
+table td, table th {
+    text-align: left;
+}
+table td.l, table th.l {
+    text-align: right;
+}
+table td.c, table th.c {
+    text-align: center;
+}
+table td.r, table th.r {
+    text-align: center;
+}
+
+
+.table100-head th{
+    font-family: Poppins-Regular, sans-serif;
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.2;
+    font-weight: unset;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f5f5f5;
+}
+
+tbody tr {
+    font-family: OpenSans-Regular;
+    font-size: 15px;
+    color: #808080;
+    line-height: 1.2;
+    font-weight: unset;
+}
+
+/*tbody tr:hover {*/
+/*    color: #555555;*/
+/*    background-color: #f5f5f5;*/
+/*    cursor: pointer;*/
+/*}*/
+
+.column_1 {
+    width: 100px;
+    padding-left: 40px;
+}
+
+.column_2 {
+    width: 250px;
+}
+
+.column_3 {
+    width: 150px;
+}
+
+.accept {
+    background-color: white;
+    color: #4CAF50;
+    border: 2px solid #4CAF50;
+    width: 30%;
+    padding: 5px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.decline {
+    background-color: white;
+    color: #ec5d5d;
+    border: 2px solid #ec5d5d;
+    width: 40%;
+    padding: 5px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.accept:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+.decline:hover {
+    background-color: #ec5d5d; /* Green */
+    color: white;
+}

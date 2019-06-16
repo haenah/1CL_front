@@ -19,6 +19,29 @@ class FixClubInfo extends Component{
     };
 
     initialize = async () => {
+        const auth_url =`http://127.0.0.1:8000/join/auth_level/?club=${this.props.id}`;
+        const config = {
+            headers : {
+                'authorization' : 'token ' + sessionStorage.getItem('token')
+            }
+        };
+        try{
+            let response;
+            if(sessionStorage.getItem('token') === null) response = await axios.get(auth_url);
+            else response = await axios.get(auth_url, config);
+            this.setState({
+                authLevel : response.data.auth_level,
+            });
+            if(response.data.auth_level !== 3){
+                console.log(response);
+                alert('권한이 없습니다.');
+                this.props.history.push(`/club/${this.props.id}`)
+            }
+        }catch (e) {
+            alert('알 수 없는 오류입니다.' + e);
+            console.log('get auth level : ' + e)
+        }
+
         const url = base_url + `${this.props.id}/`;
         try{
             const response = await axios.get(url, config);
@@ -62,18 +85,53 @@ class FixClubInfo extends Component{
 
     render(){
         return(
-            <div>
-                <label className={'inputLabel'}>동아리명</label>
-                <input disabled={true} className={'inputField'} value={this.state.clubName} onChange={(e) => {this.setState({clubName : e.target.value})}}/>
-                <label className={'inputLabel'}>소속분류</label>
-                <input disabled={true} className={'inputField'} value={this.state.clubCat} onChange={(e) => {this.setState({clubCat : e.target.value})}}/>
-                <label className={'inputLabel'}>소속학과</label>
-                <input disabled={true} className={'inputField'} value={this.state.clubDept} onChange={(e) => {this.setState({clubDept : e.target.value})}}/>
-                <label className={'inputLabel'}>지원서 제출 시 주의사항</label>
-                <textarea className={'messageField'} value={this.state.clubApplyMessage} onChange={(e) => {this.setState({clubApplyMessage : e.target.value})}}/>
-                <div className={'buttonWrapper'}>
-                    <button style={{'marginRight' : '20px'}} onClick={this.returnButtonHandler}>돌아가기</button>
-                    <button onClick={this.clubInfoSubmitHandler}>확인</button>
+            <div className='limiter'>
+                <div className='container-login100'>
+                    <div className='wrap-login100'>
+                        <span className="fix-title">
+                          <h2>동아리 기본 정보 수정하기</h2>
+                        </span>
+                        <div className='boxbox'>
+                            <label className={'inputLabel'}>동아리명</label>
+                            <div className={'clubName'}>
+                                <span>
+                                <input disabled={true} className={'inputField'} value={this.state.clubName} onChange={(e) => {this.setState({clubName : e.target.value})}}/>
+                                <span className="focus-fix"></span>
+                                    <span className="symbol-fix">
+                                      <i className="fa fa-users" aria-hidden="true"></i>
+                                    </span>
+                                </span>
+                            </div>
+                            <label className={'inputLabel'}>소속분류</label>
+                            <div className='catName'>
+                                <span>
+                                <input disabled={true} className={'inputField'} value={this.state.clubCat} onChange={(e) => {this.setState({clubCat : e.target.value})}}/>
+                                <span className="focus-fix"></span>
+                                    <span className="symbol-fix">
+                                      <i className="fa fa-tag" aria-hidden="true"></i>
+                                    </span>
+                                </span>
+                            </div>
+
+                            <label className={'inputLabel'}>소속학과</label>
+                            <div className='deptName'>
+                              <span>
+                              <input disabled={true} className='inputField' value={this.state.clubDept} onChange={(e) => {this.setState({clubDept : e.target.value})}}/>
+                              <span className="focus-fix"></span>
+                                <span className="symbol-fix">
+                                  <i className="fa fa-compass" aria-hidden="true"></i>
+                                </span>
+                              </span>
+                            </div>
+
+                            <label className={'inputLabel'}>지원서 제출 시 주의사항</label>
+                            <textarea className={'messageField'} value={this.state.clubApplyMessage} onChange={(e) => {this.setState({clubApplyMessage : e.target.value})}}/>
+                            <div className={'buttonWrapper'}>
+                                <button style={{'marginRight' : '20px', 'border-radius' : '10px'}} onClick={this.returnButtonHandler}>돌아가기</button>
+                                <button style={{'border-radius' : '10px'}}onClick={this.clubInfoSubmitHandler}>확인</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         )
