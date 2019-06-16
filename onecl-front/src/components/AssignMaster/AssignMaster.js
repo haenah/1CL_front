@@ -144,8 +144,8 @@ class AssignMaster extends Component {
                                 <li>{message2}</li>
                             </div>
 
-                            <div className='assign'>
-                              <span>
+                            {/*<div className='assign'>*/}
+                              {/*<span>*/}
                               <Autosuggest
                                   suggestions={suggestions}
                                   onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
@@ -154,13 +154,13 @@ class AssignMaster extends Component {
                                   renderSuggestion={s => <ListGroup>{this.renderSuggestion(s)}</ListGroup>}
                                   inputProps={inputProps}
                               />
-                              <span className="focus-assign"></span>
-                                <span className="symbol-assign">
-                                  <i className="fa fa-user" aria-hidden="true"></i>
-                                </span>
-                              </span>
+                              {/*<span className="focus-assign"></span>*/}
+                                {/*<span className="symbol-assign">*/}
+                                  {/*<i className="fa fa-user" aria-hidden="true"></i>*/}
+                                {/*</span>*/}
+                              {/*</span>*/}
 
-                            </div>
+                            {/*</div>*/}
 
                             <hr/>
                             <button className={'assign-btn'} onClick={this.masterAssignHandler}>위임하기</button>

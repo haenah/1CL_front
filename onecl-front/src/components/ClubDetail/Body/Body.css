@@ -167,12 +167,13 @@
 
 .adminMessage {
     position : relative;
-    top : 20%;
+    top : 10%;
     text-align: center;
     width : 100%;
     font-size: 30px;
     margin-bottom: 30px;
     color: gray;
+    font-weight: bold;
 }
 
 .container-notice {
@@ -220,4 +221,12 @@
     border : 1px solid grey;
     width : 100%;
     boxShadow : 3px 3px 3px 3px gray;
+}
+
+.logoWrapper {
+    position : relative;
+    top : 10%;
+    width: fit-content;
+    left : 50%;
+    transform: translateX(-50%);
 }

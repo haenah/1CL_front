@@ -181,6 +181,9 @@ class Body extends Component{
             return(
                 <div className={'adminOptionWrapper'}>
                     <p className={'adminMessage'}>{'원하시는 옵션을 선택하세요.'}</p>
+                    <div className={'logoWrapper'}>
+                        <img style={{'height' : '70px'}} src='http://127.0.0.1:8000/media/1CL_logo.png'/>
+                    </div>
                     <div className={'adminOptionSet'}>
                         <button className={'adminOption1'} onClick={() => {history.push(`/club/${id}/fix_club_info`)}}>동아리 기본 정보 수정</button>
                         <button className={'adminOption2'} onClick={() => {history.push(`/club/${id}/fix_club_post`)}}>동아리 소개글 수정</button>
@@ -223,9 +226,11 @@ class Body extends Component{
                                     }}
                                       placeholder={'제목'}
                                       onChange={this.docTitleInputHandler}/>
-                                    <select style={{'marginLeft' : '20px',}} onChange={(e) => {this.setState({selectedType: e.target.value})}}>
-                                        {docTypeList && docTypeList.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
-                                    </select>
+                                    <div style={{'width' : '100%'}}>
+                                        <select  onChange={(e) => {this.setState({selectedType: e.target.value})}}>
+                                            {docTypeList && docTypeList.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
+                                        </select>
+                                    </div>
                                     <CKEditor
                                         data={this.state.docContent}
                                         onChange={this.editorChangeHandler}
