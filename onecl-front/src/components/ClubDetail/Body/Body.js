@@ -6,10 +6,8 @@ import 'react-table/react-table.css';
 import {REQUEST_URL} from "../../../Constants/Constants";
 import {Button, Col, Input, Row} from "reactstrap";
 import Moment from "react-moment";
+import {AUTH_LEVEL_STRINGS} from '../../../Constants/Constants';
 
-const AUTH_LEVEL = [
-  '비회원', '일반 회원', '임원', '회장',
-];
 
 class Body extends Component{
     state = {
@@ -172,7 +170,7 @@ class Body extends Component{
                               },
                               {
                                   Header: "등급",
-                                  Cell: row => (<span>{AUTH_LEVEL[row.original.auth_level]}</span>)
+                                  Cell: row => (<span>{AUTH_LEVEL_STRINGS[row.original.auth_level]}</span>)
                               },
                               {
                                   Header: "변경",

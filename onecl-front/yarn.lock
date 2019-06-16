@@ -8813,6 +8813,11 @@ react-sidebar@^3.0.2:
     "@babel/runtime" ">=7.0.0-beta.56"
     prop-types "^15.6.2"
 
+react-sidenav@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/react-sidenav/-/react-sidenav-4.0.1.tgz#8b90602151041a024562a47fd4782b978945309b"
+  integrity sha512-wJSLFWl6UciDPyL4CooSgH2njYmP35j4K+9OSCEuuiY2aBLbCuR0ttQ4p51+aPV0a7JUgtg8CQh1RUQn90GvIw==
+
 react-table@^6.10.0:
   version "6.10.0"
   resolved "https://registry.yarnpkg.com/react-table/-/react-table-6.10.0.tgz#20444b19d8ca3c1a08e7544e5c3a93e4ba56690e"

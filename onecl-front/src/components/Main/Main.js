@@ -82,6 +82,7 @@ class Main extends Component {
                 {
                   sidebar: {
                     background: "white",
+                    border: '1px',
                   }
                 }
               }
