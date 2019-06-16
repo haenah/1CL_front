@@ -42,7 +42,6 @@ class MyPage extends Component {
         </div>
 
       </div>
-
     );
   }
 }

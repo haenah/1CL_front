@@ -182,10 +182,11 @@ class Body extends Component{
                 <div className={'adminOptionWrapper'}>
                     <p className={'adminMessage'}>{'원하시는 옵션을 선택하세요.'}</p>
                     <div className={'adminOptionSet'}>
-                        <button className={'adminOption'} onClick={() => {history.push(`/club/${id}/fix_club_info`)}}>동아리 기본 정보 수정</button>
-                        <button className={'adminOption'} onClick={() => {history.push(`/club/${id}/fix_club_post`)}}>동아리 소개글 수정</button>
-                        <button className={'adminOption'} onClick={() => {history.push(`/club/${id}/recruiter`)}}>지원자 관리</button>
-                        <button className={'adminOption'} onClick={() => {history.push(`/club/${id}/assign_next_master`)}}>차기 회장 임명</button>
+                        <button className={'adminOption1'} onClick={() => {history.push(`/club/${id}/fix_club_info`)}}>동아리 기본 정보 수정</button>
+                        <button className={'adminOption2'} onClick={() => {history.push(`/club/${id}/fix_club_post`)}}>동아리 소개글 수정</button>
+                        <br></br>
+                        <button className={'adminOption3'} onClick={() => {history.push(`/club/${id}/recruiter`)}}>지원자 관리</button>
+                        <button className={'adminOption4'} onClick={() => {history.push(`/club/${id}/assign_next_master`)}}>차기 회장 임명</button>
                     </div>
                 </div>
             )
@@ -208,36 +209,41 @@ class Body extends Component{
         if(componentStatus === 1){
             if(this.state.isPost){
                 return(
-                    <div style={{
-                        'marginTop' : '20px',
-                        'border' : '1px solid grey',
-                        'width' : '100%',
-                        'boxShadow' : '3px 3px 3px 3px gray',
-                    }}>
-                        <textarea style={{
-                            'width' : '90%',
-                            'height' : '30px',
-                            'margin' : '20px',
-                        }}
-                          placeholder={'제목'}
-                          onChange={this.docTitleInputHandler}/>
-                        <select style={{'marginLeft' : '20px',}} onChange={(e) => {this.setState({selectedType: e.target.value})}}>
-                            {docTypeList && docTypeList.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
-                        </select>
-                        <CKEditor
-                            data={this.state.docContent}
-                            onChange={this.editorChangeHandler}
-                            style={{
-                                'margin' : '20px',
-                            }}
-                            config={{
-                                filebrowserBrowseUrl: `http://127.0.0.1:8000/upload/image/?clubID=${id}`,
-                                filebrowserUploadUrl: `http://127.0.0.1:8000/upload/image/?clubID=${id}`,
-                            }}
-                        />
-                        <button onClick={this.documentSubmitHandler} style={{'marginRight' : '20px'}}>작성</button>
-                        <button onClick={this.returnButtonHandler}>돌아가기</button>
-                        {/*<button onClick={() => {console.log(this.state.docContent)}}>show me doc content</button>*/}
+                    <div className="limiter">
+                        <div className="container-login100">
+                            <div className="wrap-write">
+                                <span className="sign-up-form-title">
+                                  <h2>게시판 글쓰기</h2>
+                                </span>
+                                <div className="post">
+                                    <textarea style={{
+                                        'width' : '90%',
+                                        'height' : '30px',
+                                        'margin' : '20px',
+                                    }}
+                                      placeholder={'제목'}
+                                      onChange={this.docTitleInputHandler}/>
+                                    <select style={{'marginLeft' : '20px',}} onChange={(e) => {this.setState({selectedType: e.target.value})}}>
+                                        {docTypeList && docTypeList.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
+                                    </select>
+                                    <CKEditor
+                                        data={this.state.docContent}
+                                        onChange={this.editorChangeHandler}
+                                        style={{
+                                            'margin' : '20px',
+                                        }}
+                                        config={{
+                                            filebrowserBrowseUrl: `http://127.0.0.1:8000/upload/image/?clubID=${id}`,
+                                            filebrowserUploadUrl: `http://127.0.0.1:8000/upload/image/?clubID=${id}`,
+                                        }}
+                                    />
+                                    {/*<button onClick={() => {console.log(this.state.docContent)}}>show me doc content</button>*/}
+                                </div>
+
+                                <button style={{'margin' : '20px 0 20px 0', 'padding' : '0 20px 0 20px', 'border-radius' : '10px'}} onClick={this.documentSubmitHandler}>작성</button>
+                                <button style={{'border-radius' : '10px', 'margin':'20px 0 20px 0'}} onClick={this.returnButtonHandler}>돌아가기</button>
+                            </div>
+                        </div>
                     </div>
                 )
             }

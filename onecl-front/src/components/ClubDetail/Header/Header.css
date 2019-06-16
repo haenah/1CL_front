@@ -4,7 +4,6 @@
 .heading-space {
     width: 100%;
     top: 0px;
-    z-index: 101;
     position: relative;
     display: block;
     line-height: 1.15;
@@ -31,22 +30,38 @@
     display: flex;
 }
 
-.headerOptions {
+.headerOptions1, .headerOptions2, .headerOptions3, .headerOptions4 {
     display: inline-block;
     border-radius: 10px;
     width: 100%;
     text-align: center;
-    background-color: #6985b1;
     color : white;
     margin-right: 25px;
     margin-left : 25px;
+}
+
+.headerOptions1 {
+    background-color: #003b46;
+}
+
+.headerOptions2 {
+    background-color: #07575b;
+}
+
+.headerOptions3 {
+    background-color: #66a5ad;
+}
+
+.headerOptions4 {
+    background-color: #c4dfe6;
+    color: #6c7871;
 }
 
 
 .headerWrapper {
     width: 100%;
     top: 0px;
-    z-index: 101;position: sticky;
+    position: sticky;
     display: block;
     line-height: 1.15;
 }
