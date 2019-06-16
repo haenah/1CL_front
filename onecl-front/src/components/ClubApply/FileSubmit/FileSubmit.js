@@ -31,7 +31,7 @@ class FileSubmit extends Component{
             alert('동아리 지원이 완료되었습니다.');
             this.props.history.push(`/club/${clubID}`)
         } catch(e){
-            alert('에러가 발생했습니다. :' + e);
+            alert('이미 지원한 동아리입니다.');
         }
     };
 

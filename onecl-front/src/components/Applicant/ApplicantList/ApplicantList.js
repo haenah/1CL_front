@@ -134,12 +134,12 @@ class ApplicantList extends Component{
                                     {/*        <button style={{'border-radius' : '10px'}} onClick={() => this.failHandler('')}>불합격</button>*/}
                                     {/*    </td>*/}
                                     {/*</tr>*/}
-                                        {this.state.tmp_applicantList.map(
+                                        {this.state.applicantList.map(
                                             (applicant) => {
                                                 return(
                                                         <tr>
-                                                        <td className="column_1" >{applicant.user}</td>
-                                                        <td className="column_2" href={applicant.file}>{applicant.name}</td>
+                                                        <td className="column_1" >{applicant.user_name}</td>
+                                                        <td className="column_2" > <a href={applicant.file}>{applicant.name}</a></td>
                                                         <td className="column_3">
                                                             <button className={'accept'} style={{'margin-right': '20px', 'border-radius' : '10px'}} onClick={() => this.passHandler(applicant)}>합격</button>
                                                             <button className={'decline'} style={{'border-radius' : '10px'}} onClick={() => this.failHandler(applicant)}>불합격</button>
