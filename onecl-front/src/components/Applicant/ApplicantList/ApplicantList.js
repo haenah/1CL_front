@@ -23,29 +23,39 @@ class ApplicantList extends Component{
     };
 
     initialize = async () => {
+        const auth_url =`http://127.0.0.1:8000/join/auth_level/?club=${this.props.id}`;
+        const config = {
+            headers : {
+                'authorization' : 'token ' + sessionStorage.getItem('token')
+            }
+        };
+        try{
+            let response;
+            if(sessionStorage.getItem('token') === null) response = await axios.get(auth_url);
+            else response = await axios.get(auth_url, config);
+            this.setState({
+                authLevel : response.data.auth_level,
+            });
+            if(response.data.auth_level !== 3){
+                console.log(response);
+                alert('권한이 없습니다.');
+                this.props.history.push(`/club/${this.props.id}`)
+            }
+        }catch (e) {
+            alert('알 수 없는 오류입니다.' + e);
+            console.log('get auth level : ' + e)
+        }
+
         const url = `http://127.0.0.1:8000/upload/file/?clubID=${this.props.id}`;
         try{
             const data = await axios.get(url);
             this.setState({
                 applicantList: data.data.results,
             });
-            // this.getUserInfo();
         }catch (e) {
             alert('an error was caught :' + e);
         }
     };
-    //
-    // getUserInfo = () => {
-    //     this.setState({
-    //         new_applicantList : this.state.applicantList.map(
-    //             async (applicant) => {
-    //                 const url = `http://127.0.0.1:8000/auth/user/${applicant.user}`;
-    //                 const response = await axios.get(url);
-    //             }
-    //         )
-    //     });
-    //     console.log(this.state.new_applicantList)
-    // };
 
     componentDidMount(){
         this.initialize();
@@ -103,20 +113,50 @@ class ApplicantList extends Component{
     render(){
         return(
             <div>
-                {this.state.tmp_applicantList.map(
-                    (applicant) => {
-                        return(
-                            <div>
-                                <p style={{'display': 'inline-block'}}>{applicant.user}</p>
-                                <a style={{'display': 'inline-block'}} href={applicant.file}>{applicant.name}</a>
-                                <button onClick={() => this.passHandler(applicant)}>합격</button>
-                                <button onClick={() => this.failHandler(applicant)}>불합격</button>
+                <div className="limiter">
+                    <div className="container-list">
+                        <div className="wrap-list">
+                            <div className="table-list">
+                                <table className="table_list">
+                                    <thead>
+                                    <tr className="table100-head">
+                                        <th className="column_1">Name</th>
+                                        <th className="column_2">Application Form</th>
+                                        <th className="column_3">Status</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {/*<tr>*/}
+                                    {/*    <td className="column_1" >dummy1</td>*/}
+                                    {/*    <td className="column_2" href={'#'}>dummy2</td>*/}
+                                    {/*    <td className="column_3">*/}
+                                    {/*        <button style={{'margin-right': '20px', 'border-radius' : '10px'}} onClick={() => this.passHandler('')}>합격</button>*/}
+                                    {/*        <button style={{'border-radius' : '10px'}} onClick={() => this.failHandler('')}>불합격</button>*/}
+                                    {/*    </td>*/}
+                                    {/*</tr>*/}
+                                        {this.state.applicantList.map(
+                                            (applicant) => {
+                                                return(
+                                                        <tr>
+                                                        <td className="column_1" >{applicant.user_name}</td>
+                                                        <td className="column_2" > <a href={applicant.file}>{applicant.name}</a></td>
+                                                        <td className="column_3">
+                                                            <button className={'accept'} style={{'margin-right': '20px', 'border-radius' : '10px'}} onClick={() => this.passHandler(applicant)}>합격</button>
+                                                            <button className={'decline'} style={{'border-radius' : '10px'}} onClick={() => this.failHandler(applicant)}>불합격</button>
+                                                        </td>
+                                                        </tr>
+                                                )
+                                            }
+                                        )}
+                                    </tbody>
+                                </table>
+                                <hr />
+                                <button style={{'margin-bottom': '20px','border-radius' : '10px'}} onClick={this.returnButtonHandler}>돌아가기</button>
                             </div>
-                        )
-                    }
-                )}
-                <hr />
-                <button onClick={this.returnButtonHandler}>돌아가기</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         )
     }

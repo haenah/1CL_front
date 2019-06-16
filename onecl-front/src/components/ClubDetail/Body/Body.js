@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import CKEditor from 'ckeditor4-react'
+import {Link} from 'react-router-dom';
 import './Body.css'
+import {Table} from "reactstrap";
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
 
@@ -23,7 +25,7 @@ const Member = ({name, auth_level, clubID, joinID, buttonClickHandler}) => {
         <div style={{'margin' : '20px'}}>
             <p style={{'display':'inline-block', 'width':'250px'}}>{name}</p>
             <p style={{'display':'inline-block', 'width':'250px'}}>{position(auth_level)}</p>
-            <button style={{'display' : 'inline-block'}} disabled={auth_level === 3} onClick={() => buttonClickHandler(clubID, joinID, name)}>등급 변경</button>
+            <button className='change-lvl-button' disabled={auth_level === 3} onClick={() => buttonClickHandler(clubID, joinID, name)}>등급 변경</button>
         </div>
     );
 };
@@ -191,6 +193,7 @@ class Body extends Component{
 
         if(componentStatus === 2){
             return(
+                <div className='container-notice'>
                 <div className={'memListWrapper'}>
                     <div className={'labelWrapper'}>
                         <p className={'memListLabel'}>회원 이름</p>
@@ -198,6 +201,7 @@ class Body extends Component{
                         <hr/>
                     </div>
                     {memList}
+                </div>
                 </div>
             )
         }
@@ -233,18 +237,18 @@ class Body extends Component{
                         />
                         <button onClick={this.documentSubmitHandler} style={{'marginRight' : '20px'}}>작성</button>
                         <button onClick={this.returnButtonHandler}>돌아가기</button>
-                        <button onClick={() => {console.log(this.state.docContent)}}>show me doc content</button>
+                        {/*<button onClick={() => {console.log(this.state.docContent)}}>show me doc content</button>*/}
                     </div>
                 )
             }
             else{
                 return(
-                    <div>
+                    <div className={'feed'}>
                         <select className={'categorySelect'} onChange={this.categorySearchHandler}>
                             <option value= 'all'>전체</option>
                             {docTypeList && docTypeList.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
                         </select>
-                        <button className={'postButton'} onClick={this.postButtonHandler}>글쓰기</button>
+                        <button className={'postButton'} style={{'border-radius' : '10px'}} onClick={this.postButtonHandler}>글쓰기</button>
                         <div className={'docListWrapper'}>
                             {/*{docList}*/}
                             {this.renderDocList(documentList, id)}
@@ -255,14 +259,14 @@ class Body extends Component{
         }
         else{
             return(
-                <div
-                    style={{
-                        'boxShadow' : '3px 3px 3px 3px gray',
-                        'margin' : '20px',
-                    }}
-                    dangerouslySetInnerHTML={
-                    {__html : infoPost}
-                }>
+                <div className={'container-notice'}>
+                    <div className={'wrap-notice'}>
+                        <div className={'notice'}
+                            dangerouslySetInnerHTML={
+                            {__html : infoPost}
+                        }>
+                        </div>
+                    </div>
                 </div>
             )
         }
