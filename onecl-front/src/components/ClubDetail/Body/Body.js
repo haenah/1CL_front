@@ -1,34 +1,13 @@
 import React, {Component} from 'react'
 import CKEditor from 'ckeditor4-react'
-import {Link} from 'react-router-dom';
 import './Body.css'
-import {Table} from "reactstrap";
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
+import {REQUEST_URL} from "../../../Constants/Constants";
+import {Button, Col, Input, Row} from "reactstrap";
+import Moment from "react-moment";
+import {AUTH_LEVEL_STRINGS} from '../../../Constants/Constants';
 
-
-const Member = ({name, auth_level, clubID, joinID, buttonClickHandler}) => {
-    const position = (auth_level) => {
-        switch (auth_level){
-            case 1 :
-                return '일반 회원';
-            case 2 :
-                return '임원';
-            case 3 :
-                return '회장';
-            default :
-                return '비회원';
-        }
-    };
-
-    return(
-        <div style={{'margin' : '20px'}}>
-            <p style={{'display':'inline-block', 'width':'250px'}}>{name}</p>
-            <p style={{'display':'inline-block', 'width':'250px'}}>{position(auth_level)}</p>
-            <button className='change-lvl-button' disabled={auth_level === 3} onClick={() => buttonClickHandler(clubID, joinID, name)}>등급 변경</button>
-        </div>
-    );
-};
 
 class Body extends Component{
     state = {
@@ -138,11 +117,11 @@ class Body extends Component{
                     },
                     {
                         Header: "날짜",
-                        accessor: 'date',
+                        Cell: row => <Moment format={'YYYY년 M월 DD일 LT'}>{row.original.date}</Moment>
                     },
                     {
                         Header: '작성자',
-                        accessor: 'owner',
+                        Cell: row => <span>{row.original.owner_name} <span style={{fontSize: '14px', color: 'grey'}}>({row.original.owner_username})</span></span>,
                     }
                 ]}
                 defaultPageSize={20}
@@ -159,24 +138,6 @@ class Body extends Component{
         const {componentStatus, id, history} = this.props;
         const {documentList, memberList, infoPost, docTypeList} = this.props;
 
-        const memList = !memberList.results ? null : memberList.results.map(
-            (member) => {
-                return(
-                    <div>
-                        <Member
-                            key={member.id}
-                            name={member.user}
-                            auth_level={member.auth_level}
-                            joinID={member.id}
-                            clubID={member.club}
-                            buttonClickHandler={this.authChangeButtonHandler}
-                        />
-                        <hr/>
-                    </div>
-                )
-            }
-        );
-
         if(componentStatus === 3){
             return(
                 <div className={'adminOptionWrapper'}>
@@ -190,6 +151,7 @@ class Body extends Component{
                         <br></br>
                         <button className={'adminOption3'} onClick={() => {history.push(`/club/${id}/recruiter`)}}>지원자 관리</button>
                         <button className={'adminOption4'} onClick={() => {history.push(`/club/${id}/assign_next_master`)}}>차기 회장 임명</button>
+                        <button className={'adminOption'} onClick={() => {history.push(`/club/${id}/manage_doctype`)}}>게시판 카테고리 추가</button>
                     </div>
                 </div>
             )
@@ -197,15 +159,35 @@ class Body extends Component{
 
         if(componentStatus === 2){
             return(
-                <div className='container-notice'>
-                <div className={'memListWrapper'}>
-                    <div className={'labelWrapper'}>
-                        <p className={'memListLabel'}>회원 이름</p>
-                        <p className={'memListLabel'}>등급</p>
-                        <hr/>
+                <div>
+                    <div>
+                        {memberList && <ReactTable
+                          data={memberList.results}
+                          columns={[
+                              {
+                                  Header: "회원 ID",
+                                  accessor: "user_username",
+                              },
+                              {
+                                  Header: "회원 이름",
+                                  accessor: "user_name",
+                              },
+                              {
+                                  Header: "등급",
+                                  Cell: row => (<span>{AUTH_LEVEL_STRINGS[row.original.auth_level]}</span>)
+                              },
+                              {
+                                  Header: "변경",
+                                  Cell: row => (<Button size={'sm'} style={{'display' : 'inline-block'}} color={row.original.auth_level === 3 ? 'secondary' : 'primary'} disabled={row.original.auth_level === 3} onClick={() => this.authChangeButtonHandler(row.original.club, row.original.id, row.original.user_username)}>등급 변경</Button>)
+                              },
+                          ]}
+                          defaultPageSize={20}
+                          style={{
+                              height: '400px',
+                          }}
+                          className={'-striped -highlight'}
+                        />}
                     </div>
-                    {memList}
-                </div>
                 </div>
             )
         }
@@ -252,13 +234,19 @@ class Body extends Component{
             }
             else{
                 return(
-                    <div className={'feed'}>
-                        <select className={'categorySelect'} onChange={this.categorySearchHandler}>
-                            <option value= 'all'>전체</option>
-                            {docTypeList && docTypeList.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
-                        </select>
-                        <button className={'postButton'} style={{'border-radius' : '10px'}} onClick={this.postButtonHandler}>글쓰기</button>
-                        <div className={'docListWrapper'}>
+                    <div style={{marginTop: '10px'}} className={'feed'}>
+                      <Row>
+                        <Col className={'col-md-2'}>
+                          <Input bsSize={'small'} type={'select'} label={'게시판 필터'} onChange={this.categorySearchHandler}>
+                              <option value= 'all'>전체</option>
+                              {docTypeList && docTypeList.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
+                          </Input>
+                        </Col>
+                        <Col>
+                          <Button color={'info'} style={{'borderRadius' : '10px'}} onClick={this.postButtonHandler}>글쓰기</Button>
+                        </Col>
+                      </Row>
+                        <div style={{marginTop: '15px'}} className={'docListWrapper'}>
                             {/*{docList}*/}
                             {this.renderDocList(documentList, id)}
                         </div>
