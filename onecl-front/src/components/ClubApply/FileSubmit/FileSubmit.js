@@ -62,8 +62,8 @@ class FileSubmit extends Component{
         const {applyMessage} = this.props;
         return(
             <div className="limiter">
-                <div className="container-login100">
-                    <div className="wrap-login100">
+                <div className="container-apply">
+                    <div className="wrap-apply">
                         <div className={'fileSubmitWrapper'}>
                             <p className={'clubApplyTitle'}><strong>동아리 지원</strong></p>
                             <div className={'applyMessage'}>
@@ -75,7 +75,7 @@ class FileSubmit extends Component{
                             </div>
                             <hr/>
                             <div className={'submit-file'}>
-                                <input type={'file'} style={{'marginBottom' : '20px'}} onChange={this.fileSelectHandler} />
+                                <input className={'upload'} type={'file'} onChange={this.fileSelectHandler} />
                                 <span className="focus-file"></span>
                                     <span className="symbol-file">
                                       <i className="fa fa-folder" aria-hidden="true"></i>

@@ -87,40 +87,40 @@
 }
 
 .adminOption1 {
-    background: #faaf09;
+    background: #f47967;
 }
 
 .adminOption1:hover{
     background:#fff;
-    color:#faaf09;
+    color:#f47967;
 }
 
 .adminOption2 {
-    background: #fa812f;
+    background: #f4675f;
 }
 
 .adminOption2:hover{
     background:#fff;
-    color:#fa812f;
+    color:#f4675f;
 }
 
 .adminOption3 {
-    background: #fa4032;
+    background: #fcb0a7;
 
 }
 
 .adminOption3:hover{
-    color: #fa4032;
+    color: #fcb0a7;
     background:#fff;
 }
 
 .adminOption4 {
-    background: #fef3e2;
+    background: #fae3e6;
     color: #6c7871;
 }
 .adminOption4:hover{
     background:#6c7871;
-    color:#fef3e2;
+    color:#fae3e6;
 }
 
 
@@ -135,19 +135,19 @@
 }
 
 .adminOption1:before,.adminOption1:after {
-    background: #faaf09;
+    background: #f47967;
 }
 
 .adminOption2:before,.adminOption2:after {
-    background: #fa812f;
+    background: #f4675f;
 }
 
 .adminOption3:before,.adminOption3:after {
-    background: #fa4032;
+    background: #fcb0a7;
 }
 
 .adminOption4:before,.adminOption4:after {
-    background: #fef3e2;
+    background: #fae3e6;
 }
 
 .adminOption1:after, .adminOption2:after, .adminOption3:after, .adminOption4:after{
@@ -231,3 +231,4 @@
     left : 50%;
     transform: translateX(-50%);
 }
+

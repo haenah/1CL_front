@@ -1,2 +1,29 @@
 /*//////////////////////////////////////////////////////////////////
-[ Footer.css does not seem to work... Designs are included in Header.css ]*/
+[ Footer ]*/
+.apply-btn {
+    background-color: white;
+    color: rgb(47, 147, 255);
+    border: solid rgb(47, 147, 255);
+    width: 100%;
+    padding: 5px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-transform: uppercase;
+    display: block;
+    overflow: scroll;
+}
+
+.apply-btn:hover {
+    background-color: rgb(47, 147, 255);
+    color: white;
+}
+
+.footer {
+    position: fixed;
+    background: white;
+    width:86.5%;
+    height: 7%;
+    font-size: 25px;
+    text-align: center;
+    bottom: 0;
+}
