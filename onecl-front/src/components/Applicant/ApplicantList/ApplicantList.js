@@ -23,6 +23,29 @@ class ApplicantList extends Component{
     };
 
     initialize = async () => {
+        const auth_url =`http://127.0.0.1:8000/join/auth_level/?club=${this.props.id}`;
+        const config = {
+            headers : {
+                'authorization' : 'token ' + sessionStorage.getItem('token')
+            }
+        };
+        try{
+            let response;
+            if(sessionStorage.getItem('token') === null) response = await axios.get(auth_url);
+            else response = await axios.get(auth_url, config);
+            this.setState({
+                authLevel : response.data.auth_level,
+            });
+            if(response.data.auth_level !== 3){
+                console.log(response);
+                alert('권한이 없습니다.');
+                this.props.history.push(`/club/${this.props.id}`)
+            }
+        }catch (e) {
+            alert('알 수 없는 오류입니다.' + e);
+            console.log('get auth level : ' + e)
+        }
+
         const url = `http://127.0.0.1:8000/upload/file/?clubID=${this.props.id}`;
         try{
             const data = await axios.get(url);
