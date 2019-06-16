@@ -74,7 +74,7 @@ class FixClubPost extends Component {
         return(
             <div className='limiter'>
                 <div className='container-login100'>
-                    <div className='wrap-login100'>
+                    <div className='wrap-fixinfo'>
                         <span className="fix-title">
                           <h2>동아리 소개글 수정</h2>
                         </span>

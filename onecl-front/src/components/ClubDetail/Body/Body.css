@@ -20,11 +20,12 @@
     background-color: #6bb8d0;
     color : white;
     margin-right: 10px;
-    box-shadow: 3px 0px 3px 0px gray;
+    boxShadow: 3px 3px 3px 3px gray;
+    margin: 10px;
 }
 
 .postButton {
-    box-shadow: 3px 0px 3px 0px gray;
+    boxShadow: 3px 3px 3px 3px gray;
 }
 
 .docListWrapper {
@@ -39,6 +40,7 @@
     left : 50%;
     transform : translate(-50%,-50%);
     background-color: white;
+    display: inline-block;
 }
 
 .labelWrapper {
@@ -53,10 +55,10 @@
 }
 
 .adminOptionWrapper {
-    margin: 20px 0 20px 0;
     border-top: 3px solid #bfbfbf;
-    height : 600px;
-    position : relative;
+    height: 100vh;
+    position: relative;
+    background: linear-gradient(-135deg, #c0dcf3, white);
 }
 
 .adminOptionSet {
@@ -67,18 +69,111 @@
     transform: translate(-50%, -50%);
 }
 
-.adminOption {
-    margin-right: 25px;
-    margin-left: 25px;
-    border-radius: 10px;
+
+/*//////////////////////////////////////////////////////////////////
+[ Service Buttons ]*/
+.adminOption1, .adminOption2, .adminOption3, .adminOption4 {
+    color:#fff;
+    border:none;
+    position:relative;
+    height:60px;
+    font-size:1.6em;
+    padding:0 2em;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+    width: 380px;
+    height: 100px;
 }
 
+.adminOption1 {
+    background: #f47967;
+}
+
+.adminOption1:hover{
+    background:#fff;
+    color:#f47967;
+}
+
+.adminOption2 {
+    background: #f4675f;
+}
+
+.adminOption2:hover{
+    background:#fff;
+    color:#f4675f;
+}
+
+.adminOption3 {
+    background: #fcb0a7;
+
+}
+
+.adminOption3:hover{
+    color: #fcb0a7;
+    background:#fff;
+}
+
+.adminOption4 {
+    background: #fae3e6;
+    color: #6c7871;
+}
+.adminOption4:hover{
+    background:#6c7871;
+    color:#fae3e6;
+}
+
+
+.adminOption1:before,.adminOption1:after, .adminOption2:before,.adminOption2:after, .adminOption3:before,.adminOption3:after, .adminOption4:before,.adminOption4:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    transition:400ms ease all;
+}
+
+.adminOption1:before,.adminOption1:after {
+    background: #f47967;
+}
+
+.adminOption2:before,.adminOption2:after {
+    background: #f4675f;
+}
+
+.adminOption3:before,.adminOption3:after {
+    background: #fcb0a7;
+}
+
+.adminOption4:before,.adminOption4:after {
+    background: #fae3e6;
+}
+
+.adminOption1:after, .adminOption2:after, .adminOption3:after, .adminOption4:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+}
+
+.adminOption1:hover:before,.adminOption1:hover:after, .adminOption2:hover:before,.adminOption2:hover:after, .adminOption3:hover:before,.adminOption3:hover:after, .adminOption4:hover:before,.adminOption4:hover:after{
+    width:100%;
+    transition:800ms ease all;
+}
+
+/*//////////////////////////////////////////////////////////////////*/
+
+
 .adminMessage {
-    position : absolute;
-    top : 20%;
+    position : relative;
+    top : 10%;
     text-align: center;
     width : 100%;
     font-size: 30px;
+    margin-bottom: 30px;
+    color: gray;
+    font-weight: bold;
 }
 
 .container-notice {
@@ -104,5 +199,36 @@
     boxShadow : '3px 3px 3px 3px gray';
     margin : 20px;
     border: black;
+}
+
+.wrap-write {
+    width: 960px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 50px 100px 33px 100px;
+}
+
+.post {
+    border : 1px solid grey;
+    width : 100%;
+    boxShadow : 3px 3px 3px 3px gray;
+    text-align: left;
+}
+
+.logoWrapper {
+    position : relative;
+    top : 10%;
+    width: fit-content;
+    left : 50%;
+    transform: translateX(-50%);
 }
 

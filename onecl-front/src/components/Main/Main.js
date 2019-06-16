@@ -61,7 +61,7 @@ class Main extends Component {
             <Sidebar
               sidebar={
                 <div>
-                  <div style={{textAlign: 'center', backgroundColor: 'grey', padding: '16px', color: 'white'}}>
+                  <div style={{textAlign: 'center', backgroundColor: 'grey', padding: '21px', color: 'white'}}>
                    동아리 리스트
                   </div>
                   <Input style={{borderRadius: 0, textAlign: 'center'}} name={'search'} type={'text'} value={this.state.search} onChange={e => this.handleSearch(e.target.value)} placeholder={'검색'} />
