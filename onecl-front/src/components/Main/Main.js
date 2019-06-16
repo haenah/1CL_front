@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.css';
 import MyNavBar from './Navbar';
 
-import {Container, Input} from 'reactstrap';
+import {Container, Input, ListGroup, ListGroupItem} from 'reactstrap';
 import {
   ApplicantListPage, AssignMasterPage,
   ClubApplyPage,
@@ -61,19 +61,28 @@ class Main extends Component {
             <Sidebar
               sidebar={
                 <div>
-                  <div style={{backgroundColor: 'lightblue', padding: '16px'}}>
+                  <div style={{textAlign: 'center', backgroundColor: 'grey', padding: '16px', color: 'white'}}>
                    동아리 리스트
                   </div>
-                  <Input name={'search'} type={'text'} value={this.state.search} onChange={e => this.handleSearch(e.target.value)} placeholder={'검색'} />
+                  <Input style={{borderRadius: 0, textAlign: 'center'}} name={'search'} type={'text'} value={this.state.search} onChange={e => this.handleSearch(e.target.value)} placeholder={'검색'} />
                   <div style={{margin: '8px', height: '1px', backgroundColor: 'black'}} />
-                  <div>
+                  {/*<div>*/}
+                    {/*{this.state.filteredClubs && this.state.filteredClubs.map(c =>*/}
+                      {/*<div key={c.id} style={{display: 'block', textAlign: 'center', justifyContent: 'center', borderBottom: '1px solid lightgrey', padding: '16px', color: 'grey'}}>*/}
+                        {/*<a style={{textDecoration: 'none'}} href={`/club/${c.id}`}>{c.name}</a>*/}
+                      {/*</div>*/}
+                      {/*)*/}
+                    {/*}*/}
+                  {/*</div>*/}
+                  <ListGroup>
                     {this.state.filteredClubs && this.state.filteredClubs.map(c =>
-                      <div key={c.id} style={{display: 'block', textAlign: 'center', justifyContent: 'center', borderBottom: '1px solid lightgrey', padding: '16px', color: 'grey'}}>
-                        <a style={{textDecoration: 'none'}} href={`/club/${c.id}`}>{c.name}</a>
-                      </div>
-                      )
+                      <ListGroupItem key={c.id} tag={'a'} action href={`/club/${c.id}`} style={{textAlign: 'center', justifyContent: 'center', padding: '16px', borderRadius: 0}}>
+                        {c.name}
+                        {/*<a style={{textDecoration: 'none'}} href={`/club/${c.id}`}>{c.name}</a>*/}
+                      </ListGroupItem>
+                    )
                     }
-                  </div>
+                  </ListGroup>
                 </div>
               }
               docked

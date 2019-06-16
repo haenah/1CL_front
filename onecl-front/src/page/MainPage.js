@@ -3,11 +3,9 @@ import MainContainer from "../containers/Main/MainContainer";
 
 const MainPage = ({history}) => {
     return(
-        <div>
           <MainContainer
             history={history}
           />
-        </div>
     );
 };
 
