@@ -35,7 +35,6 @@ class AddClubDocumentCategory extends Component {
   renderDocTypeList() {
     const {doc_type_list} = this.props;
     if (doc_type_list) {
-      const filtered = doc_type_list.results.filter(d => d.club === null);
       if (doc_type_list.results.length === 0) {
         return <span>현재 동아리 게시판이 없습니다. 게시판을 추가해보세요!</span>;
       } else {
