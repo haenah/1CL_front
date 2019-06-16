@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Input} from "reactstrap";
+import './ClubRegister.css'
 
 // const deptOptions = (deptList) => {
 //     if(deptList === null || deptList === undefined) return(
@@ -106,37 +107,56 @@ class ClubRegister extends Component {
         const { handleChangeDept, handleChangeCategory, handleChangeInput, handleClubRegister } = this;
         return (
             <div>
-                <div>
-                    <p className='clubNameLabel'>동아리 이름</p>
-                    <input className='clubNameInput' type='text' onChange={handleChangeInput}/>
+                <div className="limiter">
+                    <div className="container-login100">
+                        <div className="wrap-clubRegister">
+                            <form>
+                                <span className="clubRegister-form-title">
+                                  <h2>동아리 등록</h2>
+                                </span>
+                                <div>
+                                    <p className='clubNameLabel'  style={{'textAlign':'left'}}>동아리 이름</p>
+                                </div>
+                                <div className='club_name'>
+                                    <span>
+                                    <input className='name-input' name='name' type='text' placeholder='동아리 이름' onChange={handleChangeInput} />
+                                    <span className="focus-input100"></span>
+                                      <span className="symbol-input100">
+                                        <i className="fa fa-users" aria-hidden="true"></i>
+                                      </span>
+                                    </span>
+                                </div>
+                                <div>
+                                    <p className='deptLabel' style={{'textAlign':'left'}}>학과</p>
+                                    {/*<Select*/}
+                                        {/*value={selectedDept}*/}
+                                        {/*onChange={handleChangeDept}*/}
+                                        {/*options={deptOptions(deptList)}*/}
+                                        {/*// options={options}*/}
+                                        {/*styles={customStyles}*/}
+                                    {/*/>*/}
+                                    <Input className={'deptSelect'} type={'select'} value={selectedDept} onChange={e => this.setState({selectedDept: e.target.value})} name={'department'}>
+                                        {deptList && deptList.results.map(dept => <option key={dept.name} value={dept.name}>{dept.name}</option>)}
+                                    </Input>
+                                </div>
+                                <div>
+                                    <p className='categoryLabel' style={{'textAlign':'left'}}>분류</p>
+                                    {/*<Select*/}
+                                        {/*value={selectedCategory}*/}
+                                        {/*onChange={handleChangeCategory}*/}
+                                        {/*options={categoryOptions(categoryList)}*/}
+                                        {/*// options={options}*/}
+                                        {/*styles={customStyles}*/}
+                                    {/*/>*/}
+                                    <Input className={'catSelect'} type={'select'} value={selectedCategory} onChange={e => this.setState({selectedCategory: e.target.value})} name={'category'}>
+                                        {categoryList && categoryList.results.map(category => <option key={category.name} value={category.name}>{category.name}</option>)}
+                                    </Input>
+                                </div>
+                                <button className='registerButton' type='button' onClick={handleClubRegister}>등록</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <p className='deptLabel'>학과</p>
-                    {/*<Select*/}
-                        {/*value={selectedDept}*/}
-                        {/*onChange={handleChangeDept}*/}
-                        {/*options={deptOptions(deptList)}*/}
-                        {/*// options={options}*/}
-                        {/*styles={customStyles}*/}
-                    {/*/>*/}
-                    <Input type={'select'} value={selectedDept} onChange={e => this.setState({selectedDept: e.target.value})} name={'department'}>
-                        {deptList && deptList.results.map(dept => <option key={dept.name} value={dept.name}>{dept.name}</option>)}
-                    </Input>
-                </div>
-                <div>
-                    <p className='categoryLabel'>분류</p>
-                    {/*<Select*/}
-                        {/*value={selectedCategory}*/}
-                        {/*onChange={handleChangeCategory}*/}
-                        {/*options={categoryOptions(categoryList)}*/}
-                        {/*// options={options}*/}
-                        {/*styles={customStyles}*/}
-                    {/*/>*/}
-                    <Input type={'select'} value={selectedCategory} onChange={e => this.setState({selectedCategory: e.target.value})} name={'category'}>
-                        {categoryList && categoryList.results.map(category => <option key={category.name} value={category.name}>{category.name}</option>)}
-                    </Input>
-                </div>
-                <button className='registerButton' type='button' onClick={handleClubRegister}>등록</button>
             </div>
         );
     }

@@ -73,6 +73,7 @@ function* getInfoPost(id) {
         let response;
         if(sessionStorage.getItem('token') === null) response = yield call(api.get, url);
         else response = yield call(api.get, url, global_config);
+        console.log(response);
         yield put(actions.updateInfoPost(response.intro));
     }catch (e) {
         console.log('get intro :' + e)
