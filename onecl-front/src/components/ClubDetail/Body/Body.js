@@ -5,6 +5,7 @@ import './Body.css'
 import {Table} from "reactstrap";
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
+import {REQUEST_URL} from "../../../Constants/Constants";
 
 
 const Member = ({name, auth_level, clubID, joinID, buttonClickHandler}) => {

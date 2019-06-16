@@ -2,8 +2,9 @@ import {take,put,call,fork} from 'redux-saga/effects';
 import api from '../api'
 import * as types from '../actions/ClubRegister/ActionTypes'
 import * as actions from '../actions/ClubRegister/index'
+import {REQUEST_URL} from "../Constants/Constants";
 
-const url_postClub = 'http://127.0.0.1:8000/club/';
+const url_postClub = `${REQUEST_URL}/club/`;
 
 function* clubRegister(clubName, department, category){
     const data = {

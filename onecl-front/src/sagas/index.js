@@ -8,6 +8,7 @@ import ClubDetailSaga from './ClubDetailSaga';
 import ClubApplySaga from './ClubApplySaga';
 import MyPageSaga from "./MyPageSaga";
 import FixClubPostSaga from './FixClubPostSaga';
+import ClubDocumentSaga from "./ClubDocumentSaga";
 
 export default function* rootSaga() {
   yield all(
@@ -20,6 +21,7 @@ export default function* rootSaga() {
         ClubDetailSaga,
         ClubApplySaga,
         MyPageSaga,
+        ClubDocumentSaga,
         FixClubPostSaga,
     ].map(saga => fork(saga)));
 }

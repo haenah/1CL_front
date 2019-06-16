@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import './FixClubInfo.css'
+import {REQUEST_URL} from "../../Constants/Constants";
 
-const base_url = `http://127.0.0.1:8000/club/`;
+const base_url = `${REQUEST_URL}/club/`;
 const tokenString = 'token ' + sessionStorage.getItem('token');
 const config = {
     headers : {
