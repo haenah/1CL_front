@@ -1,0 +1,119 @@
+.container-assign {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-135deg, #c0dcf3, white);
+}
+
+.wrap-assign {
+    width: 960px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+
+    text-align: center;
+    justify-content: space-between;
+    padding-top: 100px;
+}
+
+.assignMasterWrapper {
+    display: inline-block;
+}
+
+.message {
+    text-align: left;
+    margin: 10px;
+}
+
+.assign {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+    margin-bottom: 10px;
+}
+
+.focus-assign {
+    display: block;
+    position: absolute;
+    border-radius: 25px;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 0px 0px 0px;
+    color: rgba(87,184,70, 0.8);
+}
+
+.symbol-assign {
+    font-size: 15px;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    border-radius: 25px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-left: 35px;
+    pointer-events: none;
+    color: #666666;
+
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+
+.assign-btn {
+    color:#fff;
+    border:none;
+    position:relative;
+    height:60px;
+    font-size:1.6em;
+    padding:0 2em;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+    background: #a10115;
+    margin-bottom: 20px;
+}
+
+.assign-btn:hover {
+    background: #fff;
+    color: #faaf09;
+}
+
+.assign-btn:before,.assign-btn:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    transition:400ms ease all;
+}
+
+.assign-btn:before,.assign-btn:after {
+    background: #faaf09;
+}
+
+.assign-btn:after, .assign-btn:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+}
+
+.assign-btn:hover:before,.assign-btn:hover:after{
+    width:100%;
+    transition:800ms ease all;
+}

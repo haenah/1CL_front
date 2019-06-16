@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {Button} from 'reactstrap';
-
+import './Footer.css'
 class Footer extends Component {
 
   constructor(props) {
@@ -10,15 +10,7 @@ class Footer extends Component {
   render() {
       if(this.props.authLevel !== 0) return null;
     return (
-      <div style={{
-        'position': 'fixed',
-        'bottom': '0',
-        'width': '100%',
-        'background': 'white',
-        'height': '50px',
-        'fontSize': '25px',
-        'textAlign': 'center',
-      }}>
+      <div className={'footer'}>
         {/*<Link to={`/club/${id}/apply`}>apply!</Link>*/}
         {/*<button className={'apply-button'} >Apply!</button>*/}
           <button className={'apply-btn'} onClick={() => this.props.history.push(`/club/${this.props.id}/apply`)}>Apply!</button>

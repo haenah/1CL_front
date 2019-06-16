@@ -134,8 +134,8 @@ class AssignMaster extends Component {
         };
         return(
             <div className='limiter'>
-                <div className='container-login100'>
-                    <div className='wrap-login100'>
+                <div className='container-assign'>
+                    <div className='wrap-assign'>
                         <div className={'assignMasterWrapper'}>
                             <p className={'clubApplyTitle'}><strong>동아리 회장 위임</strong></p>
                             <hr/>
@@ -143,18 +143,32 @@ class AssignMaster extends Component {
                                 <li>{message1}</li>
                                 <li>{message2}</li>
                             </div>
-                            <Autosuggest
-                                suggestions={suggestions}
-                                onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-                                onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-                                getSuggestionValue={getSuggestionValue}
-                                renderSuggestion={s => <ListGroup>{this.renderSuggestion(s)}</ListGroup>}
-                                inputProps={inputProps}
-                            />
+
+                            {/*<div className='assign'>*/}
+                              {/*<span>*/}
+                              <Autosuggest
+                                  suggestions={suggestions}
+                                  onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                                  onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                                  getSuggestionValue={getSuggestionValue}
+                                  renderSuggestion={s => <ListGroup>{this.renderSuggestion(s)}</ListGroup>}
+                                  inputProps={inputProps}
+                              />
+                              {/*<span className="focus-assign"></span>*/}
+                                {/*<span className="symbol-assign">*/}
+                                  {/*<i className="fa fa-user" aria-hidden="true"></i>*/}
+                                {/*</span>*/}
+                              {/*</span>*/}
+
+                            {/*</div>*/}
+
                             <hr/>
-                            <button style={{'marginRight' : '20px', 'borderRadius' : '10px'}} onClick={this.masterAssignHandler}>위임하기</button>
-                            <button style={{'borderRadius' : '10px'}} onClick={this.returnButtonHandler}>돌아가기</button>
+                            <button className={'assign-btn'} onClick={this.masterAssignHandler}>위임하기</button>
                         </div>
+                        <br></br>
+
+                    <button style={{'margin': '30px', 'borderRadius' : '10px', 'float':'right'}} onClick={this.returnButtonHandler}>돌아가기</button>
+
                     </div>
                 </div>
             </div>

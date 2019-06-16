@@ -57,3 +57,34 @@
     -moz-transition: all 0.4s;
     transition: all 0.4s;
 }
+
+.container-apply {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-135deg, #c0dcf3, white);
+    text-align: center;
+}
+
+.wrap-apply {
+    width: 50%;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: inline-block;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    padding: 50px 150px;
+}
+
+.upload {
+
+}
