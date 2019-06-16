@@ -1,23 +1,81 @@
+/*//////////////////////////////////////////////////////////////////
+[ Header ]*/
+
+.heading-space {
+    width: 100%;
+    top: 0px;
+    z-index: 101;
+    position: relative;
+    display: block;
+    line-height: 1.15;
+}
+
+.heading {
+    padding: 16px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    display: flex;
+    background-color: white;
+}
+
+.options {
+    margin-right: 24px;
+    -webkit-box-align: center;
+    align-items: center;
+    text-align: center;
+    flex: 1 0 auto;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    display: flex;
+}
+
 .headerOptions {
     display: inline-block;
-    width: 250px;
+    border-radius: 10px;
+    width: 100%;
     text-align: center;
-    background-color: grey;
+    background-color: #6985b1;
     color : white;
     margin-right: 25px;
     margin-left : 25px;
 }
 
+
 .headerWrapper {
-    height : 55px;
-    width : 100%;
-    box-shadow: 5px 5px 5px grey;
-    position : relative;
+    width: 100%;
+    top: 0px;
+    z-index: 101;position: sticky;
+    display: block;
+    line-height: 1.15;
 }
 
 .optionSet {
-    position : absolute;
-    left : 50%;
-    transform: translateX(-50%);
-    width : fit-content;
+    padding: 16px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    display: flex;
+    background-color: white;
+}
+
+
+/*//////////////////////////////////////////////////////////////////
+[ Footer ]*/
+.apply-btn {
+    background-color: white;
+    color: rgb(47, 147, 255);
+    border: solid rgb(47, 147, 255);
+    width: 100%;
+    padding: 5px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    text-transform: uppercase;
+    overflow: visible;
+}
+
+.apply-btn:hover {
+    background-color: rgb(47, 147, 255);
+    color: white;
 }
