@@ -3,30 +3,11 @@ import CKEditor from 'ckeditor4-react'
 import './Body.css'
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
+import {Button} from "reactstrap";
 
-
-const Member = ({name, auth_level, clubID, joinID, buttonClickHandler}) => {
-    const position = (auth_level) => {
-        switch (auth_level){
-            case 1 :
-                return '일반 회원';
-            case 2 :
-                return '임원';
-            case 3 :
-                return '회장';
-            default :
-                return '비회원';
-        }
-    };
-
-    return(
-        <div style={{'margin' : '20px'}}>
-            <p style={{'display':'inline-block', 'width':'250px'}}>{name}</p>
-            <p style={{'display':'inline-block', 'width':'250px'}}>{position(auth_level)}</p>
-            <button style={{'display' : 'inline-block'}} disabled={auth_level === 3} onClick={() => buttonClickHandler(clubID, joinID, name)}>등급 변경</button>
-        </div>
-    );
-};
+const AUTH_LEVEL = [
+  '비회원', '일반 회원', '임원', '회장',
+];
 
 class Body extends Component{
     state = {
@@ -156,24 +137,7 @@ class Body extends Component{
     render() {
         const {componentStatus, id, history} = this.props;
         const {documentList, memberList, infoPost, docTypeList} = this.props;
-
-        const memList = !memberList.results ? null : memberList.results.map(
-            (member) => {
-                return(
-                    <div>
-                        <Member
-                            key={member.id}
-                            name={member.user}
-                            auth_level={member.auth_level}
-                            joinID={member.id}
-                            clubID={member.club}
-                            buttonClickHandler={this.authChangeButtonHandler}
-                        />
-                        <hr/>
-                    </div>
-                )
-            }
-        );
+        memberList && console.log('mem', memberList);
 
         if(componentStatus === 3){
             return(
@@ -184,6 +148,7 @@ class Body extends Component{
                         <button className={'adminOption'} onClick={() => {history.push(`/club/${id}/fix_club_post`)}}>동아리 소개글 수정</button>
                         <button className={'adminOption'} onClick={() => {history.push(`/club/${id}/recruiter`)}}>지원자 관리</button>
                         <button className={'adminOption'} onClick={() => {history.push(`/club/${id}/assign_next_master`)}}>차기 회장 임명</button>
+                        <button className={'adminOption'} onClick={() => {history.push(`/club/${id}/manage_doctype`)}}>게시판 카테고리 추가</button>
                     </div>
                 </div>
             )
@@ -191,13 +156,35 @@ class Body extends Component{
 
         if(componentStatus === 2){
             return(
-                <div className={'memListWrapper'}>
-                    <div className={'labelWrapper'}>
-                        <p className={'memListLabel'}>회원 이름</p>
-                        <p className={'memListLabel'}>등급</p>
-                        <hr/>
+                <div>
+                    <div>
+                        {memberList && <ReactTable
+                          data={memberList.results}
+                          columns={[
+                              {
+                                  Header: "회원 ID",
+                                  accessor: "user_username",
+                              },
+                              {
+                                  Header: "회원 이름",
+                                  accessor: "user_name",
+                              },
+                              {
+                                  Header: "등급",
+                                  Cell: row => (<span>{AUTH_LEVEL[row.original.auth_level]}</span>)
+                              },
+                              {
+                                  Header: "변경",
+                                  Cell: row => (<Button style={{'display' : 'inline-block'}} color={row.original.auth_level === 3 ? 'secondary' : 'primary'} disabled={row.original.auth_level === 3} onClick={() => this.authChangeButtonHandler(row.original.club, row.original.id, row.original.user_username)}>등급 변경</Button>)
+                              },
+                          ]}
+                          defaultPageSize={20}
+                          style={{
+                              height: '400px',
+                          }}
+                          className={'-striped -highlight'}
+                        />}
                     </div>
-                    {memList}
                 </div>
             )
         }

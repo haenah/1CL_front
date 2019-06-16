@@ -17,6 +17,7 @@ import {
 import {Route, Switch} from "react-router-dom";
 import MyPage from "../../page/MyPage";
 import ClubPage from "../../page/ClubPage";
+import AddClubDocumentCategoryPage from "../../page/AddClubDocumentCategoryPage";
 
 class Main extends Component {
 
@@ -99,6 +100,7 @@ class Main extends Component {
                   <Route exact path="/club/:id/fix_club_info" component={FixClubInfoPage} />
                   <Route exact path="/club/:id/fix_club_post" component={FixClubPostPage} />
                   <Route exact path="/club/:id/assign_next_master" component={AssignMasterPage} />
+                  <Route exact path="/club/:id/manage_doctype" component={AddClubDocumentCategoryPage} />
                 </Switch>
               </div>
             </Sidebar>

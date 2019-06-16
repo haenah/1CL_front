@@ -7,6 +7,7 @@ import ClubRegister from './ClubRegister';
 import ClubDetail from './ClubDetail';
 import ClubApply from './ClubApply';
 import MyPage from "./MyPage";
+import AddClubDocumentCategory from './AddClubDocumentCategory';
 
 const reducers = combineReducers({
     SignUpValidationData: SignUpValidation,
@@ -17,6 +18,7 @@ const reducers = combineReducers({
     ClubDetail,
     ClubApply,
     MyPage,
+    AddClubDocumentCategory,
 });
 
 export default reducers;
