@@ -55,7 +55,6 @@
 }
 
 .adminOptionWrapper {
-    margin: 20px 0 20px 0;
     border-top: 3px solid #bfbfbf;
     height: 100vh;
     position: relative;
@@ -83,44 +82,45 @@
     cursor:pointer;
     transition:800ms ease all;
     outline:none;
-    width: 320.64px;
-    height: 60px;
+    width: 380px;
+    height: 100px;
 }
 
 .adminOption1 {
-    background: #688b8a;
+    background: #faaf09;
 }
 
 .adminOption1:hover{
     background:#fff;
-    color:#688b8a;
+    color:#faaf09;
 }
 
 .adminOption2 {
-    background: #a0b084;
+    background: #fa812f;
 }
 
 .adminOption2:hover{
     background:#fff;
-    color:#a0b084;
+    color:#fa812f;
 }
 
 .adminOption3 {
-    background: #faefd4;
-    color: #6c7871;
+    background: #fa4032;
+
 }
 
 .adminOption3:hover{
-    background:#6c7871;
-    color:#faefd4;
+    color: #fa4032;
+    background:#fff;
 }
 
 .adminOption4 {
-    background: #a57c65;
+    background: #fef3e2;
+    color: #6c7871;
 }
 .adminOption4:hover{
-    background:#fff;
-    color:#a57c65;
+    background:#6c7871;
+    color:#fef3e2;
 }
 
 
@@ -135,19 +135,19 @@
 }
 
 .adminOption1:before,.adminOption1:after {
-    background: #688b8a;
+    background: #faaf09;
 }
 
 .adminOption2:before,.adminOption2:after {
-    background: #a0b084;
+    background: #fa812f;
 }
 
 .adminOption3:before,.adminOption3:after {
-    background: #faefd4;
+    background: #fa4032;
 }
 
 .adminOption4:before,.adminOption4:after {
-    background: #a57c65;
+    background: #fef3e2;
 }
 
 .adminOption1:after, .adminOption2:after, .adminOption3:after, .adminOption4:after{
@@ -166,11 +166,13 @@
 
 
 .adminMessage {
-    position : absolute;
+    position : relative;
     top : 20%;
     text-align: center;
     width : 100%;
     font-size: 30px;
+    margin-bottom: 30px;
+    color: gray;
 }
 
 .container-notice {
