@@ -6,7 +6,7 @@ import {REQUEST_URL} from "../Constants/Constants";
 
 const url = `${REQUEST_URL}/club/`;
 
-function* fetchClubListRequest() {
+export function* fetchClubListRequest() {
   const data = yield call(api.get, url);
   if (data) {
     yield put(actions.fetchClubList(data));

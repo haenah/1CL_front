@@ -8,6 +8,7 @@ import ClubDetailSaga from './ClubDetailSaga';
 import ClubApplySaga from './ClubApplySaga';
 import MyPageSaga from "./MyPageSaga";
 import FixClubPostSaga from './FixClubPostSaga';
+import AddClubDocumentCategorySaga from "./AddClubDocumentCategorySaga";
 import ClubDocumentSaga from "./ClubDocumentSaga";
 
 export default function* rootSaga() {
@@ -23,5 +24,6 @@ export default function* rootSaga() {
         MyPageSaga,
         ClubDocumentSaga,
         FixClubPostSaga,
+        AddClubDocumentCategorySaga,
     ].map(saga => fork(saga)));
 }
