@@ -53,7 +53,7 @@ class MyNavBar extends Component {
               <NavItem>
                 <NavLink href={'/'} onClick={() => this.handleLogOut()}>로그아웃</NavLink>
               </NavItem>
-              <span style={{marginTop: '8px'}}>{`${sessionStorage.getItem('name')}님, 환영합니다!`}</span>
+              <span style={{marginTop: '8px'}}>{`${sessionStorage.getItem('name')} 님, 환영합니다!`}</span>
             </div> :
               <div style={{display: 'flex', justifyContent: 'center'}}>
                 <NavItem>

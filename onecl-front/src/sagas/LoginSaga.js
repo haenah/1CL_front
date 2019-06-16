@@ -2,8 +2,9 @@ import {call, put, takeLatest} from 'redux-saga/effects'
 import api from '../api'
 import * as types from '../actions/Login/ActionTypes'
 import {loginRequestSuccess} from "../actions/Login";
+import {REQUEST_URL} from "../Constants/Constants";
 
-const url = 'http://127.0.0.1:8000/auth/login/';
+const url = `${REQUEST_URL}/auth/login/`;
 
 export function* loginRequest(user) {
   const data = {

@@ -5,6 +5,7 @@ import './Body.css'
 import {Table} from "reactstrap";
 import ReactTable from 'react-table';
 import 'react-table/react-table.css';
+import {REQUEST_URL} from "../../../Constants/Constants";
 
 
 const Member = ({name, auth_level, clubID, joinID, buttonClickHandler}) => {
@@ -231,8 +232,8 @@ class Body extends Component{
                                 'margin' : '20px',
                             }}
                             config={{
-                                filebrowserBrowseUrl: `http://127.0.0.1:8000/upload/image/?clubID=${id}`,
-                                filebrowserUploadUrl: `http://127.0.0.1:8000/upload/image/?clubID=${id}`,
+                                filebrowserBrowseUrl: `${REQUEST_URL}/upload/image/?clubID=${id}`,
+                                filebrowserUploadUrl: `${REQUEST_URL}/upload/image/?clubID=${id}`,
                             }}
                         />
                         <button onClick={this.documentSubmitHandler} style={{'marginRight' : '20px'}}>작성</button>

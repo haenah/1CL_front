@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import './FixClubPost.css'
 import CKEditor from 'ckeditor4-react'
+import {REQUEST_URL} from "../../Constants/Constants";
 import axios from 'axios';
 import * as actions from "../../actions/ClubDetail";
 import api from "../../api";
@@ -58,12 +59,6 @@ class FixClubPost extends Component {
         });
     };
 
-    // componentWillReceiveProps(props){
-    //     if(props.authLevel !== 3){
-    //
-    //     }
-    // };
-
     documentSubmitHandler = () => {
         const {id, fixIntroPost} = this.props;
         const {docContent} = this.state;
@@ -96,8 +91,8 @@ class FixClubPost extends Component {
                                     'margin' : '20px',
                                 }}
                                 config={{
-                                    filebrowserBrowseUrl: `http://127.0.0.1:8000/upload/image/?clubID=${this.props.id}`,
-                                    filebrowserUploadUrl: `http://127.0.0.1:8000/upload/image/?clubID=${this.props.id}`,
+                                    filebrowserBrowseUrl: `${REQUEST_URL}/upload/image/?clubID=${this.props.id}`,
+                                    filebrowserUploadUrl: `${REQUEST_URL}/upload/image/?clubID=${this.props.id}`,
                                 }}
                             />
                             <button onClick={this.documentSubmitHandler} style={{'margin' : '20px', 'borderRadius': '10px'}}>작성</button>

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import 'bootstrap/dist/css/bootstrap.css';
 import MyNavBar from './Navbar';
 
-import {Input} from 'reactstrap';
+import {Container, Input} from 'reactstrap';
 import {
   ApplicantListPage, AssignMasterPage,
   ClubApplyPage,
@@ -25,6 +25,7 @@ class Main extends Component {
     this.state = {
       search: '',
       clubs: null,
+      filteredClubs: null,
       isOpen: false,
     }
   }
@@ -34,7 +35,7 @@ class Main extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    nextProps.clubs && this.setState({clubs: nextProps.clubs.results});
+    nextProps.clubs && this.setState({clubs: nextProps.clubs.results, filteredClubs: nextProps.clubs.results});
   }
 
   toggle() {
@@ -44,12 +45,12 @@ class Main extends Component {
   }
 
   handleSearch(search) {
-    const {clubs} = this.props;
+    const {clubs} = this.state;
     this.setState({search});
     if (!search) {
-      this.setState({clubs: this.props.clubs.results});
+      this.setState({filteredClubs: clubs});
     }
-    search && this.setState({clubs: clubs.results.filter(c => c.name.includes(search))});
+    search && this.setState({filteredClubs: clubs.filter(c => c.name.includes(search))});
   }
 
   render() {
@@ -65,7 +66,7 @@ class Main extends Component {
                   <Input name={'search'} type={'text'} value={this.state.search} onChange={e => this.handleSearch(e.target.value)} placeholder={'검색'} />
                   <div style={{margin: '8px', height: '1px', backgroundColor: 'black'}} />
                   <div>
-                    {this.state.clubs && this.state.clubs.map(c =>
+                    {this.state.filteredClubs && this.state.filteredClubs.map(c =>
                       <div key={c.id} style={{display: 'block', textAlign: 'center', justifyContent: 'center', borderBottom: '1px solid lightgrey', padding: '16px', color: 'grey'}}>
                         <a style={{textDecoration: 'none'}} href={`/club/${c.id}`}>{c.name}</a>
                       </div>
@@ -85,7 +86,7 @@ class Main extends Component {
               }
             >
               <MyNavBar token={this.props.token} user={this.props.login} />
-              <div>
+              <Container style={{marginTop: '1em'}} fluid>
                 <Switch>
                   <Route exact path="/club_search" component={ClubsearchPage}/>
                   <Route exact path="/club_register" component={ClubRegisterPage}/>
@@ -100,7 +101,7 @@ class Main extends Component {
                   <Route exact path="/club/:id/fix_club_post" component={FixClubPostPage} />
                   <Route exact path="/club/:id/assign_next_master" component={AssignMasterPage} />
                 </Switch>
-              </div>
+              </Container>
             </Sidebar>
           </div>
       </div>

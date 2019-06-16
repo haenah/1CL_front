@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
+import createReduxWaitForMiddleware from 'redux-wait-for-action';
 
 import {applyMiddleware, compose, createStore} from 'redux';
 import reducers from './reducers';
@@ -17,7 +17,8 @@ const devtools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 const composeEnhancers = devtools || compose;
 
 const configure = (preloadedState) => createStore(reducers, preloadedState, composeEnhancers(
-    applyMiddleware(sagaMiddleware)
+    applyMiddleware(sagaMiddleware),
+    applyMiddleware(createReduxWaitForMiddleware()),
 ));
 
 const store = configure();
