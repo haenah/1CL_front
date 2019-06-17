@@ -3,7 +3,7 @@
 }
 
 .applyMessage {
-    padding-bottom: 50px;
+    padding-bottom: 20px;
     margin: 30px 0 30px 0;
 }
 
@@ -14,7 +14,7 @@
 .submit-file {
     position: relative;
     z-index: 1;
-    margin: 30px 0 30px 0;
+    margin: 50px;
 }
 
 .file {
@@ -81,8 +81,7 @@
     display: inline-block;
     flex-wrap: wrap;
     justify-content: space-between;
-
-    padding: 50px 150px;
+    text-align: center;
 }
 
 .upload {

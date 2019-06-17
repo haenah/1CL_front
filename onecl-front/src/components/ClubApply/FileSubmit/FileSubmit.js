@@ -76,14 +76,14 @@ class FileSubmit extends Component{
                             </div>
                             <hr/>
                             <div className={'submit-file'}>
-                                <input className={'upload'} type={'file'} onChange={this.fileSelectHandler} />
+                                <input className={'upload'} type={'file'} style={{'textAlign':'center'}}onChange={this.fileSelectHandler} />
                                 <span className="focus-file"></span>
                                     <span className="symbol-file">
                                       <i className="fa fa-folder" aria-hidden="true"></i>
                                     </span>
                             </div>
                             <button style={{'marginRight' : '20px', 'border-radius' : '10px'}} onClick={this.fileSubmitHandler}>제출</button>
-                            <button style={{'border-radius' : '10px'}} onClick={() => {this.props.history.push(`/club/${this.props.clubID}`)}}>돌아가기</button>
+                            <button style={{'border-radius' : '10px', 'margin':'20px'}} onClick={() => {this.props.history.push(`/club/${this.props.clubID}`)}}>돌아가기</button>
                         </div>
                     </div>
                 </div>
