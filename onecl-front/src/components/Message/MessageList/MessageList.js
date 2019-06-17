@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import {REQUEST_URL} from "../../../Constants/Constants";
-import {ListGroup, ListGroupItem, Modal, ButtonToolbar, Button} from 'reactstrap';
+import {ListGroup, ListGroupItem, Modal, ButtonToolbar, Button, Badge, Card, Row} from 'reactstrap';
 import MessageModal from '../MessageModal'
 
 const config = {
@@ -16,18 +16,22 @@ class MessageList extends Component {
         modalShow : false,
     };
 
-    async componentDidMount(){
+    async componentWillMount(){
         const url = REQUEST_URL + '/message/';
         try{
             const response = await axios.get(url, config);
             console.log(response);
-            this.setState({
-                messageList : response.data.results,
-            });
-            this.props.updateMessageList(response.data.results)
+            this.props.updateMessageList(response.data.results);
         }catch (e) {
             console.log('get message list' + e)
         }
+    }
+
+    componentWillReceiveProps(nextProps, nextContext) {
+        const {messageList} = this.props;
+        messageList.length !== 0 && this.setState({
+            messageList : this.props.messageList,
+        });
     }
 
     toggle() {
@@ -44,6 +48,7 @@ class MessageList extends Component {
                 await axios.delete(delete_url, config);
                 const response = await axios.get(get_url, config);
                 this.props.updateMessageList(response.data.results);
+                this.setState({messageList: this.props.messageList});
                 alert('읽은 메세지를 모두 삭제하였습니다.');
             }catch (e) {
                 alert('일괄 삭제 실패 ' + e)
@@ -52,41 +57,46 @@ class MessageList extends Component {
     };
 
     render(){
-        const {messageList} = this.props;
-        let modalClose = () => this.setState({ modalShow: false });
+        const {messageList} = this.state;
         return(
             <div>
-                <h1><strong>쪽지함</strong></h1>
-                <div>자신에게 온 쪽지를 확인할 수 있습니다.</div>
-                <button onClick={this.deleteAll}>읽은 메세지 모두 삭제</button>
+                <h1><Badge color={'info'}>쪽지함</Badge></h1>
+                <div style={{fontSize: '15px', color: 'grey'}}>자신에게 온 쪽지를 확인할 수 있습니다.</div>
+                <Button style={{marginTop: '10px'}} color={'primary'} onClick={this.deleteAll}>읽은 메세지 모두 삭제</Button>
                 <hr/>
-                {messageList && messageList.map(
-                    message =>{
-                        return(
-                            <div className={'messageForm'}>
-                                <span style={{'display' : 'inline-block'}}>제목 : </span>
-                                <div
-                                    className={'messageTitle'}
-                                    key={message.id}
-                                    dangerouslySetInnerHTML={
-                                        {__html : message.title}}
-                                />
-                                <div className={'isRead'}>
-                                    {message.read ? '읽음' : '읽지않음'}
-                                </div>
-                                <MessageModal
-                                    history = {this.props.history}
-                                    id = {message.id}
-                                    buttonLabel = {'자세히'}
-                                    title = {message.title}
-                                    date = {message.date}
-                                    content = {message.content}
-                                    updateMessageList = {this.props.updateMessageList}
-                                />
-                                <hr/>
-                            </div>
-                        )
-                    })}
+                <ListGroup>
+                    {messageList && messageList.map(
+                        message =>{
+                            return(
+                                <ListGroupItem key={message.id}>
+                                    <div style={{margin: '10px'}}>
+                                        <Row>
+                                            제목:&nbsp;
+                                            <div
+                                              key={message.id}
+                                              dangerouslySetInnerHTML={
+                                                  {__html : message.title}}
+                                            />&nbsp;&nbsp;
+                                            <div>
+                                                {!message.read && <Badge pill color={'info'}>새 메세지</Badge>}
+                                            </div>
+                                        </Row>
+                                        <Row style={{marginTop: '10px'}}>
+                                            <MessageModal
+                                                history = {this.props.history}
+                                                id = {message.id}
+                                                buttonLabel = {'자세히'}
+                                                title = {message.title}
+                                                date = {message.date}
+                                                content = {message.content}
+                                                updateMessageList = {this.props.updateMessageList}
+                                            />
+                                        </Row>
+                                    </div>
+                                </ListGroupItem>
+                            )
+                        })}
+                </ListGroup>
             </div>
         )
     }

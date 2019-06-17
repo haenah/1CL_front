@@ -28,7 +28,7 @@ class MessageModal extends React.Component {
         this.setState(prevState => ({
             modal: !prevState.modal
         }));
-    };
+};
 
     remove_toggle = async () => {
         const get_url = REQUEST_URL + '/message/';
@@ -44,9 +44,12 @@ class MessageModal extends React.Component {
     };
 
     removeMessage = async() => {
-        const delete_url = REQUEST_URL + `/message/${this.props.id}`;
+        const get_url = REQUEST_URL + '/message/';
+        const delete_url = `${get_url}${this.props.id}`;
         try{
             await axios.delete(delete_url, config);
+            const response = await axios.get(get_url, config);
+            this.props.updateMessageList(response.data.results);
             alert('쪽지가 삭제되었습니다.');
             this.remove_toggle()
         }catch (e) {
