@@ -12,7 +12,7 @@ import {
   ClubRegisterPage,
   ClubsearchPage, FixClubInfoPage, FixClubPostPage,
   LoginPage,
-  SignupPage
+  SignupPage, MessagePage
 } from "../../page";
 import {Route, Switch} from "react-router-dom";
 import MyPage from "../../page/MyPage";
@@ -104,6 +104,7 @@ class Main extends Component {
                   <Route exact path="/register" component={SignupPage}/>
                   <Route exact path="/login" component={LoginPage} />
                   <Route exact path="/mypage" component={MyPage} />
+                  <Route exact path="/message" component={MessagePage} />
                   <Route exact path="/club/:id" component={ClubPage} />
                   <Route exact path="/club/:id/apply" component={ClubApplyPage} />
                   <Route exact path="/club/:clubID/document/:id" component={ClubDocumentPage} />

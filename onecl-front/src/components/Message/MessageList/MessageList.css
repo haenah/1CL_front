@@ -1,0 +1,16 @@
+.isRead {
+    position: relative;
+    display: inline-block;
+    right: 0;
+    width: fit-content;
+    text-align: right;
+}
+
+.messageForm {
+    position: absolute;
+}
+
+.messageTitle {
+    position: relative;
+    width: fit-content;
+}

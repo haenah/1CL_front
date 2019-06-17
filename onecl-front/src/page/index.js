@@ -10,3 +10,4 @@ export {default as ApplicantListPage} from './ApplicantListPage';
 export {default as FixClubInfoPage} from './FixClubInfoPage';
 export {default as AssignMasterPage} from './AssignMasterPage';
 export {default as FixClubPostPage} from './FixClubPostPage';
+export {default as MessagePage} from './MessagePage';

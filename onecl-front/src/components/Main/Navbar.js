@@ -48,6 +48,9 @@ class MyNavBar extends Component {
             </NavItem>
             {this.state.loggedIn ? <div style={{display: 'flex', justifyContent: 'center'}}>
               <NavItem>
+                <NavLink href={'/message'}>쪽지함</NavLink>
+              </NavItem>
+              <NavItem>
                 <NavLink href={'/mypage'}>내 정보</NavLink>
               </NavItem>
               <NavItem>
