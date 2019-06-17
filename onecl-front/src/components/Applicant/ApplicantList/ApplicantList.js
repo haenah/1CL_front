@@ -49,7 +49,7 @@ class ApplicantList extends Component{
 
         const url = `http://127.0.0.1:8000/upload/file/?clubID=${this.props.id}`;
         try{
-            const data = await axios.get(url);
+            const data = await axios.get(url, config);
             this.setState({
                 applicantList: data.data.results,
             });
@@ -66,10 +66,17 @@ class ApplicantList extends Component{
         this.props.history.push(`/club/${this.props.id}`);
     };
 
-    removeFromList = async (id) => {
-        const delete_url = `${REQUEST_URL}/upload/file/${id}`;
+    removeFromList = async (id, flag) => {
+        let delete_url;
+        if(flag) delete_url = `${REQUEST_URL}/upload/file/${id}/?apply=true`;
+        else delete_url = `${REQUEST_URL}/upload/file/${id}/?apply=false`;
+        const config = {
+            headers : {
+                'authorization' : 'token ' + sessionStorage.getItem('token')
+            }
+        };
         try{
-            const response = await axios.delete(delete_url);
+            const response = await axios.delete(delete_url, config);
             console.log(response)
         }catch (e) {
             alert(e)
@@ -77,7 +84,7 @@ class ApplicantList extends Component{
 
         const get_url = `${REQUEST_URL}/upload/file/?clubID=${this.props.id}`;
         try{
-            const response = await axios.get(get_url);
+            const response = await axios.get(get_url, config);
             this.setState({
                 applicantList : response.data.results,
             })
@@ -103,12 +110,12 @@ class ApplicantList extends Component{
         }catch (e) {
             alert('an error was caught : ' + e)
         }
-        this.removeFromList(applicant.id)
+        this.removeFromList(applicant.id, true)
     };
 
     failHandler = async (applicant) => {
-        alert('불합격 처리되었습니다.')
-        this.removeFromList(applicant.id)
+        alert('불합격 처리되었습니다.');
+        this.removeFromList(applicant.id, false)
     };
 
     render(){
