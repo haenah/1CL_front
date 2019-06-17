@@ -28,9 +28,9 @@ class MessageList extends Component {
     }
 
     componentWillReceiveProps(nextProps, nextContext) {
-        const {messageList} = this.props;
-        messageList.length !== 0 && this.setState({
-            messageList : this.props.messageList,
+        // const {messageList} = this.props;
+        nextProps.messageList.length !== 0 && this.setState({
+            messageList : nextProps.messageList,
         });
     }
 
