@@ -12,12 +12,13 @@ import {
   ClubRegisterPage,
   ClubsearchPage, FixClubInfoPage, FixClubPostPage,
   LoginPage,
-  SignupPage
+  SignupPage, MessagePage
 } from "../../page";
-import {Route, Switch} from "react-router-dom";
+import {Redirect, Route, Switch} from "react-router-dom";
 import MyPage from "../../page/MyPage";
 import ClubPage from "../../page/ClubPage";
 import AddClubDocumentCategoryPage from "../../page/AddClubDocumentCategoryPage";
+import StartPage from "../../page/StartPage";
 
 class Main extends Component {
 
@@ -99,11 +100,13 @@ class Main extends Component {
               <MyNavBar token={this.props.token} user={this.props.login} />
               <Container style={{marginTop: '1em'}} fluid>
                 <Switch>
+                  <Route exact path="/index" component={StartPage} />
                   <Route exact path="/club_search" component={ClubsearchPage}/>
                   <Route exact path="/club_register" component={ClubRegisterPage}/>
                   <Route exact path="/register" component={SignupPage}/>
                   <Route exact path="/login" component={LoginPage} />
                   <Route exact path="/mypage" component={MyPage} />
+                  <Route exact path="/message" component={MessagePage} />
                   <Route exact path="/club/:id" component={ClubPage} />
                   <Route exact path="/club/:id/apply" component={ClubApplyPage} />
                   <Route exact path="/club/:clubID/document/:id" component={ClubDocumentPage} />
@@ -112,6 +115,7 @@ class Main extends Component {
                   <Route exact path="/club/:id/fix_club_post" component={FixClubPostPage} />
                   <Route exact path="/club/:id/assign_next_master" component={AssignMasterPage} />
                   <Route exact path="/club/:id/manage_doctype" component={AddClubDocumentCategoryPage} />
+                  <Redirect from="/" to="/index" />
                 </Switch>
               </Container>
             </Sidebar>
