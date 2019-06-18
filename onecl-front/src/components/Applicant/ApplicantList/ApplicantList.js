@@ -47,7 +47,7 @@ class ApplicantList extends Component{
             console.log('get auth level : ' + e)
         }
 
-        const url = `http://127.0.0.1:8000/upload/file/?clubID=${this.props.id}`;
+        const url = `http://3.219.198.5:8000/upload/file/?clubID=${this.props.id}`;
         try{
             const data = await axios.get(url, config);
             this.setState({

@@ -38,7 +38,7 @@ class MyNavBar extends Component {
   render() {
     return(
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/"><img style={{'height' : '40px'}} src='http://127.0.0.1:8000/media/1CL_logo.png'/></NavbarBrand>
+        <NavbarBrand href="/"><img style={{'height' : '40px'}} src='http://3.219.198.5:8000/media/1CL_logo.png'/></NavbarBrand>
           <Nav className="ml-auto" navbar>
             <NavItem>
               <NavLink href="/club_search/">동아리 검색</NavLink>

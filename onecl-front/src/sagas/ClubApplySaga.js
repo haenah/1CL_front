@@ -3,7 +3,7 @@ import api from '../api'
 import * as types from '../actions/ClubApply/ActionTypes'
 import * as actions from '../actions/ClubApply/index'
 
-const base_url = 'http://127.0.0.1:8000/';
+const base_url = 'http://3.219.198.5:8000/';
 const config = {
     headers : {
         'authorization' : 'token ' + sessionStorage.getItem('token'),

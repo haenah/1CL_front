@@ -69,7 +69,7 @@ function* watchGetAuthLevelRequest(){
 }
 
 function* getInfoPost(id) {
-    const url = `http://127.0.0.1:8000/club/${id}`;
+    const url = `http://3.219.198.5:8000/club/${id}`;
     try{
         let response;
         if(sessionStorage.getItem('token') === null) response = yield call(api.get, url);
@@ -89,7 +89,7 @@ function* watchGetInfoPostRequest(){
 }
 
 function* submitDocument(title, content, docType, clubID) {
-    const url = 'http://127.0.0.1:8000/document/';
+    const url = 'http://3.219.198.5:8000/document/';
     const data = {
         title : title,
         content : content,
@@ -120,7 +120,7 @@ function* watchSubmitDocumentRequest(){
 }
 
 function* searchDocument(category, clubID) {
-    const url = `http://127.0.0.1:8000/document/?club=${clubID}&type=${category}`;
+    const url = `http://3.219.198.5:8000/document/?club=${clubID}&type=${category}`;
     const config = {
         headers:{
             'authorization' : 'token ' + sessionStorage.getItem('token')
@@ -143,7 +143,7 @@ function* watchSearchDocumentRequest(){
 }
 
 function* changeAuthLevel(joinID, authLevel) {
-    const url = `http://127.0.0.1:8000/join/${joinID}/`;
+    const url = `http://3.219.198.5:8000/join/${joinID}/`;
     console.log(authLevel);
     const data = {
         auth_level : authLevel,
@@ -165,7 +165,7 @@ function* watchChangeAuthLevelRequest(){
 }
 
 function* getDocTypeList(id){
-    const url = `http://127.0.0.1:8000/document/doc_type/?club=${id}`;
+    const url = `http://3.219.198.5:8000/document/doc_type/?club=${id}`;
     try{
         const data = yield call(api.get, url, global_config);
         console.log(data);

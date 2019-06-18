@@ -20,7 +20,7 @@ class FixClubInfo extends Component{
     };
 
     initialize = async () => {
-        const auth_url =`http://127.0.0.1:8000/join/auth_level/?club=${this.props.id}`;
+        const auth_url =`http://3.219.198.5:8000/join/auth_level/?club=${this.props.id}`;
         const config = {
             headers : {
                 'authorization' : 'token ' + sessionStorage.getItem('token')

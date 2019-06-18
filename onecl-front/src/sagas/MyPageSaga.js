@@ -3,7 +3,7 @@ import api from '../api'
 import * as types from '../actions/MyPage/ActionTypes'
 import {fetchJoin} from "../actions/MyPage";
 
-const url = 'http://127.0.0.1:8000/join/my_club/';
+const url = 'http://3.219.198.5:8000/join/my_club/';
 
 export function* fetchJoinRequest() {
 

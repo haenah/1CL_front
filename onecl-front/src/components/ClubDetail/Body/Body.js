@@ -143,7 +143,7 @@ class Body extends Component{
                 <div className={'adminOptionWrapper'}>
                     <p className={'adminMessage'}>{'원하시는 옵션을 선택하세요.'}</p>
                     <div className={'logoWrapper'}>
-                        <img style={{'height' : '70px'}} src='http://127.0.0.1:8000/media/1CL_logo.png'/>
+                        <img style={{'height' : '70px'}} src='http://3.219.198.5:8000/media/1CL_logo.png'/>
                     </div>
                     <div className={'adminOptionSet'}>
                         <button className={'adminOption1'} onClick={() => {history.push(`/club/${id}/fix_club_info`)}}>동아리 기본 정보 수정</button>
@@ -221,8 +221,8 @@ class Body extends Component{
                                             'margin' : '20px',
                                         }}
                                         config={{
-                                            filebrowserBrowseUrl: `http://127.0.0.1:8000/upload/image/?clubID=${id}`,
-                                            filebrowserUploadUrl: `http://127.0.0.1:8000/upload/image/?clubID=${id}`,
+                                            filebrowserBrowseUrl: `http://3.219.198.5:8000/upload/image/?clubID=${id}`,
+                                            filebrowserUploadUrl: `http://3.219.198.5:8000/upload/image/?clubID=${id}`,
                                         }}
                                     />
                                     {/*<button onClick={() => {console.log(this.state.docContent)}}>show me doc content</button>*/}

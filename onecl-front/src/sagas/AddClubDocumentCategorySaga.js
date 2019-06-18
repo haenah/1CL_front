@@ -11,7 +11,7 @@ const settings = {
 };
 
 function* fetchCategoryList(clubID) {
-  const url = `http://127.0.0.1:8000/document/doc_type/?club=${clubID}`;
+  const url = `http://3.219.198.5:8000/document/doc_type/?club=${clubID}`;
   try {
     const response = yield call(api.get, url, settings);
     if (response) {
@@ -30,7 +30,7 @@ function* watchFetchCategoryList() {
 }
 
 function* removeClubDocumentCategory(data) {
-  const url = `http://127.0.0.1:8000/document/doc_type/${data.categoryID}`;
+  const url = `http://3.219.198.5:8000/document/doc_type/${data.categoryID}`;
   try {
     yield call(api.delete, url, settings);
     yield put(actions.removeDocumentCategorySuccess());
@@ -50,7 +50,7 @@ function* watchRemoveClubDocumentCategory() {
 }
 
 function* addClubDocumentCategory(data) {
-  const url = `http://127.0.0.1:8000/document/doc_type/`;
+  const url = `http://3.219.198.5:8000/document/doc_type/`;
   try {
     const response = yield call(api.post, url, data, settings);
     yield put(actions.addDocumentCategorySuccess(response));
