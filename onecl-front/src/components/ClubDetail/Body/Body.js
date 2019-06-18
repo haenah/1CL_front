@@ -14,7 +14,7 @@ class Body extends Component{
         isPost : false,
         docTitle : null,
         docContent : '내용을 작성하세요.',
-        selectedType : 1,
+        selectedType : 5,
     };
 
 

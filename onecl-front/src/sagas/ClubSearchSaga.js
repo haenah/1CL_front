@@ -40,7 +40,7 @@ function* getClubList(url){
 function* watchGetClubListRequest(){
     while(true){
         const{ department, category } = yield take(types.GET_CLUB_LIST_REQUEST);
-        const url = `${REQUEST_URL}/club/?department=${department}&category=${category}`;
+        const url = `${REQUEST_URL}/club/?department=${department}&category=${category}&limit=100`;
         yield call(getClubList, url);
     }
 }
