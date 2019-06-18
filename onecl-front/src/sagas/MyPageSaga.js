@@ -1,7 +1,8 @@
-import {call, put, takeLatest} from 'redux-saga/effects'
+import {call, put, take, takeLatest, fork} from 'redux-saga/effects'
 import api from '../api'
 import * as types from '../actions/MyPage/ActionTypes'
 import {fetchJoin} from "../actions/MyPage";
+import * as mainTypes from '../actions/Main/ActionTypes'
 
 const url = 'http://3.219.198.5:8000/join/my_club/';
 
@@ -24,6 +25,16 @@ export function* fetchJoinRequest() {
   }
 }
 
-export default function* LoginSaga() {
-  yield takeLatest(types.FETCH_JOIN_REQUEST, fetchJoinRequest);
+export function* watchFetchJoinRequest(){
+  while(true){
+      yield take(types.FETCH_JOIN_REQUEST);
+      yield take(mainTypes.FETCH_CLUB_LIST);
+      yield call(fetchJoinRequest);
+  }
+}
+
+export default function* LoginSaga(){
+  yield fork(watchFetchJoinRequest)
+  // yield takeLatest(types.FETCH_JOIN_REQUEST, fetchJoinRequest);
+  // yield take(types.FETCH_JOIN)
 }

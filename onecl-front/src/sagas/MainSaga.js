@@ -1,4 +1,4 @@
-import {call, put, takeLatest} from 'redux-saga/effects';
+import {call, put, take, takeLatest, fork} from 'redux-saga/effects';
 import api from '../api';
 import * as actions from '../actions/Main/index';
 import * as types from '../actions/Main/ActionTypes';
@@ -14,6 +14,15 @@ export function* fetchClubListRequest() {
     }
 }
 
+export function* watchClubListRequest(){
+  while(true){
+      yield take(types.FETCH_CLUB_LIST_REQUEST);
+      yield call(fetchClubListRequest);
+  }
+}
+
 export default function* MainSaga() {
-  yield takeLatest(types.FETCH_CLUB_LIST_REQUEST, fetchClubListRequest)
+  // yield takeLatest(types.FETCH_CLUB_LIST_REQUEST, fetchClubListRequest);
+  //   yield take(types.FETCH_CLUB_LIST)
+  yield fork(watchClubListRequest)
 }
